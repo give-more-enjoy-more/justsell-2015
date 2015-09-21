@@ -1,0 +1,192 @@
+/**
+ * Table of Contents
+ *
+ * 01. - Necessary Standard Imports
+ * 02. - Reset
+ * 03. - Typography
+ * 04. - Forms
+ * 05. - Utility Classes
+ * 06. - Header
+ *    06.1 - Top Navigation
+ * 07. - Footer
+ * 08. - Content
+ *    08.1 - Posts
+ *    08.2 - LP's
+ * 09.0 - Media
+ *    09.1 - Captions
+ *    09.2 - Galleries
+ * 10.0 - Secondary Elements
+ *    10.1 - Modals
+ *    10.2 - 
+ * 11.0 - Media Queries
+ *    11.1 - Mobile
+ *    11.2 - Tablet
+ *    11.3 - Desktop Small
+ *    11.4 - Desktop Large
+ */
+
+
+/**
+ * 01. - Necessary Standard Imports
+ *
+ * Pull in all neccessary default imports required up front.
+ */
+@import 'partials/variables';
+
+
+/**
+ * 02. - Reset
+ *
+ * Reset for all generally used html tags and elements
+ */
+@import 'partials/reset';
+
+
+ /**
+  * 03. - Typography
+  *
+  * 
+  */
+body,
+button,
+input,
+select,
+textarea {
+  color: #000;
+  font-family: $primary-font-family;
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: $primary-font-weight;
+  line-height: 1.5;}
+
+h1, h2, h3, h4 {
+  clear:both;
+  font-weight: $semibold-font-weight;}
+
+h1, h2, h3 {
+  text-transform: uppercase;}
+
+h1 {
+  color: #262626;
+  font-size: 3.8em;
+  font-size: 3.8rem;
+  line-height: 1;}
+
+h2 {
+  font-size: 2.8em;
+  font-size: 2.8rem;
+  line-height: 1.2;}
+
+h3 {
+  font-size: 2em;
+  font-size: 2rem;
+  line-height: 1.4;}
+
+h4 {
+  font-size: 2.4em;
+  font-size: 2.4rem;
+  line-height: 1;}
+
+p, ol, ul {
+  font-size: 2.2em;
+  font-size: 2.2rem;
+  margin-bottom: 1.5em;}
+
+b,
+strong {
+  font-weight: $semibold-font-weight;}
+
+
+
+
+ /**
+  * 04. - Forms
+  *
+  * 
+  */
+
+
+ /**
+  * 05. - Utility Classes
+  *
+  * 
+  */
+
+
+ /**
+  * 06. - Header
+  *
+  * 
+  */
+
+
+ /**
+  * 07. - Footer
+  *
+  * 
+  */
+
+
+
+
+ /**
+  * 08. - Content
+  *
+  * 
+  */
+
+
+
+/* 08.01 - Content Posts */
+article {
+  margin: 0 auto;
+  max-width: 550px;
+  width: 80%;}
+
+article h2 {
+  margin-bottom: 0.5em;}
+
+article ol, article ul {
+  list-style-type: decimal;
+  padding-left: 1.5em;}
+
+article ol {
+  list-style-type: decimal;}
+
+article ul {
+  list-style-type: disc;}
+
+article li, article li {
+  margin-bottom: 0.5em;}
+
+.article-author {
+  color:#666;
+  font-size: 1em;}
+
+
+
+
+ /**
+  * 09. - Media
+  *
+  * 
+  */
+
+
+ /**
+  * 10. - Secondary Elements
+  *
+  * 
+  */
+@import 'partials/modal';
+
+ /**
+  * 11. - Media Queries
+  *
+  * 
+  */
+
+
+
+
+

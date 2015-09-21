@@ -1,0 +1,496 @@
+/**
+ * Table of Contents
+ *
+ * 01. - Necessary Standard Imports
+ * 02. - Reset
+ * 03. - Typography
+ * 04. - Forms
+ * 05. - Utility Classes
+ * 06. - Header
+ *    06.1 - Top Navigation
+ * 07. - Footer
+ * 08. - Content
+ *    08.1 - Posts
+ *    08.2 - LP's
+ * 09.0 - Media
+ *    09.1 - Captions
+ *    09.2 - Galleries
+ * 10.0 - Secondary Elements
+ *    10.1 - Modals
+ *    10.2 - 
+ * 11.0 - Media Queries
+ *    11.1 - Mobile
+ *    11.2 - Tablet
+ *    11.3 - Desktop Small
+ *    11.4 - Desktop Large
+ */
+/**
+ * 01. - Necessary Standard Imports
+ *
+ * Pull in all neccessary default imports required up front.
+ */
+/* Fonts */
+/* Colors */
+/**
+ * 02. - Reset
+ *
+ * Reset for all generally used html tags and elements
+ */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  border: 0;
+  font-family: inherit;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline; }
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;
+  overflow-y: scroll;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit; }
+
+body {
+  background: #FFF; }
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+nav,
+section {
+  display: block; }
+
+ol,
+ul {
+  list-style: none; }
+
+table {
+  border-collapse: separate;
+  border-spacing: 0; }
+
+caption,
+th,
+td {
+  font-weight: normal;
+  text-align: left; }
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: ""; }
+
+blockquote,
+q {
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  quotes: none; }
+
+a:focus {
+  outline: 2px solid #c1c1c1;
+  outline: 2px solid rgba(51, 51, 51, 0.3); }
+
+a:hover,
+a:active {
+  outline: 0; }
+
+a img {
+  border: 0; }
+
+/**
+ * 03. - Typography
+ *
+ * 
+ */
+body,
+button,
+input,
+select,
+textarea {
+  color: #000;
+  font-family: "Lato", Helvetica, sans-serif;
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.5; }
+
+h1, h2, h3, h4 {
+  clear: both;
+  font-weight: 600; }
+
+h1, h2, h3 {
+  text-transform: uppercase; }
+
+h1 {
+  color: #262626;
+  font-size: 3.8em;
+  font-size: 3.8rem;
+  line-height: 1; }
+
+h2 {
+  font-size: 2.8em;
+  font-size: 2.8rem;
+  line-height: 1.2; }
+
+h3 {
+  font-size: 2em;
+  font-size: 2rem;
+  line-height: 1.4; }
+
+h4 {
+  font-size: 2.4em;
+  font-size: 2.4rem;
+  line-height: 1; }
+
+p, ol, ul {
+  font-size: 2.2em;
+  font-size: 2.2rem;
+  margin-bottom: 1.5em; }
+
+b,
+strong {
+  font-weight: 600; }
+
+/**
+ * 04. - Forms
+ *
+ * 
+ */
+/**
+ * 05. - Utility Classes
+ *
+ * 
+ */
+/**
+ * 06. - Header
+ *
+ * 
+ */
+/**
+ * 07. - Footer
+ *
+ * 
+ */
+/**
+ * 08. - Content
+ *
+ * 
+ */
+/* 08.01 - Content Posts */
+article {
+  margin: 0 auto;
+  max-width: 550px;
+  width: 80%; }
+
+article h2 {
+  margin-bottom: 0.5em; }
+
+article ol, article ul {
+  list-style-type: decimal;
+  padding-left: 1.5em; }
+
+article ol {
+  list-style-type: decimal; }
+
+article ul {
+  list-style-type: disc; }
+
+article li, article li {
+  margin-bottom: 0.5em; }
+
+.article-author {
+  color: #666;
+  font-size: 1em; }
+
+/**
+ * 09. - Media
+ *
+ * 
+ */
+/**
+ * 10. - Secondary Elements
+ *
+ * 
+ */
+/*
+ *  Remodal's necessary styles
+ */
+/* Hide scroll bar */
+html.remodal-is-locked {
+  overflow: hidden; }
+
+/* Anti FOUC */
+.remodal, [data-remodal-id] {
+  display: none; }
+
+/* Necessary styles of the overlay */
+.remodal-overlay {
+  bottom: -5000px;
+  display: none;
+  left: -5000px;
+  position: fixed;
+  right: -5000px;
+  top: -5000px;
+  z-index: 9999; }
+
+/* Necessary styles of the wrapper */
+.remodal-wrapper {
+  bottom: 0;
+  display: none;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  z-index: 10000;
+  -webkit-overflow-scrolling: touch; }
+
+.remodal-wrapper:after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  margin-left: -0.05em; }
+
+/* Fix iPad, iPhone glitches */
+.remodal-overlay, .remodal-wrapper {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden; }
+
+/* Necessary styles of the modal dialog */
+.remodal {
+  outline: none;
+  position: relative;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%; }
+
+/* Disable Anti-FOUC */
+.remodal-is-initialized {
+  display: inline-block; }
+
+/*
+ *  Remodal's Mobile First Design styles
+ */
+.remodal {
+  background: #fff;
+  color: #2b2e38;
+  text-align: left;
+  margin-bottom: 10px;
+  padding: 35px;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0); }
+
+.remodal-wrapper {
+  padding: 10px 10px 0; }
+
+.remodal, .remodal-wrapper:after {
+  vertical-align: middle; }
+
+/* Background */
+.remodal-bg.remodal-is-opening, .remodal-bg.remodal-is-opened {
+  -webkit-filter: blur(3px);
+  filter: blur(3px); }
+
+/* Overlay */
+.remodal-overlay {
+  background: rgba(0, 0, 0, 0.6); }
+
+.remodal-overlay.remodal-is-opening, .remodal-overlay.remodal-is-closing {
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards; }
+
+.remodal-overlay.remodal-is-opening {
+  -webkit-animation: remodal-overlay-opening-keyframes 0.3s;
+  animation: remodal-overlay-opening-keyframes 0.3s; }
+
+.remodal-overlay.remodal-is-closing {
+  -webkit-animation: remodal-overlay-closing-keyframes 0.3s;
+  animation: remodal-overlay-closing-keyframes 0.3s; }
+
+/* Open and close animations */
+.remodal.remodal-is-opening, .remodal.remodal-is-closing {
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards; }
+
+.remodal.remodal-is-opening {
+  -webkit-animation: remodal-opening-keyframes 0.3s;
+  animation: remodal-opening-keyframes 0.3s; }
+
+.remodal.remodal-is-closing {
+  -webkit-animation: remodal-closing-keyframes 0.3s;
+  animation: remodal-closing-keyframes 0.3s; }
+
+/* Close button */
+.remodal-close {
+  background: transparent;
+  border: 0;
+  color: #95979c;
+  cursor: pointer;
+  display: block;
+  height: 35px;
+  margin: 0;
+  outline: 0;
+  overflow: visible;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  text-decoration: none;
+  top: 0;
+  width: 35px;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s; }
+
+.remodal-close:hover, .remodal-close:focus {
+  color: #2b2e38; }
+
+.remodal-close:before {
+  content: "\00d7";
+  display: block;
+  font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important;
+  font-size: 35px;
+  left: 0;
+  line-height: 35px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  width: 35px; }
+
+/* Responsive video embed */
+.embed-video-container {
+  height: 0;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 56.25%;
+  z-index: 5; }
+
+.iframe-video {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%; }
+
+/* Video Capture Form & Overlay */
+.embed-video-capture-container {
+  position: relative; }
+
+.video-email-capture-form {
+  background: #FFF;
+  left: 25%;
+  padding: 3em;
+  position: absolute;
+  top: 25%;
+  z-index: 15;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.video-overlay {
+  background: #000;
+  background: rgba(0, 0, 0, 0.6);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10; }
+
+/* Keyframes
+   ========================================================================== */
+@-webkit-keyframes remodal-opening-keyframes {
+  from {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    opacity: 0; }
+  to {
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+@keyframes remodal-opening-keyframes {
+  from {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+    opacity: 0; }
+  to {
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1; } }
+@-webkit-keyframes remodal-closing-keyframes {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1; }
+  to {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+    opacity: 0; } }
+@keyframes remodal-closing-keyframes {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1; }
+  to {
+    -webkit-transform: scale(0.95);
+    transform: scale(0.95);
+    opacity: 0; } }
+@-webkit-keyframes remodal-overlay-opening-keyframes {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@keyframes remodal-overlay-opening-keyframes {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+@-webkit-keyframes remodal-overlay-closing-keyframes {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+@keyframes remodal-overlay-closing-keyframes {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0; } }
+/* Media queries */
+@media only screen and (min-width: 641px) {
+  .remodal {
+    max-width: 960px; } }
+/* IE8 */
+.lt-ie9 .remodal-overlay {
+  background: #2b2e38; }
+
+.lt-ie9 .remodal {
+  width: 700px; }
+
+/**
+ * 11. - Media Queries
+ *
+ * 
+ */
