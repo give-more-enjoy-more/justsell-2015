@@ -1,5 +1,10 @@
 <?php
 
+/*
+ * Pull in the generic global functions needed
+ */
+include('../includes/global-functions.php');
+
 
 /*
  * Run the default modal ajax processing if the required modal variable 'modalType' is set in $_POST
@@ -28,12 +33,13 @@ if( isset($_POST["modalType"]) ){
 			break;
 
 		default:
-			process_error_modal();
+			process_modal_not_found();
 			break;
 
 	endswitch;
 
 } /* END if isset post modalType */
+
 
 /*
  * This will run after the modal video capture form is submitted.
@@ -115,16 +121,16 @@ function process_book_modal(){
 
 
 /*
- * @name: Process Error Modal
+ * @name: Process Modal Not Found
  * @function: This function echos the default modal not found message.
  */
-function process_error_modal(){
+function process_modal_not_found(){
 
 	echo '
 		<h1>So sorry, it looks like this modal doesn\'t exist. </h1>
 	';
 
-} /* END process_error_modal function */
+} /* END process_modal_not_found function */
 
 
 /*
@@ -174,13 +180,12 @@ function process_modal_capture($captured_email, $modal_type, $modal_id){
 	$modal_capture_source = 'gm-capture';
 
 	/* Write name, email, date, ip address, source, and alt aource to the master capture file */
-	$fp = fopen('/var/www/html/joegilbert.me/resources/docs/capture_docs/Master_Capture_List.txt', 'a');
+	$fp = fopen('/var/www/html/justsell.com/wp-content/themes/justsell/resources/docs/capture-docs/Master_Capture_List.txt', 'a');
 	fwrite($fp, $modal_capture_name."\t".$modal_capture_email."\t".$modal_capture_date."\t".$modal_capture_ip_address."\t".$modal_capture_source."\t".$modal_capture_alt_source."\n") or die('fwrite failed');
 	fclose($fp);
 
 	/* Set the email successfully captured cookie if it isn't already set */
-	if ( !isset($_COOKIE["emailSuccessfullyCapture"]) )
-		setcookie("emailSuccessfullyCapture", "gotit", time()+86400*365, "/");
+	capture_cookie_check_and_set();  /* is_capture_cookie_set in global functions file */
 
 } /* END process_modal_capture function */
 
@@ -215,7 +220,7 @@ function process_video_modal(){
 	global $modal_type, $modal_id;
 
 	/* Initilize function specific vars needed */
-	$cookie_not_created = !isset($_COOKIE["emailSuccessfullyCapture"]);
+ 	$cookie_not_created = !is_capture_cookie_set(); /* is_capture_cookie_set in global functions file */
 	$show_video_capture = is_null( $_POST["showCapture"] );
 	$show_video_share = is_null( $_POST["showShare"] );
 	$video_modal_result_echo = '';

@@ -9,6 +9,7 @@
  * 06. - Header
  *    06.1 - Top Navigation
  * 07. - Footer
+ *    07.1 - About The Author
  * 08. - Content
  *    08.1 - Posts
  *    08.2 - LP's
@@ -31,6 +32,7 @@
  */
 /* Fonts */
 /* Colors */
+/* Sitewide Widths */
 /**
  * 02. - Reset
  *
@@ -181,6 +183,18 @@ strong {
  *
  * 
  */
+.clear-fix:before,
+.clear-fix:after {
+  content: "";
+  display: table; }
+
+.clear-fix:after {
+  clear: both; }
+
+.clear-fix {
+  zoom: 1; }
+
+/* For IE 6/7 (trigger hasLayout) */
 /**
  * 06. - Header
  *
@@ -191,6 +205,40 @@ strong {
  *
  * 
  */
+footer, .about-the-author {
+  padding: 2% 0; }
+
+footer .inner-container, .about-the-author .inner-container {
+  margin: 0 auto;
+  width: 725px; }
+
+footer {
+  background: #262626;
+  color: #FFF; }
+
+footer p, .about-the-author p {
+  font-size: 1.6em;
+  font-size: 1.6rem; }
+
+footer a {
+  color: #FFF; }
+
+footer .copyright-and-links {
+  font-size: 1.4em;
+  font-size: 1.4rem; }
+
+/* 07.01 - About The Author */
+.about-the-author {
+  background: #D8D8D8; }
+
+.about-the-author .author-bio {
+  float: right;
+  width: 70%; }
+
+.about-the-author .author-headshot {
+  float: left;
+  width: 25%; }
+
 /**
  * 08. - Content
  *
@@ -198,12 +246,15 @@ strong {
  */
 /* 08.01 - Content Posts */
 article {
-  margin: 0 auto;
+  margin: 0 auto 3em;
   max-width: 550px;
   width: 80%; }
 
 article h2 {
   margin-bottom: 0.5em; }
+
+article p:last-child {
+  margin-bottom: 0; }
 
 article ol, article ul {
   list-style-type: decimal;

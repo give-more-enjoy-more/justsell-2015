@@ -28,7 +28,7 @@
 	<?php // include( get_template_directory_uri() . '/resources/includes/analytics-integration,php' ); ?>
 </head>
 
-<body>
+<body class="<?php echo post_or_page_specific_class(); ?>">
 
 	<div class="content-container">
 

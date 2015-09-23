@@ -1,2 +1,0 @@
-Name	Email	Date	IP Address	Sub Source	Alt Source
-Everyone	test@testing.com	09/18/15 3:25 pm	75.75.75.1	gm-capture	gm-video-capture-tt
