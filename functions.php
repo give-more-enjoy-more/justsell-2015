@@ -13,7 +13,7 @@ if ( !function_exists('post_or_page_specific_class') ) {
 		if ( is_single() ) {
 			
 			$post_identification_number = get_the_ID();
-			$class = "post-id-" . $post_identification_number;
+			$class = "post-id-" . $post_identification_number . " single-post";
 
 		} elseif ( is_home() ) {
 			

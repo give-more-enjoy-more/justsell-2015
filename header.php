@@ -25,7 +25,10 @@
 	<script src="https://use.typekit.net/fcv0wlt.js"></script>
 	<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
-	<?php // include( get_template_directory_uri() . '/resources/includes/analytics-integration,php' ); ?>
+	<?php
+		/* Pulls in the analytics integrations */
+		include('resources/includes/analytics-integration.php'); ?>
+
 </head>
 
 <body class="<?php echo post_or_page_specific_class(); ?>">

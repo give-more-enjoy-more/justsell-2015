@@ -10,9 +10,11 @@
  *    06.1 - Top Navigation
  * 07. - Footer
  *    07.1 - About The Author
+ *    07.2 - Subscriber Aquisition Form
  * 08. - Content
  *    08.1 - Posts
- *    08.2 - LP's
+ *    08.2 - Specific Posts Formats
+ *    08.3 - LP's
  * 09.0 - Media
  *    09.1 - Captions
  *    09.2 - Galleries
@@ -38,7 +40,7 @@
  *
  * Reset for all generally used html tags and elements
  */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, figure, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
   border: 0;
   font-family: inherit;
   font-size: 100%;
@@ -129,7 +131,7 @@ button,
 input,
 select,
 textarea {
-  color: #000;
+  color: #262626;
   font-family: "Lato", Helvetica, sans-serif;
   font-size: 16px;
   font-size: 1.6rem;
@@ -137,6 +139,7 @@ textarea {
   line-height: 1.5; }
 
 h1, h2, h3, h4 {
+  color: #262626;
   clear: both;
   font-weight: 600; }
 
@@ -144,7 +147,6 @@ h1, h2, h3 {
   text-transform: uppercase; }
 
 h1 {
-  color: #262626;
   font-size: 3.8em;
   font-size: 3.8rem;
   line-height: 1; }
@@ -178,6 +180,111 @@ strong {
  *
  * 
  */
+button,
+input,
+select,
+textarea {
+  background-color: #FFF;
+  border-radius: 0;
+  font-size: 16px;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 100%;
+  vertical-align: baseline; }
+
+input,
+textarea {
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0));
+  /* Removing the inner shadow on iOS inputs */
+  border: 1px solid #C1C1C1;
+  color: #707070;
+  color: rgba(51, 51, 51, 0.7); }
+
+input:focus,
+textarea:focus {
+  background-color: #FFF;
+  border: 1px solid #C1C1C1;
+  color: #333; }
+
+input:focus,
+select:focus {
+  outline: 2px solid #C1C1C1;
+  outline: 2px solid rgba(51, 51, 51, 0.3); }
+
+button[disabled],
+input[disabled],
+select[disabled],
+textarea[disabled] {
+  cursor: default;
+  opacity: .5; }
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  background-color: #D7963E;
+  border: 0;
+  color: #FFF;
+  cursor: pointer;
+  font-weight: 300;
+  padding: 0.7917em 1.2em; }
+
+button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:hover,
+button:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+input[type="submit"]:focus {
+  background-color: #707070;
+  background-color: rgba(51, 51, 51, 0.7);
+  outline: 0; }
+
+input[type="search"] {
+  -webkit-appearance: textfield; }
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+textarea {
+  padding: 0.74em;
+  width: 100%; }
+
+textarea {
+  overflow: auto;
+  vertical-align: top; }
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+textarea:focus {
+  outline: 0; }
+
+input[type="checkbox"],
+input[type="radio"] {
+  padding: 0; }
+
+.form-errors-container {
+  color: #FF0000;
+  margin-bottom: 2em;
+  text-align: left; }
+
 /**
  * 05. - Utility Classes
  *
@@ -200,45 +307,73 @@ strong {
  *
  * 
  */
+/* 06.01 - Top Navigation */
+nav {
+  background-color: #FFF;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 1em 0; }
+
 /**
  * 07. - Footer
  *
  * 
  */
-footer, .about-the-author {
+footer:before, .about-the-author:before, .footer-subscriber-acquisition:before,
+footer:after, .about-the-author:after, .footer-subscriber-acquisition:after {
+  content: "";
+  display: block;
+  min-height: 2em;
   padding: 2% 0; }
-
-footer .inner-container, .about-the-author .inner-container {
-  margin: 0 auto;
-  width: 725px; }
 
 footer {
   background: #262626;
   color: #FFF; }
+  footer a {
+    color: #FFF; }
+  footer .copyright-and-links {
+    font-size: 1.4em;
+    font-size: 1.4rem; }
+
+/* END footer */
+footer .inner-container,
+.about-the-author .inner-container,
+.footer-subscriber-acquisition .inner-container {
+  margin: 0 auto;
+  width: 725px; }
 
 footer p, .about-the-author p {
   font-size: 1.6em;
   font-size: 1.6rem; }
 
-footer a {
-  color: #FFF; }
-
-footer .copyright-and-links {
-  font-size: 1.4em;
-  font-size: 1.4rem; }
-
 /* 07.01 - About The Author */
 .about-the-author {
   background: #D8D8D8; }
+  .about-the-author h2 {
+    margin-bottom: 0.3em; }
+  .about-the-author .author-bio {
+    float: right;
+    width: 70%; }
+  .about-the-author .author-headshot {
+    float: left;
+    width: 25%; }
 
-.about-the-author .author-bio {
-  float: right;
-  width: 70%; }
+/* END about-the-author */
+/* 07.02 - Subscriber Aquisition Form */
+.footer-subscriber-acquisition {
+  background: #FFF;
+  text-align: center; }
+  .footer-subscriber-acquisition p {
+    margin-bottom: 0; }
+  .footer-subscriber-acquisition form {
+    margin: 1em 0; }
+  .footer-subscriber-acquisition input[type="text"] {
+    width: 70%; }
+  .footer-subscriber-acquisition input[type="button"],
+  .footer-subscriber-acquisition input[type="reset"],
+  .footer-subscriber-acquisition input[type="submit"] {
+    margin-left: -0.5em; }
 
-.about-the-author .author-headshot {
-  float: left;
-  width: 25%; }
-
+/* END footer-subscriber-acquisition */
 /**
  * 08. - Content
  *
@@ -246,32 +381,63 @@ footer .copyright-and-links {
  */
 /* 08.01 - Content Posts */
 article {
-  margin: 0 auto 3em;
-  max-width: 550px;
-  width: 80%; }
+  margin: 0 auto 5em;
+  max-width: 650px;
+  width: 80%;
+  /* Post utility classes */ }
+  article figure img {
+    height: auto;
+    width: 80%; }
+  article header {
+    margin-bottom: 2.5em; }
+  article h2 {
+    margin-bottom: 0.5em; }
+  article h4 {
+    margin-bottom: 1.5em; }
+  article input[type="text"] {
+    width: 70%; }
+  article input[type="button"],
+  article input[type="reset"],
+  article input[type="submit"] {
+    margin-left: -0.5em; }
+  article p:last-child {
+    margin-bottom: 0; }
+  article ol, article ul {
+    list-style-type: decimal;
+    padding-left: 1.5em; }
+  article ol {
+    list-style-type: decimal; }
+  article ul {
+    list-style-type: disc; }
+  article li {
+    margin-bottom: 0.5em; }
+  article .article-title {
+    margin-bottom: 0.3em; }
+  article .article-author {
+    color: #262626;
+    font-size: 1em;
+    font-size: 1.6rem; }
+  article .engaging-header-image {
+    height: auto;
+    margin-bottom: 3em;
+    width: 100%; }
+  article .post-promotion {
+    margin-bottom: 4em;
+    text-align: center; }
+  article .bottom-border {
+    border-bottom: 1px solid #262626;
+    margin-bottom: 1em;
+    padding-bottom: 0.8em; }
+  article .double-bottom-margin {
+    margin-bottom: 3em; }
 
-article h2 {
-  margin-bottom: 0.5em; }
+/* END article */
+.single-post main {
+  background: url("/wp-content/themes/justsell/resources/images/in-post/throughout/single-post-header-dusty-background-600x400.png") repeat-x; }
 
-article p:last-child {
-  margin-bottom: 0; }
-
-article ol, article ul {
-  list-style-type: decimal;
-  padding-left: 1.5em; }
-
-article ol {
-  list-style-type: decimal; }
-
-article ul {
-  list-style-type: disc; }
-
-article li, article li {
-  margin-bottom: 0.5em; }
-
-.article-author {
-  color: #666;
-  font-size: 1em; }
+/* 08.02 - Specific Posts Formats */
+.post-id-10 {
+  background: #DCE9DF; }
 
 /**
  * 09. - Media
@@ -453,10 +619,12 @@ html.remodal-is-locked {
 
 .video-email-capture-form {
   background: #FFF;
-  left: 25%;
+  height: 50%;
+  left: 15%;
   padding: 3em;
   position: absolute;
   top: 25%;
+  width: 70%;
   z-index: 15;
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }

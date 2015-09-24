@@ -16,22 +16,26 @@ include('global-functions.php');
 footer_subscriber_acquisition_control();
 
 
-
 /*
  * Simply returns the pdf request input form when called.
  */
-function display_footer_subscriber_acquisition_form()
+function display_footer_subscriber_acquisition_form($pre_form_content = '')
 {
-	/* Initialize variables */
-	
 	/* Build the form and set it to the form_string variable. */
 	$form_output_string = '
-		<h3>Like what you read?</h3>
-		<p>Get Sam\'s inspiring thoughts and ideas delivered to your inbox.</p>
-		<form action="'. $_SERVER['REQUEST_URI'] .'" method="post" name="footerSubscriberAcquisitionForm" id="footer-subscriber-acquisition-form">
-			<input name="footerSubscriberAcquisitionEmail" type="text" placeholder="Enter your email here">
-			<input name="footerSubscriberAcquisitionSubmit" type="submit" value="Submit">
-		</form>';
+		<section class="footer-subscriber-acquisition">
+			<div class="inner-container">
+				'. $pre_form_content .'
+				<p><strong>Want more of Sam\'s thoughts?</strong></p>
+				<p>Enter your email to get more of his motivating ideas.</p>
+				<form action="'. $_SERVER['REQUEST_URI'] .'" method="post" name="footerSubscriberAcquisitionForm" id="footer-subscriber-acquisition-form">
+					<p>
+						<input name="footerSubscriberAcquisitionEmail" type="text" placeholder="Enter your email here">
+						<input name="footerSubscriberAcquisitionSubmit" type="submit" value="Get inspired now">
+					</p>
+				</form>
+			</div>
+		</section>';
 
 	echo $form_output_string;
 } /* END function display_footer_subscriber_acquisition_form */
@@ -73,7 +77,7 @@ function process_footer_subscriber_acquisition_form()
 	if(sizeof($error) > 0)
 	{
 		$size = sizeof($error);
-		$error_message = '';
+		$error_message = '<div class="form-errors-container">';
 	
 		for ($i=0; $i < $size; $i++)
 		{
@@ -83,7 +87,9 @@ function process_footer_subscriber_acquisition_form()
 			$error_message .= '<p class="form-error">- '.$error[$i].'</p>';
 		}
 
-		echo $error_message . display_post_pdf_resquest_form();
+		$error_message .= '</div>';
+
+		echo display_footer_subscriber_acquisition_form($error_message);
 	}
 	else
 	{
@@ -106,9 +112,12 @@ function process_footer_subscriber_acquisition_form()
 		capture_cookie_check_and_set();  /* is_capture_cookie_set in global functions file */
 
 		echo '
-			<h3>Hope Your\'re Ready to be Inspired!</h3>
-			<p>Look for your first email within the next couple salesdays.</p>
-		';
+		<section class="footer-subscriber-acquisition">
+			<div class="inner-container">
+				<p>Thanks for signing up! Sam\'s emails will come from GiveMore.com.</p>
+				<h3>We hope they inspire you!</h3>
+			</div>
+		</section>';
 
 	}
 } /* END function process_footer_subscriber_acquisition_form */

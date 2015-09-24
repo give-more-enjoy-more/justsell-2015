@@ -34,8 +34,25 @@ $(document).ready(function() {
 
 		}); /* END $.post */
 
-
 	}); /* END .launch-modal on click callback function */
+
+
+
+	/* Scrolls any url/href anchor tags down to their appropriate section */
+	$('a[href*=#]:not([href=#])').click(function() {
+		if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+
+			var target = $(this.hash);
+			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+			if (target.length) {
+				$('html,body').animate({
+					scrollTop: target.offset().top
+				}, 2000);
+				return false;
+			}
+		}
+	});	
+
 
 
 }); /* END document ready callback function */

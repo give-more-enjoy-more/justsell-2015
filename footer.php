@@ -9,10 +9,9 @@
  */
 ?>
 
-
-		<?php
-			/* Pulls in the subscriber form and processing */
-			include('resources/includes/footer-subscriber-acquisition.php'); ?>
+	<?php
+		/* Pulls in the subscriber form and processing */
+		include('resources/includes/footer-subscriber-acquisition.php'); ?>
 
 
 		<section class="about-the-author">
@@ -39,9 +38,10 @@
 
 	</div> <?php /* END .content-container */ ?>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="<?php echo bloginfo('template_directory') ?>/resources/js/remodal.js"></script>
-	<script src="<?php echo bloginfo('template_directory') ?>/resources/js/functions.js"></script>
+
+	<?php
+		/* Pulls in the footer javascripts */
+		include('resources/includes/footer-javascript-imports.php'); ?>
 
 	<?php  wp_footer(); ?>
 
