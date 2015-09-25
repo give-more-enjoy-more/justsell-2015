@@ -180,7 +180,6 @@ strong {
  *
  * 
  */
-button,
 input,
 select,
 textarea {
@@ -219,7 +218,6 @@ textarea[disabled] {
   cursor: default;
   opacity: .5; }
 
-button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
@@ -231,7 +229,6 @@ input[type="submit"] {
   font-weight: 300;
   padding: 0.7917em 1.2em; }
 
-button:hover,
 input[type="button"]:hover,
 input[type="reset"]:hover,
 input[type="submit"]:hover,
@@ -250,7 +247,6 @@ input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
   -webkit-appearance: none; }
 
-button::-moz-focus-inner,
 input::-moz-focus-inner {
   border: 0;
   padding: 0; }
@@ -286,10 +282,16 @@ input[type="radio"] {
   text-align: left; }
 
 /**
- * 05. - Utility Classes
+ * 05. - General Structure & Utility Classes
  *
  * 
  */
+/* 05.01 - General Structure */
+.inner-container {
+  margin: 0 auto;
+  width: 725px; }
+
+/* 05.02 - Utility Classes */
 .clear-fix:before,
 .clear-fix:after {
   content: "";
@@ -310,9 +312,70 @@ input[type="radio"] {
 /* 06.01 - Top Navigation */
 nav {
   background-color: #FFF;
-  background-color: rgba(255, 255, 255, 0.7);
-  padding: 1em 0; }
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 0.7em 0;
+  /* END .justsell-logo */
+  /* END .navigation-items */ }
+  nav .justsell-logo {
+    display: block;
+    float: left;
+    width: 20%; }
+    nav .justsell-logo img {
+      display: block;
+      height: auto;
+      width: 100%; }
+  nav .navigation-items {
+    float: right;
+    margin-bottom: 0;
+    /* END .item */ }
+    nav .navigation-items .item {
+      display: inline-block;
+      font-size: 0.7em;
+      font-size: 1.5rem;
+      margin-right: 2.5em; }
+      nav .navigation-items .item:last-child {
+        margin-right: 0; }
+      nav .navigation-items .item a {
+        color: #262626;
+        text-decoration: none; }
+      nav .navigation-items .item a:hover {
+        text-decoration: underline; }
+  nav.not-top {
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 9999;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s ease-in-out; }
+  nav.unpinned {
+    top: -108px;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s ease-in-out;
+    -webkit-transform: translateY(-100%);
+    -o-transform: translateY(-100%);
+    -moz-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%); }
+  nav.pinned {
+    -webkit-transform: translateY(0);
+    -o-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    transition: 0.5s ease-in-out; }
 
+/* END nav */
 /**
  * 07. - Footer
  *
@@ -335,12 +398,6 @@ footer {
     font-size: 1.4rem; }
 
 /* END footer */
-footer .inner-container,
-.about-the-author .inner-container,
-.footer-subscriber-acquisition .inner-container {
-  margin: 0 auto;
-  width: 725px; }
-
 footer p, .about-the-author p {
   font-size: 1.6em;
   font-size: 1.6rem; }
@@ -350,6 +407,8 @@ footer p, .about-the-author p {
   background: #D8D8D8; }
   .about-the-author h2 {
     margin-bottom: 0.3em; }
+  .about-the-author p:last-child {
+    margin-bottom: 0; }
   .about-the-author .author-bio {
     float: right;
     width: 70%; }
@@ -436,9 +495,34 @@ article {
   background: url("/wp-content/themes/justsell/resources/images/in-post/throughout/single-post-header-dusty-background-600x400.png") repeat-x; }
 
 /* 08.02 - Specific Posts Formats */
+.post-id-5 {
+  background: #D9F2FF; }
+
+/* THE 8 OBJECTIONS */
 .post-id-10 {
   background: #DCE9DF; }
 
+/* TOP 30 OPEN-ENDED QUESTIONS */
+.post-id-29 {
+  background: #A3CAED; }
+
+/* SALES INTERVIEW QUESTIONS */
+.post-id-31 {
+  background: #FFE2B3; }
+
+/* OPENING STATEMENTS */
+.post-id-34 {
+  background: #DEFFF6; }
+
+/* HOW TO FOCUS */
+.post-id-36 {
+  background: #FFF; }
+
+/* THE SALES PROCESS */
+.post-id-39 {
+  background: #D8F6CB; }
+
+/* SALES MANAGEMENT CHECKLIST */
 /**
  * 09. - Media
  *

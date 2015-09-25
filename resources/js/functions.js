@@ -1,5 +1,40 @@
 $(document).ready(function() {
 
+	/* Script to hide and scroll the navigation down page */
+	var $topNavigation = $("nav");
+
+	$topNavigation.headroom({
+
+		/* What scroll position to hide the navbar */
+		offset: $topNavigation.outerHeight(),
+
+	  classes : {
+	    /* when element is initialised */
+	    initial : "nav-scroll-active",
+	    /* when scrolling up */
+	    pinned : "pinned",
+	    /* when scrolling down */
+	    unpinned : "unpinned",
+	    /* when above offset */
+	    top : "top",
+	    /* when below offset */
+	    notTop : "not-top"
+	  }
+
+	});
+
+
+		/* Add padding to the content container when the nav in scrolling to prevent page jump */
+//		if( $topNavigation.hasClass('not-top') ){
+//			$(".content-container").css({ "padding-top": $topNavigation.outerHeight() });
+//		}else{
+//			$(".content-container").css({ "padding-top": 0 });
+//		}
+
+
+
+
+
 	/* Bypass the default modal window functionality to make ajax loading possible */
 	$('.launch-modal').on('click', function(e){
 		
@@ -51,8 +86,6 @@ $(document).ready(function() {
 				return false;
 			}
 		}
-	});	
-
-
+	});
 
 }); /* END document ready callback function */

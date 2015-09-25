@@ -21,7 +21,7 @@
 					<?php endif; ?>
 
 					<h1 class="article-title" itemprop="name"><?php the_title(); ?></h1>
-					<p class="article-author">by <strong itemprop="author">Sam Parker</strong> (sales veteran and bestselling author)</p>
+					<p class="article-author">by <strong itemprop="author"><?php the_author() ?></strong> (sales veteran and bestselling author)</p>
 
 				</header>
 				

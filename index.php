@@ -15,25 +15,12 @@
 ?>
 <?php get_header(); ?>
 
-	<main itemscope itemtype="http://schema.org/Article">
+	<main class="inner-container">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+		<section>
+			<h1>Dis jah homepage!</h1>
+		</section>
 
-			<article itemprop="articleBody">
-
-				<header>
-					
-					<h1 class="article-title" itemprop="name"><?php the_title(); ?></h1>
-					<p class="article-author">by <strong itemprop="author">Sam Parker</strong> (sales veteran and bestselling author)</p>
-
-				</header>
-				
-				<?php the_content(); ?>
-
-			</article>
-
-		<?php endwhile; ?>
-
-	</main>
+	</main> <?php /* END .inner-container */ ?>
 
 <?php get_footer(); ?>

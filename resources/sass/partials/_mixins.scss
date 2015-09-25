@@ -1,0 +1,17 @@
+
+
+@mixin transition($duration) {
+	-webkit-transition: $duration;
+			 -o-transition: $duration;
+		 -moz-transition: $duration;
+			-ms-transition: $duration;
+					transition: $duration ease-in-out;
+}
+
+@mixin transform-translateY($height) {
+	-webkit-transform: translateY($height);
+			 -o-transform: translateY($height);
+		 -moz-transform: translateY($height);
+			-ms-transform: translateY($height);
+					transform: translateY($height);
+}

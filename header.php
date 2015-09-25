@@ -35,4 +35,6 @@
 
 	<div class="content-container">
 
-		<nav></nav>
+		<?php
+			/* Pulls in the header navigation */
+			include('resources/includes/header-navigation.php'); ?>
