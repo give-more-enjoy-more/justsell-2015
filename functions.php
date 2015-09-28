@@ -19,6 +19,11 @@ if ( !function_exists('post_or_page_specific_class') ) {
 			
 			$class = 'post-id-homepage';
 
+		} elseif ( is_page() ) {
+			
+			$lp_permalink = basename( get_permalink() );
+			$class = $lp_permalink . '-lp';
+
 		} else {
 
 			$class = '';

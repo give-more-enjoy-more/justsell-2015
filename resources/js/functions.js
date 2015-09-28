@@ -57,7 +57,7 @@ $(document).ready(function() {
 		/* Pass the data gathered above to $POST and process it with the php script via ajax.
 		 * After the ajax has successfully processed the script, load the result in to the modal and open it.
 		 */
-		$.post( "/wp-content/themes/justsell/resources/scripts/modal-ajax-processing.php", { modalType:dataModalType, modalID:dataModalID, showCapture:dataModalShowCapture, showShare:dataModalShowShare }, function(data){
+		$.post( "/wp-content/themes/justsell/resources/includes/modal-ajax-processing.php", { modalType:dataModalType, modalID:dataModalID, showCapture:dataModalShowCapture, showShare:dataModalShowShare }, function(data){
 
 			$(".remodal-content-container").html(data);
 

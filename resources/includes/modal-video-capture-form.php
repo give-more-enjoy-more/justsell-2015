@@ -1,4 +1,4 @@
-<form action='/resources/scripts/modal-ajax-processing.php' method='post' name='videoEmailCaptureForm' class='video-email-capture-form' id='videoEmailCaptureForm'>
+<form action='/resources/includes/modal-ajax-processing.php' method='post' name='videoEmailCaptureForm' class='video-email-capture-form' id='videoEmailCaptureForm'>
 	<p class='title'>Please enter your email address to view the video.</p>
 	<p class='single-input-submit'>
 		<input name='videoEmail' class='video-email' type='text' placeholder='Enter Your Email Here' />

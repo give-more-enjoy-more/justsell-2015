@@ -13,26 +13,21 @@
 
 <?php get_header(); ?>
 
-	<main itemscope itemtype="http://schema.org/Article">
+<main>
 
-		<?php while ( have_posts() ) : the_post(); ?>
+	<?php
 
-			<article itemprop="articleBody">
+		while ( have_posts() ) :
 
-				<header>
-					
-					<h1 class="article-title" itemprop="name"><?php the_title(); ?></h1>
+			the_post();
 
-				</header>
+			/* get_the_content() does not pass the content through the 'the_content'. This means that get_the_content() will not auto-embed videos or expand shortcodes, wrap with tags, etc. */
+			print get_the_content();
 
-				
-				<?php the_content(); ?>
+		endwhile;
 
+	?>
 
-			</article>
-
-		<? endwhile; ?>
-
-	</main>
+</main>
 
 <?php get_footer(); ?>

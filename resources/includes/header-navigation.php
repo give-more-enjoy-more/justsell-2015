@@ -5,7 +5,7 @@
 
 		<ul class="navigation-items">
 			<li class="item"><a href="/sales-tools/">Sales Tools</a></li>
-			<li class="item"><a href="/meeting-ideas/">Meeting Ideas</a></li>
+			<li class="item"><a href="/sales-meetings/">Meeting Ideas</a></li>
 			<li class="item"><a href="/reminders-and-gear/">Reminders &amp; Gear</a></li>
 		</ul>
 

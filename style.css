@@ -4,6 +4,7 @@
  * 01. - Necessary Standard Imports
  * 02. - Reset
  * 03. - Typography
+ *    03.1 - Buttons
  * 04. - Forms
  * 05. - Utility Classes
  * 06. - Header
@@ -14,13 +15,12 @@
  * 08. - Content
  *    08.1 - Posts
  *    08.2 - Specific Posts Formats
- *    08.3 - LP's
+ *    08.3 - Sales Meeting LP
  * 09.0 - Media
  *    09.1 - Captions
  *    09.2 - Galleries
  * 10.0 - Secondary Elements
  *    10.1 - Modals
- *    10.2 - 
  * 11.0 - Media Queries
  *    11.1 - Mobile
  *    11.2 - Tablet
@@ -133,8 +133,8 @@ select,
 textarea {
   color: #262626;
   font-family: "Lato", Helvetica, sans-serif;
-  font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 10px;
+  font-size: 1rem;
   font-weight: 300;
   line-height: 1.5; }
 
@@ -175,6 +175,30 @@ b,
 strong {
   font-weight: 600; }
 
+/* 03.01 - Buttons */
+.flat-btn {
+  background: #DA8D30;
+  color: #FFF;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none; }
+  .flat-btn:focus, .flat-btn:active, .flat-btn:hover {
+    color: #FFF; }
+  .flat-btn:hover {
+    background: #EFAA56;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4); }
+
+/* END .flat-btn */
+.flat-outline-btn.white-btn, .flat-outline-btn.white-btn:hover {
+  background: none;
+  color: #656565;
+  border: 1px solid #CCC; }
+.flat-outline-btn.white-btn:hover {
+  text-decoration: underline; }
+
+/* END .flat-outline-btn */
 /**
  * 04. - Forms
  *
@@ -222,12 +246,12 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
-  background-color: #D7963E;
-  border: 0;
+  background-color: #DA8D30;
+  border: 1px solid #DA8D30;
   color: #FFF;
   cursor: pointer;
   font-weight: 300;
-  padding: 0.7917em 1.2em; }
+  padding: 0.74em 1.2em; }
 
 input[type="button"]:hover,
 input[type="reset"]:hover,
@@ -236,8 +260,8 @@ button:focus,
 input[type="button"]:focus,
 input[type="reset"]:focus,
 input[type="submit"]:focus {
-  background-color: #707070;
-  background-color: rgba(51, 51, 51, 0.7);
+  background-color: #EFAA56;
+  border-color: #EFAA56;
   outline: 0; }
 
 input[type="search"] {
@@ -313,7 +337,7 @@ input[type="radio"] {
 nav {
   background-color: #FFF;
   background-color: rgba(255, 255, 255, 0.95);
-  padding: 0.7em 0;
+  padding: 1.2em 0;
   /* END .justsell-logo */
   /* END .navigation-items */ }
   nav .justsell-logo {
@@ -523,6 +547,141 @@ article {
   background: #D8F6CB; }
 
 /* SALES MANAGEMENT CHECKLIST */
+/* 08.03 - Sales Meetings */
+.sales-meetings-lp {
+  background: #E5E5E5;
+  /* END header */
+  /* END .who-we-are */
+  /* END .how-we-can-help */
+  /* END .our-products */ }
+  .sales-meetings-lp main {
+    margin: 0 auto;
+    width: 1260px; }
+  .sales-meetings-lp header {
+    background: url("/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/sales-header-woman-man-1260x775.jpg") no-repeat center #F2BB40;
+    color: #FFF;
+    padding: 210px 0 240px;
+    text-align: center; }
+    .sales-meetings-lp header .title {
+      color: #FFF;
+      font-size: 4.2em;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 0.6em;
+      text-transform: none; }
+  .sales-meetings-lp .who-we-are {
+    background: #46505A;
+    padding: 6.5em 0 9em;
+    text-align: center;
+    /* END .title */ }
+    .sales-meetings-lp .who-we-are .title {
+      color: #FFF;
+      font-size: 3.4em;
+      font-weight: 300;
+      line-height: 1.2;
+      position: relative;
+      text-transform: none; }
+      .sales-meetings-lp .who-we-are .title:after {
+        border-top: 1px solid #FFF;
+        content: " ";
+        left: 50%;
+        margin-left: -1.5em;
+        position: absolute;
+        bottom: -0.8em;
+        width: 3em; }
+  .sales-meetings-lp .how-we-can-help {
+    background: #FFF;
+    padding: 50px 70px; }
+    .sales-meetings-lp .how-we-can-help .branded-solution {
+      border: 1px solid #E5E5E5;
+      float: left;
+      height: 260px;
+      margin: 0 70px 40px 0;
+      padding: 25px 40px;
+      width: 325px;
+      -webkit-transition: 0.5s;
+      -o-transition: 0.5s;
+      -moz-transition: 0.5s;
+      -ms-transition: 0.5s;
+      transition: 0.5s ease-in-out;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box; }
+      .sales-meetings-lp .how-we-can-help .branded-solution.active-hover-state {
+        background: url("/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/gray-blue-white-angled-pinstripe-background-seamless-200x200.jpg") repeat center; }
+      .sales-meetings-lp .how-we-can-help .branded-solution.active-hover-state .brand-solution-tagline {
+        color: #FFF; }
+      .sales-meetings-lp .how-we-can-help .branded-solution.active-hover-state .white-btn {
+        color: #FFF;
+        border-color: #FFF; }
+      .sales-meetings-lp .how-we-can-help .branded-solution.last {
+        margin-right: 0; }
+    .sales-meetings-lp .how-we-can-help .brand-logo {
+      border-bottom: 2px solid #F2BB40;
+      display: block;
+      margin-bottom: 1em; }
+    .sales-meetings-lp .how-we-can-help .brand-solution-tagline {
+      color: #4C4C4C;
+      font-size: 2.6em;
+      line-height: 1.2; }
+    .sales-meetings-lp .how-we-can-help .brand-cta {
+      font-size: 1.4em; }
+    .sales-meetings-lp .how-we-can-help .flat-btn {
+      margin-right: 1em; }
+    .sales-meetings-lp .how-we-can-help .section-title {
+      color: #333333; }
+  .sales-meetings-lp .our-products {
+    background: #F2BB40; }
+    .sales-meetings-lp .our-products .engaging-image {
+      float: left;
+      height: 480px;
+      width: 475px; }
+    .sales-meetings-lp .our-products .our-product-offer {
+      float: left;
+      padding: 65px 100px 0;
+      width: 785px; }
+    .sales-meetings-lp .our-products .category {
+      color: #262626; }
+    .sales-meetings-lp .our-products .contact-prompt {
+      color: #FFF;
+      font-size: 2em;
+      font-weight: 300; }
+    .sales-meetings-lp .our-products .contact-prompt a {
+      color: #FFF;
+      text-decoration: underline; }
+    .sales-meetings-lp .our-products .contact-prompt .chat-bubble-icons {
+      float: left;
+      margin-right: 1em;
+      padding-top: 0.6em; }
+    .sales-meetings-lp .our-products .product-category-list {
+      float: left;
+      font-size: 1em;
+      list-style: none;
+      margin-bottom: 3em;
+      width: 50%; }
+    .sales-meetings-lp .our-products .product-category {
+      font-size: 1.8em;
+      font-weight: 300;
+      text-transform: uppercase;
+      line-height: 2.5; }
+    .sales-meetings-lp .our-products .section-subtitle,
+    .sales-meetings-lp .our-products .section-title {
+      color: #FFF;
+      text-align: left; }
+    .sales-meetings-lp .our-products .section-subtitle {
+      font-size: 1.8em;
+      margin-bottom: 0.5em; }
+    .sales-meetings-lp .our-products .section-title {
+      margin-bottom: 0.4em; }
+    .sales-meetings-lp .our-products .section-title.with-subtitle {
+      line-height: 1;
+      margin-bottom: 0; }
+  .sales-meetings-lp .section-title {
+    font-size: 3.6em;
+    font-weight: 300;
+    text-align: center; }
+
+/* END .sales-meetings-lp */
 /**
  * 09. - Media
  *

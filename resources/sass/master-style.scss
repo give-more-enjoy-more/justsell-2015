@@ -4,6 +4,7 @@
  * 01. - Necessary Standard Imports
  * 02. - Reset
  * 03. - Typography
+ *    03.1 - Buttons
  * 04. - Forms
  * 05. - Utility Classes
  * 06. - Header
@@ -14,13 +15,12 @@
  * 08. - Content
  *    08.1 - Posts
  *    08.2 - Specific Posts Formats
- *    08.3 - LP's
+ *    08.3 - Sales Meeting LP
  * 09.0 - Media
  *    09.1 - Captions
  *    09.2 - Galleries
  * 10.0 - Secondary Elements
  *    10.1 - Modals
- *    10.2 - 
  * 11.0 - Media Queries
  *    11.1 - Mobile
  *    11.2 - Tablet
@@ -57,8 +57,8 @@ select,
 textarea {
   color: $body-copy-black;
   font-family: $primary-font-family;
-  font-size: 16px;
-  font-size: 1.6rem;
+  font-size: 10px;
+  font-size: 1rem;
   font-weight: $primary-font-weight;
   line-height: 1.5;
 }
@@ -103,6 +103,48 @@ p, ol, ul {
 
 b,
 strong {font-weight: $semibold-font-weight;}
+
+
+/* 03.01 - Buttons */
+.flat-btn {
+  background: $justsell-theme-orange;
+  color: #FFF;
+  display: inline-block;
+  padding: 0.5em 1em;
+  text-decoration: none;
+
+  &:focus,
+  &:active,
+  &:hover {color:#FFF;}
+
+  &:hover{
+    background: $justsell-theme-orange-hover;
+    @include box-shadow( 0, 1px, 2px, rgba(0, 0, 0, 0.4) );
+  }
+} /* END .flat-btn */
+
+
+
+.flat-outline-btn {
+
+  &.white-btn,
+  &.white-btn:hover {
+    background:none;
+    color:#656565;
+    border:1px solid #CCC;
+  }
+
+  &.white-btn:hover {text-decoration: underline;}
+
+} /* END .flat-outline-btn */
+  
+
+
+
+
+
+
+
 
 
  /**
@@ -156,12 +198,12 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
   -webkit-appearance: button;
-  background-color: #D7963E;
-  border: 0;
+  background-color: $justsell-theme-orange;
+  border: 1px solid $justsell-theme-orange;
   color: #FFF;
   cursor: pointer;
   font-weight: $primary-font-weight;
-  padding: 0.7917em 1.2em;
+  padding: 0.74em 1.2em;
 }
 
 input[type="button"]:hover,
@@ -171,8 +213,8 @@ button:focus,
 input[type="button"]:focus,
 input[type="reset"]:focus,
 input[type="submit"]:focus {
-  background-color: #707070;
-  background-color: rgba(51, 51, 51, 0.7);
+  background-color: $justsell-theme-orange-hover;
+  border-color: $justsell-theme-orange-hover;
   outline: 0;
 }
 
@@ -248,7 +290,7 @@ input[type="radio"] {padding: 0;}
 nav {
   background-color: #FFF;
   background-color: rgba(256, 256, 256, 0.95);
-  padding: 0.7em 0;
+  padding: 1.2em 0;
 
 
   .justsell-logo {
@@ -467,6 +509,168 @@ article {
 .post-id-36 {background: #FFF;} /* THE SALES PROCESS */
 .post-id-39 {background: #D8F6CB;} /* SALES MANAGEMENT CHECKLIST */
 
+
+/* 08.03 - Sales Meetings */
+.sales-meetings-lp {
+
+  background:#E5E5E5;
+
+  main {margin: 0 auto; width:1260px;}
+
+  header {
+    background: url("/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/sales-header-woman-man-1260x775.jpg") no-repeat center #F2BB40;
+    color:#FFF;
+    padding:210px 0 240px;
+    text-align:center;
+
+    .title {
+      color:#FFF;
+      font-size:4.2em;
+      font-weight:300;
+      line-height:1;
+      margin-bottom:0.6em;
+      text-transform: none;
+    }
+  } /* END header */
+
+  .who-we-are {
+    background:#46505A;
+    padding:6.5em 0 9em;
+    text-align:center;
+
+    .title {
+      color:#FFF;
+      font-size:3.4em;
+      font-weight:300;
+      line-height:1.2;
+      position:relative;
+      text-transform: none;
+
+      &:after {
+        border-top:1px solid #FFF;
+        content:" ";
+        left:50%;
+        margin-left:-1.5em;
+        position:absolute;
+        bottom:-0.8em;
+        width:3em;
+      }
+    } /* END .title */
+  } /* END .who-we-are */
+
+  .how-we-can-help{
+    background:#FFF;
+    padding:50px 70px;
+
+    .branded-solution {
+      border:1px solid #E5E5E5;
+      float:left;
+      height:260px;
+      margin:0 70px 40px 0;
+      padding:25px 40px;
+      width:325px;
+      @include transition(.5s);
+      @include box-sizing(border-box);
+      
+      &.active-hover-state {background:url("/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/gray-blue-white-angled-pinstripe-background-seamless-200x200.jpg") repeat center;}
+      &.active-hover-state .brand-solution-tagline {color:#FFF;}
+      &.active-hover-state .white-btn {
+        color:#FFF;
+        border-color:#FFF;
+      }
+
+      &.last{margin-right:0;}
+    }
+  
+    .brand-logo {
+      border-bottom:2px solid #F2BB40;
+      display:block;
+      margin-bottom:1em;
+    }
+
+    .brand-solution-tagline {
+      color:#4C4C4C;
+      font-size:2.6em;
+      line-height:1.2;
+    }
+
+    .brand-cta {font-size:1.4em;}
+
+    .flat-btn {margin-right:1em;}
+
+    .section-title {color:#333333;}
+  } /* END .how-we-can-help */
+
+  .our-products {
+    background:#F2BB40;
+
+    .engaging-image {
+      float:left;
+      height:480px;
+      width:475px;
+    }
+
+    .our-product-offer {
+      float:left;
+      padding:65px 100px 0;
+      width:785px;
+    }
+
+    .category {color:#262626;}
+
+    .contact-prompt {
+      color:#FFF;
+      font-size:2em;
+      font-weight:300;
+    }
+
+    .contact-prompt a {
+      color:#FFF;
+      text-decoration:underline;
+    }
+
+    .contact-prompt .chat-bubble-icons {
+      float:left;
+      margin-right:1em;
+      padding-top:0.6em;
+    }
+
+    .product-category-list {
+      float: left;
+      font-size: 1em;
+      list-style: none;
+      margin-bottom: 3em;
+      width: 50%;
+    }
+    
+    .product-category {
+      font-size:1.8em;
+      font-weight:300;
+      text-transform:uppercase;
+      line-height:2.5;
+    }
+    
+    .section-subtitle,
+    .section-title {
+      color:#FFF;
+      text-align:left;
+    }
+
+    .section-subtitle {
+      font-size:1.8em;
+      margin-bottom:0.5em;
+    }
+
+    .section-title {margin-bottom:0.4em;}
+    .section-title.with-subtitle {
+      line-height:1;
+      margin-bottom:0;
+    }
+  } /* END .our-products */
+
+  .section-title{font-size:3.6em; font-weight:300; text-align:center;}
+  
+} /* END .sales-meetings-lp */
 
 
 
