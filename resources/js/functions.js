@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 	$topNavigation.headroom({
 
-		/* What scroll position to hide the navbar */
+		/* What browser scroll position to hide the navbar. Set to the height of the navigation. */
 		offset: $topNavigation.outerHeight(),
 
 	  classes : {
@@ -37,9 +37,8 @@ $(document).ready(function() {
 
 	/* Bypass the default modal window functionality to make ajax loading possible */
 	$('.launch-modal').on('click', function(e){
-		
-		e.preventDefault();
 
+		e.preventDefault();
 
 		/* Check if the modal div exits, if not append to the bottom of the body */
 		if($('.remodal').length === 0){
@@ -59,7 +58,7 @@ $(document).ready(function() {
 		 * After the ajax has successfully processed the script, load the result in to the modal and open it.
 		 */
 		$.post( "/wp-content/themes/justsell/resources/scripts/modal-ajax-processing.php", { modalType:dataModalType, modalID:dataModalID, showCapture:dataModalShowCapture, showShare:dataModalShowShare }, function(data){
-			
+
 			$(".remodal-content-container").html(data);
 
 		}).done(function(){
@@ -71,6 +70,19 @@ $(document).ready(function() {
 
 	}); /* END .launch-modal on click callback function */
 
+
+	/* Google Analytics Event Tracking function. Simply place class 'event-trigger' to tag, and pass data like the example below. */
+	/* Example data attribute: data-event-values='{"category":"JustSell Monthly Calendars","action":"Download","label":"September 2015"}' */
+	$('.event-trigger').click(function(){
+
+		var trackedEvent = $(this),
+				trackedEventAction = trackedEvent.data("event-values").action,
+				trackedEventCategory = trackedEvent.data("event-values").category,
+				trackedEventLabel = trackedEvent.data("event-values").label;
+
+		ga('send', 'event', trackedEventCategory, trackedEventAction, trackedEventLabel);
+
+	});
 
 
 	/* Scrolls any url/href anchor tags down to their appropriate section */
