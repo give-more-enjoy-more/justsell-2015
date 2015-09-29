@@ -11,7 +11,7 @@ $(document).ready(function() {
 		/* scroll tolerance in px before state changes */
     tolerance : {
         up : 5,
-        down : 25
+        down : 40
     },
 
 	  classes : {
@@ -87,7 +87,7 @@ $(document).ready(function() {
 
 		ga('send', 'event', trackedEventCategory, trackedEventAction, trackedEventLabel);
 
-	});
+	}); /* END .event-trigger click function */
 
 
 	/* Scrolls any url/href anchor tags down to their appropriate section */
@@ -103,6 +103,43 @@ $(document).ready(function() {
 				return false;
 			}
 		}
-	});
+	}); /* END href with hash click function */
 
+
+	/* Validation function for the footer subscriber acquisition form. */
+	$('#footer-subscriber-acquisition-form').validate({
+		rules: {
+			footerSubscriberAcquisitionEmail: {
+				required: true,
+				email: true
+			}
+		},
+
+		messages: {
+			footerSubscriberAcquisitionEmail: {
+				required: 'Please enter your email address',
+				email: 'Please enter a valid email address'
+			}
+		},
+
+		errorElement: "p",
+
+		errorPlacement: function(error) {
+			error.appendTo('#footer-subscriber-acquisition-form');
+		},
+
+		submitHandler: function(form) {
+			var action = $(form).attr('action');
+
+			$.post(action, $(form).serialize(), function() {
+				$('.footer-subscriber-acquisition .inner-container').fadeOut(300, function(){
+					$('<div class="inner-container"><p>Thanks for signing up! Sam\'s emails will come from GiveMore.com.</p><h3>We hope they inspire you!</h3></div>').hide().appendTo('.footer-subscriber-acquisition').fadeIn(300);
+				});
+
+				/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
+				// ga('send', 'event', 'Video Email Signup', 'Click', 'Email Captured From Video');
+			});
+		}
+	}); /* END #footer-subscriber-acquisition-form validate function */
+	
 }); /* END document ready callback function */

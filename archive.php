@@ -17,49 +17,37 @@
 ?>
 <?php get_header(); ?>
 
-	<main class="inner-container">
+	<main>
 			
 		<?php if ( have_posts() ) : ?>
 		
 			<header class="archive-header">
 				<h1 class="title"><?php single_cat_title(); ?></h1>
-		
-				<?php
-					$category_description = category_description();
-					if ( ! empty( $category_description ) )
-						echo $category_description;
-				?>
 			</header> <?php /* END .archive-header */ ?>
 		
-			<ol class="archive-post-list">
+			<ol class="archive-post-list inner-container">
 				<?php while ( have_posts() ) : the_post(); ?>
 
-			 			<li class="post <?php echo $oddpost ?>">
+		 			<li class="post clear-fix">
 
-							<?php if ( get_post_meta( get_the_ID(), 'category_post_thumb', true ) ) : ?>
-								<a class="post-teaser-image" href="<?php the_permalink() ?>">
-									<img src="<?php echo bloginfo('template_directory') . get_post_meta( get_the_ID(), 'category_post_thumb', true ); ?>" alt="<?php the_title(); ?>" />
-								</a>
-							<?php endif; ?>
+						<?php if ( get_post_meta( get_the_ID(), 'category_post_thumbnail', true ) ) : ?>
+							<a class="post-teaser-image" href="<?php the_permalink() ?>">
+								<img src="<?php echo bloginfo('template_directory') . get_post_meta( get_the_ID(), 'category_post_thumbnail', true ); ?>" alt="<?php the_title(); ?>" />
+							</a>
+						<?php endif; ?>
 
-			 				<div class="post-info">
-					 			<h3 class="post-title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h3>
+		 				<div class="post-info">
+				 			<h2 class="post-title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
 
-								<?php the_excerpt(); ?>
+							<p class="post-excerpt"><?php echo get_the_excerpt(); ?></p>
 
-								<p><a class="flat-btn" href="<?php echo get_permalink(); ?>">Read More</a></p>
-							</div> <?php /* END .post-info */ ?>
+							<p class="cta-btn"><a class="flat-btn" href="<?php echo get_permalink(); ?>">Read It!</a></p>
+						</div> <?php /* END .post-info */ ?>
 
-						</li>
-						
-						<?php		
-							/* Adds a class of odd-post very other li */
-							$oddpost = ( empty( $oddpost ) ) ? 'odd-post' : '';
-						?>
-									
+					</li>
+
 				<?php endwhile; ?>
-			</ol> <?php /* END .archive-post-list */ ?>
-
+			</ol> <?php /* END .archive-post-list .inner-conatiner */ ?>
 		
 		<?php else : ?>
 
@@ -71,6 +59,6 @@
 		
 		<?php endif; ?>
 
-	</main> <?php /* END .inner-container */ ?>
+	</main>
 
 <?php get_footer(); ?>

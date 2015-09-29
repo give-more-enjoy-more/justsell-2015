@@ -10,26 +10,34 @@ remove_action( 'wp_print_styles', 'print_emoji_styles' );
 if ( !function_exists('post_or_page_specific_class') ) {
 	function post_or_page_specific_class() {
 
-		if ( is_single() ) {
-			
-			$post_identification_number = get_the_ID();
-			$class = "post-id-" . $post_identification_number . " single-post";
+		switch (TRUE):
 
-		} elseif ( is_home() ) {
-			
-			$class = 'post-id-homepage';
+			case is_category():
+				$lp_permalink = basename( $_SERVER['REQUEST_URI'] );
+				$class = $lp_permalink . "-category category-lp";
+				break;
 
-		} elseif ( is_page() ) {
-			
-			$lp_permalink = basename( get_permalink() );
-			$class = $lp_permalink . '-lp';
+			case is_home():
+				$class = 'homepage';
+				break;
 
-		} else {
+			case is_page():
+				$lp_permalink = basename( get_permalink() );
+				$class = $lp_permalink . '-lp';
+				break;
 
-			$class = '';
+			case is_single():
+				$post_identification_number = get_the_ID();
+				$class = "post-id-" . $post_identification_number . " single-post";
+				break;
 
-		}
-		
+			default:
+				$class = '';
+				break;
+
+		endswitch;
+
+
 		return $class;
 			
 	}

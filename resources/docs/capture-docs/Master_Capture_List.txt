@@ -1,3 +1,1 @@
 Name	Email	Date	IP Address	Sub Source	Alt Source
-Everyone	joe@givemore.com	09/25/15 3:47 pm	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	joe@givemore.com	09/28/15 8:01 am	75.75.75.1	gm-capture	footer-subscriber-form

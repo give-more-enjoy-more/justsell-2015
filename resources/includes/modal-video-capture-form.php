@@ -8,8 +8,6 @@
 </form>
 <div class='video-overlay'></div>
 
-<script src='/resources/js/jquery.validate.min.js'></script>
-
 <script>
 	$('#videoEmailCaptureForm').validate({
 		rules: {

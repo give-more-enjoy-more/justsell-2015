@@ -16,10 +16,8 @@
  *    08.1 - Posts
  *    08.2 - Specific Posts Formats
  *    08.3 - Sales Meeting LP
- * 09.0 - Media
- *    09.1 - Captions
- *    09.2 - Galleries
- * 10.0 - Secondary Elements
+ * 09.0 - Archive/Category
+* 10.0 - Secondary Elements
  *    10.1 - Modals
  * 11.0 - Media Queries
  *    11.1 - Mobile
@@ -289,9 +287,8 @@ input[type="radio"] {padding: 0;}
 /* 06.01 - Top Navigation */
 nav {
   background-color: #FFF;
-  background-color: rgba(256, 256, 256, 0.95);
+  background-color: rgba(256, 256, 256, 1);
   padding: 1.2em 0;
-
 
   .justsell-logo {
     display: block;
@@ -335,6 +332,7 @@ nav {
     right: 0;
     top: 0;
     z-index: 9999;
+    @include box-shadow(1px, 1px, 4px, rgba(0, 0, 0, 0.3));
     @include transition(.5s);
   }
 
@@ -497,7 +495,6 @@ article {
 } /* END article */
 
 .single-post main {background: url('/wp-content/themes/justsell/resources/images/in-post/throughout/single-post-header-dusty-background-600x400.png') repeat-x;}
-
 
 
 /* 08.02 - Specific Posts Formats */
@@ -675,10 +672,75 @@ article {
 
 
  /**
-  * 09. - Media
+  * 09. - Archive/Category
   *
   * 
   */
+.category-lp {
+  background: #EAEAEB;
+
+  header {
+    background: #666666;
+    margin-bottom: 6em;
+    padding: 6em 0;
+    text-align: center;
+
+    .title {
+      background: #FFF;
+      color: #666666;
+      display: inline-block;
+      padding: 0.4em 1em;
+    }
+  } /* END header */
+
+  .archive-post-list {margin-bottom: 4em;}
+
+  .inner-container {max-width:960px; width: 80%;}
+
+  .post {
+    background: #FFF;
+    margin-bottom: 2em;
+
+    &:last-child {margin-bottom: 0;}
+
+    .cta-btn {
+      font-size: 0.8em;
+      margin-bottom: 0;
+    }
+
+    .post-excerpt {margin-bottom: 1em;}
+
+    .post-info {
+      float: right;
+      padding: 1.7em;
+      width: 75%;
+    }
+
+    .post-teaser-image {
+      display: block;
+      float: left;
+      width: 25%;
+
+      img {
+        display: block;
+        height: auto;
+        width: 100%;
+      }
+    } /* END .post-teaser-image */
+
+    .post-title {
+      font-size: 1.1em;
+      margin-bottom: 0.2em;
+
+      a {
+        color: #262626;
+        text-decoration: none;
+      }
+    } /* END .post-title */
+
+  } /* END .post */
+
+} /* END .category-lp */
 
 
  /**
