@@ -6,7 +6,13 @@ $(document).ready(function() {
 	$topNavigation.headroom({
 
 		/* What browser scroll position to hide the navbar. Set to the height of the navigation. */
-		offset: $topNavigation.outerHeight(),
+		/*	offset: $topNavigation.outerHeight(), */
+
+		/* scroll tolerance in px before state changes */
+    tolerance : {
+        up : 5,
+        down : 25
+    },
 
 	  classes : {
 	    /* when element is initialised */
@@ -19,20 +25,19 @@ $(document).ready(function() {
 	    top : "top",
 	    /* when below offset */
 	    notTop : "not-top"
-	  }
+	  },
 
-	});
+	  /* Callback when above offset, `this` is headroom object */
+		onTop : function() {
+			$(".content-container").css({ "padding-top": 0 });
+		},
 
+	  /* Callback when below offset, `this` is headroom object */
+		onNotTop : function() {
+			$(".content-container").css({ "padding-top": $topNavigation.outerHeight() });
+		}
 
-		/* Add padding to the content container when the nav in scrolling to prevent page jump */
-//		if( $topNavigation.hasClass('not-top') ){
-//			$(".content-container").css({ "padding-top": $topNavigation.outerHeight() });
-//		}else{
-//			$(".content-container").css({ "padding-top": 0 });
-//		}
-
-
-
+	}); /* END $topNavigation.headroom */
 
 
 	/* Bypass the default modal window functionality to make ajax loading possible */
