@@ -9,7 +9,7 @@ include('../includes/global-functions.php');
 /*
  * Run the default modal ajax processing if the required modal variable 'modalType' is set in $_POST
  */
-if( isset($_POST["modalType"]) ){
+if( isset($_POST["modalType"]) && !isset($_POST["videoEmailSubmit"]) ){
 
 	/* Set default required modal vars from post */
 	$modal_type = isset($_POST["modalType"]) ? $_POST["modalType"] : '';
@@ -114,7 +114,7 @@ function process_book_modal(){
 
 	// echo out result
 	echo "
-		<h1>$book_title</h1>
+		<h2 class='modal-title'>$book_title</h2>
 	";
 
 } /* END process_book_modal function */
@@ -126,9 +126,10 @@ function process_book_modal(){
  */
 function process_modal_not_found(){
 
-	echo '
-		<h1>So sorry, it looks like this modal doesn\'t exist. </h1>
-	';
+	echo "
+		<h2 class='modal-title'>Uh oh!</h2>
+		<h3>Sorry! It looks like this modal doesn\'t exist.</h3>'
+	";
 
 } /* END process_modal_not_found function */
 
@@ -139,10 +140,9 @@ function process_modal_not_found(){
  */
 function process_info_modal(){
 
-	// echo out result
-	echo '
-		<h1>This is an info modal!</h1>
-	';
+	echo "
+		<h2 class='modal-title'>This is an info modal!</h2>
+	";
 
 } /* END process_info_modal function */
 
@@ -185,7 +185,7 @@ function process_modal_capture($captured_email, $modal_type, $modal_id){
 	fclose($fp);
 
 	/* Set the email successfully captured cookie if it isn't already set */
-	capture_cookie_check_and_set();  /* is_capture_cookie_set in global functions file */
+//	capture_cookie_check_and_set();  /* is_capture_cookie_set in global functions file */
 
 } /* END process_modal_capture function */
 
@@ -229,32 +229,32 @@ function process_video_modal(){
 	switch($modal_id):
 
 		case "ctl":
-			$video_src = '//player.vimeo.com/video/42272816';
+			$video_src = '//player.vimeo.com/video/42272816?api=1&player_id=vimeoIframeVideo';
 			$video_title = 'Cross The Line video';
 			break;
 
 		case "ctl-edu":
-			$video_src = '//player.vimeo.com/video/42272814';
+			$video_src = '//player.vimeo.com/video/42272814?api=1&player_id=vimeoIframeVideo';
 			$video_title = 'Cross The Line video';
 			break;
 
 		case "ls":
-			$video_src = '//player.vimeo.com/video/71604847';
+			$video_src = '//player.vimeo.com/video/71604847?api=1&player_id=vimeoIframeVideo';
 			$video_title = 'Lead Simply video';
 			break;
 
 		case "lyp":
-			$video_src = '//player.vimeo.com/video/41103076';
+			$video_src = '//player.vimeo.com/video/41103076?api=1&player_id=vimeoIframeVideo';
 			$video_title = 'Love Your People video';
 			break;
 
 		case "sm":
-			$video_src = '//player.vimeo.com/video/111015361';
+			$video_src = '//player.vimeo.com/video/111015361?api=1&player_id=vimeoIframeVideo';
 			$video_title = 'Smile &amp; Move video';
 			break;
 
 		default:
-			$video_src = '//player.vimeo.com/video/109480151';
+			$video_src = '//player.vimeo.com/video/109480151?api=1&player_id=vimeoIframeVideo';
 			$video_title = '212&deg; the extra degree video';
 			break;
 
@@ -277,7 +277,7 @@ function process_video_modal(){
 					<input name='videoEmail' class='video-email' type='text' placeholder='Enter Your Email Here' />
 					<input name='modalType' type='hidden' value='$modal_type' />
 					<input name='modalID' type='hidden' value='$modal_id' />
-					<input name='videoEmailSubmit' type='submit' class='flat-btn' value='Watch It!' /></p>
+					<input name='videoEmailSubmit' type='submit' value='Watch It!' /></p>
 			</form>
 			<div class='video-overlay'></div>
 
@@ -309,6 +309,11 @@ function process_video_modal(){
 						$.post(action, $(form).serialize(), function(data) {
 							$('.video-email-capture-form, .video-overlay').fadeOut(200);
 
+							var iframe = $('#vimeoIframeVideo')[0],
+									froogaloop = $f(iframe);
+
+							froogaloop.play();
+
 							/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
 							// ga('send', 'event', 'Video Email Signup', 'Click', 'Email Captured From Video');
 
@@ -317,16 +322,95 @@ function process_video_modal(){
 
 				});
 			</script>";
-		$video_modal_result_echo .= "<div class='embed-video-container'><iframe class='iframe-video' src='$video_src' frameborder='0'></iframe></div>";
+		$video_modal_result_echo .= "<div class='embed-video-container'><iframe class='iframe-video' id='vimeoIframeVideo' src='$video_src' frameborder='0'></iframe></div>";
 		$video_modal_result_echo .= "</div>";
 
 	}else{
-		$video_modal_result_echo .= "<div class='embed-video-container'><iframe class='iframe-video' src='$video_src' frameborder='0'></iframe></div>";
+		$video_modal_result_echo .= "<div class='embed-video-container'><iframe class='iframe-video' idvimeoIframeVideo' src='$video_src' frameborder='0'></iframe></div>";
 	}
 
 	/* Show the video share depending on boolean, true by default */
-	if($show_video_share)
-		$video_modal_result_echo .= "<h2>video share will go here</h2>";
+	if($show_video_share){
+
+		/* Initialize url variables */
+		$gm_base_url = 'http://www.givemore.com';
+		$js_base_url = 'http://www.justsell.com';
+
+		/* Set brand specific variables */
+		switch($modal_id):
+
+			case "ctl":
+				$brand_name = 'Cross The Line';
+				$image_url 	= $js_base_url . '/wp-content/themes/justsell/resources/images/products/throughout/ctl-video-organization-700x700.jpg';
+				$learn_url 	= $gm_base_url . '/cross-the-line/';
+				$share_url 	= $learn_url;
+				$shop_url 	= $gm_base_url . '/product/cross-the-line-video-organization-edition/';
+				break;
+
+			case "ls":
+				$brand_name = 'Lead Simply';
+				$image_url 	= $js_base_url . '/wp-content/themes/justsell/resources/images/products/throughout/ls-video-700x700.jpg';
+				$learn_url 	= $gm_base_url . '/lead-simply/';
+				$share_url 	= $learn_url;
+				$shop_url 	= $gm_base_url . '/product/lead-simply-video/';
+				break;
+
+			case "lyp":
+				$brand_name = 'Love Your People';
+				$image_url 	= $js_base_url . '/wp-content/themes/justsell/resources/images/products/throughout/lyp-video-700x700.jpg';
+				$learn_url 	= $gm_base_url . '/love-your-people/';
+				$share_url 	= $learn_url;
+				$shop_url 	= $gm_base_url . '/product/love-your-people-video/';
+				break;
+
+			case "sm":
+				$brand_name = 'Smile & Move';
+				$image_url 	= $js_base_url . '/wp-content/themes/justsell/resources/images/products/throughout/sm-video-700x700.jpg';
+				$learn_url 	= $gm_base_url . '/smile-and-move/';
+				$share_url 	= $learn_url;
+				$shop_url 	= $gm_base_url . '/product/smile-and-move-video-the-smovie/';
+				break;
+
+			default:
+				$brand_name = '212 the extra degree';
+				$image_url 	= $js_base_url . '/wp-content/themes/justsell/resources/images/products/throughout/212-video-700x700.jpg';
+				$learn_url 	= $gm_base_url . '/212-the-extra-degree/';
+				$share_url 	= $learn_url;
+				$shop_url		= $gm_base_url . '/product/212-the-extra-degree-video/';
+				break;
+
+		endswitch;
+
+		$video_modal_result_echo .= '
+			<div class="etf-cta-btns">
+				<ul class="cta-options">
+					<li class="cta-btn"><a href="'. $shop_url .'"><img class="modal-option-icon" src="/wp-content/themes/justsell/resources/images/icons/throughout/modal-shop-45x40.png" alt="Shop" width="45" height="40" /> Buy the video</a></li>
+					<li class="cta-btn"><a href="'. $learn_url .'"><img class="modal-option-icon" src="/wp-content/themes/justsell/resources/images/icons/throughout/modal-learn-more-37x40.png" alt="Learn" width="37" height="40" /> Learn more</a></li>
+					<li class="cta-btn share-prompt last">
+						<a href="'. $learn_url .'"><img class="modal-option-icon" src="/wp-content/themes/justsell/resources/images/icons/throughout/modal-share-33x40.png" alt="Share" width="33" height="40" /> Share the video</a>
+					</li>
+				</ul>
+
+				<ul class="cta-options social-share">
+					<li class="cta-btn"><a class="event-trigger" href="https://www.facebook.com/sharer/sharer.php?u='. $share_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Facebook"}\' title="Share this on Facebook" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-facebook-26x27.png" alt="Facebook" width="26" height="27" /> Facebook</a></li>
+					<li class="cta-btn"><a class="event-trigger" href="http://twitter.com/?status=Love+this+for+motivation+from+GiveMore.com...+'. $share_url .'+@Give_More" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Twitter"}\' title="Tweet this" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-twitter-26x21.png" alt="Twitter" width="26" height="21" /> Twitter</a></li>
+					<li class="cta-btn"><a class="event-trigger" href="https://plus.google.com/share?url='. $share_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Google Plus"}\' title="Share this on Google+" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-google-plus-26x24.png" alt="Google+" width="26" height="24" /> Google+</a></li>
+					<li class="cta-btn"><a class="event-trigger" href="http://www.linkedin.com/shareArticle?mini=true&url='. $share_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"LinkedIn"}\' title="Share this on LinkedIn" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-linkedin-26x22.png" alt="LinkedIn" width="26" height="22" /> LinkedIn</a></li>
+					<li class="cta-btn last"><a class="event-trigger" href="http://pinterest.com/pin/create/button/?url='. $share_url .'&media='. $image_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Pinterest"}\' title="Share this on Pinterest" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-pinterest-26x26.png" alt="Pinterest" width="26" height="26" /> Pinterest</a></li>
+				</ul>
+			</div>
+
+			<script>
+				/* Share menu functionality for modal windows */
+				$(".etf-cta-btns .share-prompt").on(\'click\', function(e){
+					e.preventDefault();
+					$(".etf-cta-btns .social-share").slideToggle(300);
+				});
+			</script>
+		';
+
+	} /* END if $show_video_share */
+	
 
 	/* Echo out the compiled result */
 	echo $video_modal_result_echo;

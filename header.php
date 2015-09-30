@@ -15,6 +15,10 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
 
+	<?php
+		/* Pulls in the social media meta tags */
+		include('resources/includes/social-media-meta.php'); ?>
+
 	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>?=v092115">
 
 	<!--[if lt IE 9]>

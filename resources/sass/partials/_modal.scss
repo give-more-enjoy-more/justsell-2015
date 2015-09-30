@@ -30,7 +30,7 @@ html.remodal-is-locked {overflow: hidden;}
  *  Remodal's Mobile First Design styles
  */
 
-.remodal{
+.remodal {
   background: #fff;
   color: #2b2e38;
   text-align:left;
@@ -48,11 +48,38 @@ html.remodal-is-locked {overflow: hidden;}
     text-align: center;
   }
 
+  .etf-cta-btns {
+    margin-top: 2em;
 
-}
+    .cta-btn{
+      display: inline-block;
+      margin: 0 1.5em 0 0;
+
+      &.last{margin-right: 0;}
+
+      a {
+        border: 1px solid transparent;
+        color: #262626;
+        display: block;
+        outline: none;
+        padding: 0.65em;
+        text-decoration: none;
+
+        &:hover{background: #FFF; border-color: #B2B2B2;}
+      }
+
+     } /* END .cta-btn */
+
+    .cta-options {margin-bottom: 0; text-align: center;}
+    .modal-option-icon {vertical-align: middle; margin-right: 0.5em;}
+    .social-share {display: none; font-size: 1.5em; margin-top: 1em;}
+    .social-media-icon {margin-right: 1em; vertical-align: middle;}
+
+  } /* END .etf-cta-btns */
+
+} /* END .remodal */
 
 .remodal-wrapper{padding:10px 10px 0;}
-
 .remodal, .remodal-wrapper:after{vertical-align:middle;}
 
 /* Background */

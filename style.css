@@ -316,7 +316,8 @@ p.error {
 /* 05.01 - General Structure */
 .inner-container {
   margin: 0 auto;
-  width: 725px; }
+  max-width: 960px;
+  width: 80%; }
 
 /* 05.02 - Utility Classes */
 .clear-fix:before,
@@ -441,10 +442,10 @@ footer p, .about-the-author p {
     margin-bottom: 0; }
   .about-the-author .author-bio {
     float: right;
-    width: 70%; }
+    width: 75%; }
   .about-the-author .author-headshot {
     float: left;
-    width: 25%; }
+    width: 20%; }
 
 /* END about-the-author */
 /* 07.02 - Subscriber Aquisition Form */
@@ -820,14 +821,47 @@ html.remodal-is-locked {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0); }
+  transform: translate3d(0, 0, 0);
+  /* END .etf-cta-btns */ }
   .remodal .modal-title {
     background: #262626;
     color: #FFF;
     margin: 0 -35px 35px;
     padding: 0.7em;
     text-align: center; }
+  .remodal .etf-cta-btns {
+    margin-top: 2em;
+    /* END .cta-btn */ }
+    .remodal .etf-cta-btns .cta-btn {
+      display: inline-block;
+      margin: 0 1.5em 0 0; }
+      .remodal .etf-cta-btns .cta-btn.last {
+        margin-right: 0; }
+      .remodal .etf-cta-btns .cta-btn a {
+        border: 1px solid transparent;
+        color: #262626;
+        display: block;
+        outline: none;
+        padding: 0.65em;
+        text-decoration: none; }
+        .remodal .etf-cta-btns .cta-btn a:hover {
+          background: #FFF;
+          border-color: #B2B2B2; }
+    .remodal .etf-cta-btns .cta-options {
+      margin-bottom: 0;
+      text-align: center; }
+    .remodal .etf-cta-btns .modal-option-icon {
+      vertical-align: middle;
+      margin-right: 0.5em; }
+    .remodal .etf-cta-btns .social-share {
+      display: none;
+      font-size: 1.5em;
+      margin-top: 1em; }
+    .remodal .etf-cta-btns .social-media-icon {
+      margin-right: 1em;
+      vertical-align: middle; }
 
+/* END .remodal */
 .remodal-wrapper {
   padding: 10px 10px 0; }
 

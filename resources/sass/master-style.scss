@@ -122,7 +122,6 @@ strong {font-weight: $semibold-font-weight;}
 } /* END .flat-btn */
 
 
-
 .flat-outline-btn {
 
   &.white-btn,
@@ -135,12 +134,6 @@ strong {font-weight: $semibold-font-weight;}
   &.white-btn:hover {text-decoration: underline;}
 
 } /* END .flat-outline-btn */
-
-
-
-
-
-
 
 
 
@@ -273,7 +266,8 @@ p.error {
 /* 05.01 - General Structure */
 .inner-container {
   margin: 0 auto;
-  width: 725px;
+  max-width: 960px;
+  width: 80%;
 }
 
 /* 05.02 - Utility Classes */
@@ -400,12 +394,12 @@ footer p, .about-the-author p {
 
   .author-bio {
     float: right;
-    width: 70%;
+    width: 75%;
   }
 
   .author-headshot {
     float: left;
-    width: 25%;
+    width: 20%;
   }
 }  /* END about-the-author */
 
@@ -521,7 +515,7 @@ article {
   main {margin: 0 auto; width:1260px;}
 
   header {
-    background: url("/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/sales-header-woman-man-1260x775.jpg") no-repeat center #F2BB40;
+    background: url('/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/sales-header-woman-man-1260x775.jpg') no-repeat center #F2BB40;
     color:#FFF;
     padding:210px 0 240px;
     text-align:center;
@@ -575,7 +569,7 @@ article {
       @include transition(.5s);
       @include box-sizing(border-box);
 
-      &.active-hover-state {background:url("/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/gray-blue-white-angled-pinstripe-background-seamless-200x200.jpg") repeat center;}
+      &.active-hover-state {background:url('/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/gray-blue-white-angled-pinstripe-background-seamless-200x200.jpg') repeat center;}
       &.active-hover-state .brand-solution-tagline {color:#FFF;}
       &.active-hover-state .white-btn {
         color:#FFF;

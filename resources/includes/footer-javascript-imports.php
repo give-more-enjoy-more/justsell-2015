@@ -2,6 +2,7 @@
 <script src="<?php echo bloginfo('template_directory') ?>/resources/js/headroom.min.js"></script>
 <script src="<?php echo bloginfo('template_directory') ?>/resources/js/remodal.js"></script>
 <script src='<?php echo bloginfo('template_directory') ?>/resources/js/jquery.validate.min.js'></script>
+<script src="<?php echo bloginfo('template_directory') ?>/resources/js/vimeo-froogaloop.min.js"></script>
 <script src="<?php echo bloginfo('template_directory') ?>/resources/js/functions.js"></script>
 
 <?php if( is_page() ): ?>
