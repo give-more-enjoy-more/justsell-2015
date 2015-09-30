@@ -46,7 +46,7 @@
  /**
   * 03. - Typography
   *
-  * 
+  *
   */
 body,
 button,
@@ -135,7 +135,7 @@ strong {font-weight: $semibold-font-weight;}
   &.white-btn:hover {text-decoration: underline;}
 
 } /* END .flat-outline-btn */
-  
+
 
 
 
@@ -148,7 +148,7 @@ strong {font-weight: $semibold-font-weight;}
  /**
   * 04. - Forms
   *
-  * 
+  *
   */
 input,
 select,
@@ -252,16 +252,22 @@ input[type="checkbox"],
 input[type="radio"] {padding: 0;}
 
 .form-errors-container {
-  color: #FF0000;
+  color: #E54C4C;
   margin-bottom: 2em;
   text-align: left;
+}
+
+p.error {
+  color: #E54C4C;
+  margin: 0.5em 0 0;
+  text-align: center;
 }
 
 
  /**
   * 05. - General Structure & Utility Classes
   *
-  * 
+  *
   */
 
 /* 05.01 - General Structure */
@@ -280,7 +286,7 @@ input[type="radio"] {padding: 0;}
  /**
   * 06. - Header
   *
-  * 
+  *
   */
 
 
@@ -322,7 +328,7 @@ nav {
       }
 
       a:hover {text-decoration: underline;}
-      
+
     } /* END .item */
   } /* END .navigation-items */
 
@@ -355,7 +361,7 @@ nav {
  /**
   * 07. - Footer
   *
-  * 
+  *
   */
 footer:before, .about-the-author:before, .footer-subscriber-acquisition:before,
 footer:after, .about-the-author:after, .footer-subscriber-acquisition:after {
@@ -425,7 +431,7 @@ footer p, .about-the-author p {
  /**
   * 08. - Content
   *
-  * 
+  *
   */
 
 /* 08.01 - Content Posts */
@@ -483,7 +489,7 @@ article {
     text-align: center;
   }
 
-  /* Post utility classes */ 
+  /* Post utility classes */
   .bottom-border {
     border-bottom: 1px solid #262626;
     margin-bottom: 1em;
@@ -568,7 +574,7 @@ article {
       width:325px;
       @include transition(.5s);
       @include box-sizing(border-box);
-      
+
       &.active-hover-state {background:url("/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/gray-blue-white-angled-pinstripe-background-seamless-200x200.jpg") repeat center;}
       &.active-hover-state .brand-solution-tagline {color:#FFF;}
       &.active-hover-state .white-btn {
@@ -578,7 +584,7 @@ article {
 
       &.last{margin-right:0;}
     }
-  
+
     .brand-logo {
       border-bottom:2px solid #F2BB40;
       display:block;
@@ -639,14 +645,14 @@ article {
       margin-bottom: 3em;
       width: 50%;
     }
-    
+
     .product-category {
       font-size:1.8em;
       font-weight:300;
       text-transform:uppercase;
       line-height:2.5;
     }
-    
+
     .section-subtitle,
     .section-title {
       color:#FFF;
@@ -666,7 +672,7 @@ article {
   } /* END .our-products */
 
   .section-title{font-size:3.6em; font-weight:300; text-align:center;}
-  
+
 } /* END .sales-meetings-lp */
 
 
@@ -674,7 +680,7 @@ article {
  /**
   * 09. - Archive/Category
   *
-  * 
+  *
   */
 .category-lp {
   background: #EAEAEB;
@@ -746,12 +752,12 @@ article {
  /**
   * 10. - Secondary Elements
   *
-  * 
+  *
   */
 @import 'partials/modal';
 
  /**
   * 11. - Media Queries
   *
-  * 
+  *
   */

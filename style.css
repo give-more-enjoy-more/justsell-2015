@@ -122,7 +122,7 @@ a img {
 /**
  * 03. - Typography
  *
- * 
+ *
  */
 body,
 button,
@@ -200,7 +200,7 @@ strong {
 /**
  * 04. - Forms
  *
- * 
+ *
  */
 input,
 select,
@@ -299,14 +299,19 @@ input[type="radio"] {
   padding: 0; }
 
 .form-errors-container {
-  color: #FF0000;
+  color: #E54C4C;
   margin-bottom: 2em;
   text-align: left; }
+
+p.error {
+  color: #E54C4C;
+  margin: 0.5em 0 0;
+  text-align: center; }
 
 /**
  * 05. - General Structure & Utility Classes
  *
- * 
+ *
  */
 /* 05.01 - General Structure */
 .inner-container {
@@ -329,7 +334,7 @@ input[type="radio"] {
 /**
  * 06. - Header
  *
- * 
+ *
  */
 /* 06.01 - Top Navigation */
 nav {
@@ -404,7 +409,7 @@ nav {
 /**
  * 07. - Footer
  *
- * 
+ *
  */
 footer:before, .about-the-author:before, .footer-subscriber-acquisition:before,
 footer:after, .about-the-author:after, .footer-subscriber-acquisition:after {
@@ -461,7 +466,7 @@ footer p, .about-the-author p {
 /**
  * 08. - Content
  *
- * 
+ *
  */
 /* 08.01 - Content Posts */
 article {
@@ -686,7 +691,7 @@ article {
 /**
  * 09. - Archive/Category
  *
- * 
+ *
  */
 .category-lp {
   background: #EAEAEB;
@@ -742,7 +747,7 @@ article {
 /**
  * 10. - Secondary Elements
  *
- * 
+ *
  */
 /*
  *  Remodal's necessary styles
@@ -810,12 +815,18 @@ html.remodal-is-locked {
   color: #2b2e38;
   text-align: left;
   margin-bottom: 10px;
-  padding: 35px;
+  padding: 0 35px 35px 35px;
   width: 100%;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0); }
+  .remodal .modal-title {
+    background: #262626;
+    color: #FFF;
+    margin: 0 -35px 35px;
+    padding: 0.7em;
+    text-align: center; }
 
 .remodal-wrapper {
   padding: 10px 10px 0; }
@@ -861,36 +872,37 @@ html.remodal-is-locked {
 .remodal-close {
   background: transparent;
   border: 0;
-  color: #95979c;
+  color: #FFF;
   cursor: pointer;
   display: block;
-  height: 35px;
+  height: 50px;
   margin: 0;
   outline: 0;
   overflow: visible;
   padding: 0;
   position: absolute;
-  right: 0;
+  right: 10px;
   text-decoration: none;
-  top: 0;
-  width: 35px;
+  top: 10px;
+  width: 50px;
   -webkit-transition: color 0.2s;
   transition: color 0.2s; }
 
 .remodal-close:hover, .remodal-close:focus {
-  color: #2b2e38; }
+  background: none;
+  color: #95979C; }
 
 .remodal-close:before {
   content: "\00d7";
   display: block;
   font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important;
-  font-size: 35px;
+  font-size: 50px;
   left: 0;
-  line-height: 35px;
+  line-height: 50px;
   position: absolute;
   text-align: center;
   top: 0;
-  width: 35px; }
+  width: 50px; }
 
 /* Responsive video embed */
 .embed-video-container {
@@ -910,30 +922,40 @@ html.remodal-is-locked {
 
 /* Video Capture Form & Overlay */
 .embed-video-capture-container {
-  position: relative; }
+  position: relative;
+  /* END .video-email-capture-form */ }
+  .embed-video-capture-container .video-email-capture-form {
+    background: #FFF;
+    left: 15%;
+    padding: 3em;
+    position: absolute;
+    top: 25%;
+    width: 70%;
+    z-index: 15;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+    .embed-video-capture-container .video-email-capture-form .title {
+      margin-bottom: 1em;
+      text-align: center; }
+    .embed-video-capture-container .video-email-capture-form .single-input-submit {
+      margin-bottom: 0.5em;
+      text-align: center; }
+    .embed-video-capture-container .video-email-capture-form input[type=text] {
+      width: 75%; }
+    .embed-video-capture-container .video-email-capture-form input[type=submit] {
+      margin-left: -0.5em; }
+  .embed-video-capture-container .video-overlay {
+    background: #000;
+    background: rgba(0, 0, 0, 0.6);
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10; }
 
-.video-email-capture-form {
-  background: #FFF;
-  height: 50%;
-  left: 15%;
-  padding: 3em;
-  position: absolute;
-  top: 25%;
-  width: 70%;
-  z-index: 15;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box; }
-
-.video-overlay {
-  background: #000;
-  background: rgba(0, 0, 0, 0.6);
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 10; }
-
+/* END .embed-video-capture-container */
 /* Keyframes
    ========================================================================== */
 @-webkit-keyframes remodal-opening-keyframes {
@@ -1006,5 +1028,5 @@ html.remodal-is-locked {
 /**
  * 11. - Media Queries
  *
- * 
+ *
  */

@@ -45,20 +45,20 @@ if( isset($_POST["modalType"]) ){
  * This will run after the modal video capture form is submitted.
  */
 if( isset($_POST["videoEmailSubmit"]) ){
-	
+
 	/* Set default form submission vars from post */
 	$captured_email = isset($_POST["videoEmail"]) ? $_POST["videoEmail"] : '';
 	$errors = array();
 	$modal_type = isset($_POST["modalType"]) ? $_POST["modalType"] : '';
 	$modal_id = isset($_POST["modalID"]) ? $_POST["modalID"] : '';
-	
+
 	/* Validate the entered email and set the error variable if not valid. */
 	if(strlen($captured_email) <= 0){
 		$errors[] = "Please enter your email.";
 	}else{
 		if(!preg_match("/^([a-z0-9_]\.?)*[a-z0-9_]+@([a-z0-9-_]+\.)+[a-z]{2,3}$/i", stripslashes(trim($meetingPDFContactEmail)))) {$error[] = "Please enter a valid e-mail address.";}
 	}
-	
+
 	/* If there are no errors, pass their cleaned vars to the capture processing function. If there were, display them. */
 	if(sizeof($errors) > 0){
 		process_modal_form_errors($errors);
@@ -170,10 +170,10 @@ function process_modal_capture($captured_email, $modal_type, $modal_id){
 			break;
 
 	endswitch;
-	
+
 	date_default_timezone_set('America/New_York'); /* Explicitly set timezone because the server's "local time" isn't set correctly and couldn't figure out how to resolve. */
 	$modal_capture_date = date("m/d/y g:i a");
-	
+
 	$modal_capture_email = $captured_email;
 	$modal_capture_ip_address = $_SERVER['REMOTE_ADDR'];
 	$modal_capture_name = 'Everyone';
@@ -203,7 +203,7 @@ function process_modal_form_errors($errors){
 	{
 		if($i == 0)
 			echo '<h3>Please fix the errors bellow and resubmit the form</h3>';
-		
+
 		echo '<p class="modal-form-errors">- '.$error[$i].'</p>';
 	}
 
@@ -264,24 +264,22 @@ function process_video_modal(){
 	/*
 	 * Assemble the modal contents to echo.
 	 */
-	$video_modal_result_echo .= "<h1>$video_title</h1>";
+	$video_modal_result_echo .= "<h2 class='modal-title'>$video_title</h2>";
 
 	/* Show the video capture form and video depending on boolean, true by default. If false, show video only. */
 	if($show_video_capture && $cookie_not_created){
 
 		$video_modal_result_echo .= "<div class='embed-video-capture-container'>";
 		$video_modal_result_echo .= "
-			<form action='/wp-content/themes/justsell/resources/scripts/modal-ajax-processing.php' method='post' name='videoEmailCaptureForm' class='video-email-capture-form' id='videoEmailCaptureForm'>
+			<form action='/wp-content/themes/justsell/resources/includes/modal-ajax-processing.php' method='post' name='videoEmailCaptureForm' class='video-email-capture-form' id='videoEmailCaptureForm'>
 				<p class='title'>Please enter your email address to view the video.</p>
 				<p class='single-input-submit'>
 					<input name='videoEmail' class='video-email' type='text' placeholder='Enter Your Email Here' />
 					<input name='modalType' type='hidden' value='$modal_type' />
 					<input name='modalID' type='hidden' value='$modal_id' />
-					<input name='videoEmailSubmit' type='submit' class='flat-btn' value='Submit' /></p>
+					<input name='videoEmailSubmit' type='submit' class='flat-btn' value='Watch It!' /></p>
 			</form>
 			<div class='video-overlay'></div>
-
-			<script src='/wp-content/themes/justsell/resources/js/jquery.validate.min.js'></script>
 
 			<script>
 				$('#videoEmailCaptureForm').validate({
@@ -291,7 +289,7 @@ function process_video_modal(){
 							email: true
 						}
 					},
-				
+
 					messages: {
 						videoEmail: {
 						   required: 'Please enter your email address',
@@ -299,22 +297,24 @@ function process_video_modal(){
 						 }
 					},
 
+					errorElement: 'p',
+
 					errorPlacement: function(error) {
 						error.appendTo('#videoEmailCaptureForm');
 					},
-				
+
 					submitHandler: function(form) {
 						var action = $(form).attr('action');
 
 						$.post(action, $(form).serialize(), function(data) {
 							$('.video-email-capture-form, .video-overlay').fadeOut(200);
-							
+
 							/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
 							// ga('send', 'event', 'Video Email Signup', 'Click', 'Email Captured From Video');
-							
+
 						});
-					}	
-					
+					}
+
 				});
 			</script>";
 		$video_modal_result_echo .= "<div class='embed-video-container'><iframe class='iframe-video' src='$video_src' frameborder='0'></iframe></div>";
@@ -323,7 +323,7 @@ function process_video_modal(){
 	}else{
 		$video_modal_result_echo .= "<div class='embed-video-container'><iframe class='iframe-video' src='$video_src' frameborder='0'></iframe></div>";
 	}
-	
+
 	/* Show the video share depending on boolean, true by default */
 	if($show_video_share)
 		$video_modal_result_echo .= "<h2>video share will go here</h2>";

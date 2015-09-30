@@ -141,5 +141,5 @@ $(document).ready(function() {
 			});
 		}
 	}); /* END #footer-subscriber-acquisition-form validate function */
-	
+
 }); /* END document ready callback function */
