@@ -27,6 +27,10 @@
 				
 				<?php the_content(); ?>
 
+				<?php
+					/* Pulls in the social media share links */
+					include('resources/includes/social-media-single-post-share.php'); ?>
+
 			</article>
 
 		<?php endwhile; ?>

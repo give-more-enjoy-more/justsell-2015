@@ -145,10 +145,11 @@ strong {font-weight: $semibold-font-weight;}
   */
 input,
 select,
-textarea {
+textarea,
+label {
   background-color: #FFF;
   border-radius: 0;
-  font-size: 16px;
+  font-size: 1.6em;
   font-size: 1.6rem;
   line-height: 1.5;
   margin: 0;
@@ -244,17 +245,42 @@ textarea:focus {outline: 0;}
 input[type="checkbox"],
 input[type="radio"] {padding: 0;}
 
+
+p.error {color: #E54C4C; font-size: 1.8em;}
+
 .form-errors-container {
   color: #E54C4C;
   margin-bottom: 2em;
   text-align: left;
 }
 
-p.error {
-  color: #E54C4C;
-  margin: 0.5em 0 0;
-  text-align: center;
-}
+.multi-input-form { 
+  input[type=text],
+  select,
+  textarea {
+    margin-bottom: 1.5em;
+    &.error {border-color: #E54C4C; color: #E54C4C;}
+    &.has-input-note {margin-bottom: 0.3em;}
+  }
+
+  p.error {
+    margin: 0;
+    text-align: left;
+  }
+  
+  .input-note {font-size: 1.5em;}
+} /* END .multi-input-form */
+
+.single-input-form { 
+  input[type=text],
+  select,
+  textarea {margin-bottom: 0em;}
+
+  p.error {
+    margin: 0.5em 0 0;
+    text-align: center;
+  }
+} /* END .single-input-form */
 
 
  /**
@@ -276,6 +302,8 @@ p.error {
 .clear-fix:after{clear:both;}
 .clear-fix{zoom:1;} /* For IE 6/7 (trigger hasLayout) */
 
+
+.center-copy {text-align: center;}
 
  /**
   * 06. - Header
@@ -491,6 +519,13 @@ article {
   }
 
   .double-bottom-margin {margin-bottom: 3em;}
+
+  .social-media-single-post-share {
+    padding: 2em 0;
+    text-align: center;
+
+    a {display: inline-block; margin-left: 0.4em; vertical-align: middle;}
+  }
 
 } /* END article */
 

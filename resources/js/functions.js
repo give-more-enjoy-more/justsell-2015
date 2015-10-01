@@ -53,6 +53,7 @@ $(document).ready(function() {
 
 		/* Check for data types and set to variables */
 		var modalTriggerLink = $(this),
+				dataModalPostID = modalTriggerLink.data("modal-post-id");
 				dataModalShowCapture = modalTriggerLink.data("modal-show-capture"),
 				dataModalShowShare = modalTriggerLink.data("modal-show-share"),
 				dataModalType = modalTriggerLink.data("modal-type"),
@@ -62,7 +63,7 @@ $(document).ready(function() {
 		/* Pass the data gathered above to $POST and process it with the php script via ajax.
 		 * After the ajax has successfully processed the script, load the result in to the modal and open it.
 		 */
-		$.post( "/wp-content/themes/justsell/resources/includes/modal-ajax-processing.php", { modalType:dataModalType, modalID:dataModalID, showCapture:dataModalShowCapture, showShare:dataModalShowShare }, function(data){
+		$.post( "/wp-content/themes/justsell/resources/includes/modal-ajax-processing.php", { modalPostID:dataModalPostID, modalID:dataModalID, modalType:dataModalType, showCapture:dataModalShowCapture, showShare:dataModalShowShare }, function(data){
 
 			$(".remodal-content-container").html(data);
 

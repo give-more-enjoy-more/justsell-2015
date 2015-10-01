@@ -9,11 +9,15 @@ include('../includes/global-functions.php');
 /*
  * Run the default modal ajax processing if the required modal variable 'modalType' is set in $_POST
  */
-if( isset($_POST["modalType"]) && !isset($_POST["videoEmailSubmit"]) ){
+if( isset($_POST["modalType"]) && !isset($_POST["videoEmailSubmit"]) && !isset($_POST["postEtfFormSubmit"]) ){
+
+	/* Set any passed default global modal vars from post */
+	$post_id =  isset($_POST["modalPostID"]) ? $_POST["modalPostID"] : '';
 
 	/* Set default required modal vars from post */
 	$modal_type = isset($_POST["modalType"]) ? $_POST["modalType"] : '';
 	$modal_id = isset($_POST["modalID"]) ? $_POST["modalID"] : '';
+	
 
 	/*
 	 * See if the modal type was set and pass to defined function or the error function if modal type wasn't found
@@ -26,6 +30,10 @@ if( isset($_POST["modalType"]) && !isset($_POST["videoEmailSubmit"]) ){
 
 		case "info":
 			process_info_modal();
+			break;
+
+		case "post-etf":
+			process_post_etf_modal();
 			break;
 
 		case "video":
@@ -66,7 +74,24 @@ if( isset($_POST["videoEmailSubmit"]) ){
 		process_modal_capture($captured_email, $modal_type, $modal_id);
 	}
 
-}
+} /* END isset($_POST["videoEmailSubmit"]) */
+
+
+/*
+ * This will run after the post etf modal form is submitted.
+ */
+if( isset($_POST["postEtfFormSubmit"]) ){
+
+	global $post_id;
+
+	echo $post_id;
+
+
+} /* END isset($_POST["postEtfFormSubmit"]) */
+
+
+
+
 
 
 /* ========================================================================== */
@@ -128,7 +153,7 @@ function process_modal_not_found(){
 
 	echo "
 		<h2 class='modal-title'>Uh oh!</h2>
-		<h3>Sorry! It looks like this modal doesn\'t exist.</h3>'
+		<h3 class='center-copy'>Sorry! It looks like this modal doesn't exist.</h3>
 	";
 
 } /* END process_modal_not_found function */
@@ -188,6 +213,98 @@ function process_modal_capture($captured_email, $modal_type, $modal_id){
 //	capture_cookie_check_and_set();  /* is_capture_cookie_set in global functions file */
 
 } /* END process_modal_capture function */
+
+
+/*
+ * @name: Process Post ETF Modal
+ * @function: This function processes and handles post email-to-a-friend modals.
+ */
+function process_post_etf_modal(){
+
+	echo "
+		<h2 class='modal-title'>Email this sales tool</h2>
+
+		<form name='postEtfForm' class='multi-input-form' id='postEtfForm' method='post' action=". $_SERVER['REQUEST_URI'] .">
+			<label for='postEtfEmailTo'>Email to:</label><input class='has-input-note' id='postEtfEmailTo' name='postEtfEmailTo' type='text' value='' />
+			<p class='input-note'>Please separate multiple addresses with commas. These will not be collected or used by us for any promotional purposes.</p>
+
+			<label for='postEtfMessage'>Your Message: (optional)</label><textarea id='postEtfMessage' name='postEtfMessage' rows='3'></textarea>
+
+			<label for='postEtfName'>Your Name:</label><input id='postEtfName' name='postEtfName' type='text' value='' />
+
+			<label for='postEtfEmailFrom'>Your Email:</label><input id='postEtfEmailFrom' name='postEtfEmailFrom' type='text' value='' />
+
+			<label for='postEtfValidation'>What is 2+2?</label><input class='has-input-note' id='postEtfValidation' name='postEtfValidation' type='text' value='' />
+			<p class='input-note'>Please answer the question above</p>
+
+			<input name='postEtfFormSubmit' type='submit' value='Share this tool' />
+		</form>
+
+		<script>
+			$.validator.addMethod('postEtfValidation', function(value) {
+				if (value.length != 0)
+					return $.trim(value) == '4';
+				else
+					return true;
+			});
+
+			$('#postEtfForm').validate({
+				rules: {
+					postEtfEmailTo: {
+						required: true,
+						email: true
+					},
+					postEtfName: {
+						required: true,
+						minlength: 2
+					},
+					postEtfEmailFrom: {
+						required: true,
+						email: true
+					},
+					postEtfValidation: {
+						required: true,
+						postEtfValidation: true
+					}
+				},
+			
+				messages: {
+					postEtfEmailTo: {
+					   required: 'Please enter the recipients email address',
+					   email: 'Please enter a valid email address'
+					 },
+					postEtfName: 'Please enter your name',
+					postEtfEmailFrom: {
+					   required: 'Please enter your email address',
+					   email: 'Please enter a valid email address'
+					 },
+
+					postEtfValidation: 'Please add the two numbers and write the answer in the field above.'
+				},
+
+				errorPlacement: function(error, element) {
+					element.attr('placeholder',error.text());
+				},
+
+				submitHandler: function(form) {
+					var action = $(form).attr('action');
+
+					$.post(action, $(form).serialize(), function(data) {
+						$('#postEtfForm').fadeOut(200);
+
+						/* [ Trigger a Google Analytics Event if the visitor successfully signs up. ] */
+						// ga('send', 'event', 'Video Email Signup', 'Click', 'Email Captured From Video');
+
+					});
+				}
+
+			});
+		</script>
+	";
+
+
+} /* END process_post_etf_modal function */
+
 
 
 /*
@@ -271,7 +388,7 @@ function process_video_modal(){
 
 		$video_modal_result_echo .= "<div class='embed-video-capture-container'>";
 		$video_modal_result_echo .= "
-			<form action='/wp-content/themes/justsell/resources/includes/modal-ajax-processing.php' method='post' name='videoEmailCaptureForm' class='video-email-capture-form' id='videoEmailCaptureForm'>
+			<form action='/wp-content/themes/justsell/resources/includes/modal-ajax-processing.php' method='post' name='videoEmailCaptureForm' class='video-email-capture-form single-input-form' id='videoEmailCaptureForm'>
 				<p class='title'>Please enter your email address to view the video.</p>
 				<p class='single-input-submit'>
 					<input name='videoEmail' class='video-email' type='text' placeholder='Enter Your Email Here' />
@@ -393,7 +510,7 @@ function process_video_modal(){
 
 				<ul class="cta-options social-share">
 					<li class="cta-btn"><a class="event-trigger" href="https://www.facebook.com/sharer/sharer.php?u='. $share_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Facebook"}\' title="Share this on Facebook" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-facebook-26x27.png" alt="Facebook" width="26" height="27" /> Facebook</a></li>
-					<li class="cta-btn"><a class="event-trigger" href="http://twitter.com/?status=Love+this+for+motivation+from+GiveMore.com...+'. $share_url .'+@Give_More" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Twitter"}\' title="Tweet this" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-twitter-26x21.png" alt="Twitter" width="26" height="21" /> Twitter</a></li>
+					<li class="cta-btn"><a class="event-trigger" href="http://twitter.com/?status=Love+this+for+motivation+from+JustSell.com...+'. $share_url .'+@JustSell" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Twitter"}\' title="Tweet this" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-twitter-26x21.png" alt="Twitter" width="26" height="21" /> Twitter</a></li>
 					<li class="cta-btn"><a class="event-trigger" href="https://plus.google.com/share?url='. $share_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Google Plus"}\' title="Share this on Google+" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-google-plus-26x24.png" alt="Google+" width="26" height="24" /> Google+</a></li>
 					<li class="cta-btn"><a class="event-trigger" href="http://www.linkedin.com/shareArticle?mini=true&url='. $share_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"LinkedIn"}\' title="Share this on LinkedIn" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-linkedin-26x22.png" alt="LinkedIn" width="26" height="22" /> LinkedIn</a></li>
 					<li class="cta-btn last"><a class="event-trigger" href="http://pinterest.com/pin/create/button/?url='. $share_url .'&media='. $image_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Pinterest"}\' title="Share this on Pinterest" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-pinterest-26x26.png" alt="Pinterest" width="26" height="26" /> Pinterest</a></li>
