@@ -53,7 +53,7 @@ $(document).ready(function() {
 
 		/* Check for data types and set to variables */
 		var modalTriggerLink = $(this),
-				dataModalPostID = modalTriggerLink.data("modal-post-id");
+				dataModalPostID = modalTriggerLink.data("modal-post-id"),
 				dataModalShowCapture = modalTriggerLink.data("modal-show-capture"),
 				dataModalShowShare = modalTriggerLink.data("modal-show-share"),
 				dataModalType = modalTriggerLink.data("modal-type"),

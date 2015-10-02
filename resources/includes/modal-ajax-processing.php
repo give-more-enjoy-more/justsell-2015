@@ -1,9 +1,14 @@
 <?php
 
-/*
- * Pull in the generic global functions needed
- */
-include('../includes/global-functions.php');
+/* Pull in the generic global functions needed for this script. */
+require_once('/var/www/html/justsell.com/wp-content/themes/justsell/resources/includes/global-functions.php');
+
+/* Loads all wordpress functions so they can be used locally in the file. */
+require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
+
+/* ========================================================================== */
+										/* [ Controlling Conditionals ] */
+/* ========================================================================== */
 
 
 /*
@@ -71,7 +76,7 @@ if( isset($_POST["videoEmailSubmit"]) ){
 	if(sizeof($errors) > 0){
 		process_modal_form_errors($errors);
 	}else{
-		process_modal_capture($captured_email, $modal_type, $modal_id);
+		process_capture($captured_email, null, $modal_type, $modal_id); /* process_capture is in global functions file */
 	}
 
 } /* END isset($_POST["videoEmailSubmit"]) */
@@ -82,15 +87,52 @@ if( isset($_POST["videoEmailSubmit"]) ){
  */
 if( isset($_POST["postEtfFormSubmit"]) ){
 
-	global $post_id;
+	/* Ensure all post contents are loaded in variables and cleaned before passing them to the email sending function. */
+	$post_etf_email_to = isset($_POST["postEtfEmailTo"]) ? $_POST["postEtfEmailTo"] : '';
+	$post_etf_email_from = isset($_POST["postEtfEmailFrom"]) ? $_POST["postEtfEmailFrom"] : '';
 
-	echo $post_id;
+	$post_etf_from_name = isset($_POST["postEtfFromName"]) ? $_POST["postEtfFromName"] : '';
+	//$postEtfFromName = special_brand_etf_characters($postEtfFromName);
 
+	$post_etf_message = isset($_POST["postEtfMessage"]) ? $_POST["postEtfMessage"] : '';
+	$post_etf_message = strip_tags($post_etf_message);
+	//$post_etf_message = special_brand_etf_characters($post_etf_message);
+
+	if( !empty($post_etf_message) ){
+		$post_etf_text_message = $post_etf_message;
+		
+		$post_etf_message = '
+			<p style="color:#666666; font-family:\'HelveticaNeue-Light\', \'Helvetica Neue Light\', \'Helvetica Neue\', helvetica, arial, sans-serif; font-size:22px; font-weight:300; line-height:30px; margin-bottom:1em; margin-top:0; text-align:left;">
+				&ldquo;'.$post_etf_message.'&rdquo;
+			</p>
+		';
+	}
+
+	$post_etf_validation = isset($_POST["postEtfValidation"]) ? $_POST["postEtfValidation"] : '';
+
+	$post_etf_post_id = isset($_POST["postEtfPostID"]) ? $_POST["postEtfPostID"] : '';
+
+	/* Finding errors in the variables */
+	if(strlen($post_etf_from_name) <= 0) {$error[] = "Your name is required.";}
+	if(strlen($post_etf_email_to) <= 0) {$error[] = "Please enter the recipients email address.";}
+	if(strlen($post_etf_email_from) <= 0) {$error[] = "Please enter your email address.";}
+	if(!preg_match("/^([a-z0-9_]\.?)*[a-z0-9_]+@([a-z0-9-_]+\.)+[a-z]{2,3}$/i", stripslashes(trim($post_etf_email_to)))) {$error[] = "The recipients e-mail address is not valid.";}
+	if(!preg_match("/^([a-z0-9_]\.?)*[a-z0-9_]+@([a-z0-9-_]+\.)+[a-z]{2,3}$/i", stripslashes(trim($post_etf_email_from)))) {$error[] = "Your e-mail address is not valid.";}
+	if(strcmp( trim($post_etf_validation) , "4" ) != 0) {$error[] = "Please add the two numbers, and write the answer in the field above.";}
+
+
+	/* If there are no errors, pass their cleaned vars to the etf sending function. If there were, display them. */
+	if(sizeof($errors) > 0){
+
+		process_modal_form_errors($errors);
+
+	}else{
+
+		process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_etf_from_name, $post_etf_message, $post_etf_post_id);
+
+	}
 
 } /* END isset($_POST["postEtfFormSubmit"]) */
-
-
-
 
 
 
@@ -173,53 +215,12 @@ function process_info_modal(){
 
 
 /*
- * @name: Process Modal Capture
- * @function: This function writes the captured email address and accompaning info to the master file.
- * @arguments: $captured_email, $modal_type, $modal_id
- */
-function process_modal_capture($captured_email, $modal_type, $modal_id){
-
-	/* Initilize all variables to be captured */
-	switch($modal_type):
-
-		case "book":
-			$modal_capture_alt_source = 'gm-book-capture-' . $modal_id;
-			break;
-
-		case "video":
-			$modal_capture_alt_source = 'gm-video-capture-' . $modal_id;
-			break;
-
-		default:
-			$modal_capture_alt_source = '';
-			break;
-
-	endswitch;
-
-	date_default_timezone_set('America/New_York'); /* Explicitly set timezone because the server's "local time" isn't set correctly and couldn't figure out how to resolve. */
-	$modal_capture_date = date("m/d/y g:i a");
-
-	$modal_capture_email = $captured_email;
-	$modal_capture_ip_address = $_SERVER['REMOTE_ADDR'];
-	$modal_capture_name = 'Everyone';
-	$modal_capture_source = 'gm-capture';
-
-	/* Write name, email, date, ip address, source, and alt aource to the master capture file */
-	$fp = fopen('/var/www/html/justsell.com/wp-content/themes/justsell/resources/docs/capture-docs/Master_Capture_List.txt', 'a');
-	fwrite($fp, $modal_capture_name."\t".$modal_capture_email."\t".$modal_capture_date."\t".$modal_capture_ip_address."\t".$modal_capture_source."\t".$modal_capture_alt_source."\n") or die('fwrite failed');
-	fclose($fp);
-
-	/* Set the email successfully captured cookie if it isn't already set */
-//	capture_cookie_check_and_set();  /* is_capture_cookie_set in global functions file */
-
-} /* END process_modal_capture function */
-
-
-/*
  * @name: Process Post ETF Modal
  * @function: This function processes and handles post email-to-a-friend modals.
  */
 function process_post_etf_modal(){
+
+	global $post_id;
 
 	echo "
 		<h2 class='modal-title'>Email this sales tool</h2>
@@ -230,13 +231,14 @@ function process_post_etf_modal(){
 
 			<label for='postEtfMessage'>Your Message: (optional)</label><textarea id='postEtfMessage' name='postEtfMessage' rows='3'></textarea>
 
-			<label for='postEtfName'>Your Name:</label><input id='postEtfName' name='postEtfName' type='text' value='' />
+			<label for='postEtfFromName'>Your Name:</label><input id='postEtfFromName' name='postEtfFromName' type='text' value='' />
 
 			<label for='postEtfEmailFrom'>Your Email:</label><input id='postEtfEmailFrom' name='postEtfEmailFrom' type='text' value='' />
 
 			<label for='postEtfValidation'>What is 2+2?</label><input class='has-input-note' id='postEtfValidation' name='postEtfValidation' type='text' value='' />
-			<p class='input-note'>Please answer the question above</p>
+			<p class='input-note'>Please answer the question above.</p>
 
+			<input name='postEtfPostID' type='hidden' value='". $post_id ."' />
 			<input name='postEtfFormSubmit' type='submit' value='Share this tool' />
 		</form>
 
@@ -254,7 +256,7 @@ function process_post_etf_modal(){
 						required: true,
 						email: true
 					},
-					postEtfName: {
+					postEtfFromName: {
 						required: true,
 						minlength: 2
 					},
@@ -273,13 +275,22 @@ function process_post_etf_modal(){
 					   required: 'Please enter the recipients email address',
 					   email: 'Please enter a valid email address'
 					 },
-					postEtfName: 'Please enter your name',
+					postEtfFromName: 'Please enter your name',
 					postEtfEmailFrom: {
 					   required: 'Please enter your email address',
 					   email: 'Please enter a valid email address'
 					 },
 
 					postEtfValidation: 'Please add the two numbers and write the answer in the field above.'
+				},
+
+				onfocusout: false,
+
+				showErrors: function(errorMap, errorList) {
+					if ( (errorList.length >=1) && $('#postEtfForm .error-title').length == 0 )
+						$('<h3 class=\"error-title error\">Please correct the highlighted fields below.</h3>').prependTo('#postEtfForm');
+
+					this.defaultShowErrors();
 				},
 
 				errorPlacement: function(error, element) {
@@ -290,7 +301,11 @@ function process_post_etf_modal(){
 					var action = $(form).attr('action');
 
 					$.post(action, $(form).serialize(), function(data) {
-						$('#postEtfForm').fadeOut(200);
+						$('#postEtfForm').fadeOut(200, function(){
+
+							$('<h1>Thanks!</h1>').appendTo('.remodal-content-container').hide().fadeIn(200);
+
+						});
 
 						/* [ Trigger a Google Analytics Event if the visitor successfully signs up. ] */
 						// ga('send', 'event', 'Video Email Signup', 'Click', 'Email Captured From Video');
@@ -302,8 +317,389 @@ function process_post_etf_modal(){
 		</script>
 	";
 
-
 } /* END process_post_etf_modal function */
+
+
+/*
+ * Sends the actual email with pdf attached.
+ * @argument $pdf_url initiated in process_post_pdf_request_form() and sent via function call.
+ */
+function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_etf_from_name, $post_etf_message, $post_etf_post_id)
+{
+
+	/* Initialize variables */
+	$current_year = date('Y');
+	$url_base = 'http://www.justsell.com';
+
+	$post_etf_permalink = get_permalink($post_etf_post_id);
+	$post_etf_post_excerpt = apply_filters('get_the_excerpt', get_post_field('post_excerpt', $post_etf_post_id));
+	$post_etf_title = get_the_title( $post_etf_post_id );
+	$post_etf_subject_line = $post_etf_title . ' by JustSell.com';
+
+	/* Imports the necessary scripts to control MIME being sent. Use 'find . -name swift_required.php' to find location via ssh */
+	require_once '/etc/apache2/sites-available/vendor/swiftmailer/swiftmailer/lib/swift_required.php';
+	
+	/* [ Sets the transport method to PHP Mail ] */
+	$transport = Swift_MailTransport::newInstance();
+		
+	/* [ Create the Mailer using the created Transport ] */
+	$mailer = Swift_Mailer::newInstance($transport);
+	
+	/* [ Create the message ] */
+	$message = Swift_Message::newInstance($post_etf_subject_line)
+	  ->setFrom(array($post_etf_email_from => $post_etf_from_name))
+	  ->setTo(array($post_etf_email_to))
+		//->setBcc(array('jim@givemore.com', 'sam@givemore.com'))
+	
+		/* [ Create HTML Version ] */
+		->setBody('
+			<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+			<html xmlns="http://www.w3.org/1999/xhtml">
+			<head>
+				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+				<title>inspiring posters & mini-posters</title>
+			</head>
+
+			<body style="background:#F2F2F2; padding:0; margin:0;">
+
+				<!-- Hidden text that will show in email excerpt snippets -->
+				<span style="color:#F2F2F2; font-size:0px;">Remind your team what better work looks like. Our posters and mini-posters help you remind everyone to be more motivated, committed, and kind ... all the things that make a more enjoyable (and profitable) workday. Shop Posters. GiveMore.com </span>
+
+				<!-- Gray BG -->
+				<div style="background:#F2F2F2; width:100%;"><table width="100%" border="0" cellspacing="0" bgcolor="#F2F2F2" cellpadding="0" align="center" style="background:#F2F2F2; width:100%;"><tr><td>
+
+					<!-- White BG Wrapper -->
+					<table width="750" border="0" cellspacing="0" bgcolor="#FFFFFF" cellpadding="0" align="center" style="margin:0 auto;"><tr><td>
+
+						<!-- Main Content -->
+						<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;" width="570">
+
+							<!-- Spacer -->				
+							<tr><td height="35">&nbsp;</td></tr>
+
+							<!-- Copy -->
+							<tr><td>
+								<!-- Emailer name -->
+								<p style="color:#474747; font-family:\'HelveticaNeue-Light\', \'Helvetica Neue Light\', \'Helvetica Neue\', helvetica, arial, sans-serif; font-size:26px; font-weight:300; line-height:34px; margin-bottom:1em; margin-top:0; text-align:left;">
+									<strong>'.$post_etf_from_name.'</strong> sent you this (<a href="http://www.justsell.com/?utm_source=js-post-etf&utm_medium=email&utm_content=text_post+title+from+justsell&utm_campaign=justsell+post+etf" style="color:#1A80D3; text-decoration:none;">from JustSell.com</a>):
+								</p>
+
+								<!-- Emailer message, if supplied -->
+								'.$post_etf_message.'
+								
+								<p style="color:#666666; font-family:\'HelveticaNeue-Light\', \'Helvetica Neue Light\', \'Helvetica Neue\', helvetica, arial, sans-serif; font-size:22px; font-weight:300; line-height:30px; margin-bottom:1em; margin-top:0; text-align:left;">
+									<a href="'.$post_etf_permalink.'?utm_source=js-post-etf&utm_medium=email&utm_content=text_post+title&utm_campaign=justsell+post+etf" style="color:#4C4C4C; text-decoration:none;">'.$post_etf_subject_line.'</a>
+								</p>
+
+								<p style="color:#666666; font-family:\'HelveticaNeue-Light\', \'Helvetica Neue Light\', \'Helvetica Neue\', helvetica, arial, sans-serif; font-size:18px; font-weight:300; line-height:24px; margin-bottom:2em; margin-top:0; text-align:left;">
+									'.$post_etf_post_excerpt.'
+								</p>
+										
+								<p style="color:#FFFFFF; font-family:\'Helvetica Neue\', helvetica, arial, sans-serif; font-size:20px; font-weight:300; line-height:30px; margin-bottom:0; margin-top:0; text-align:center;">
+									<a href="'.$post_etf_permalink.'?utm_source=js-post-etf&utm_medium=email&utm_content=button+-+see+the+sales+tool&utm_campaign=justsell+post+etf" style="background-color:#1A80D3; border:2px solid #1A80D3; color:#FFFFFF; display:inline-block; padding:0.5em 1.5em; text-decoration:none;">See the sales tool</a>
+								</p>
+							</td></tr>
+
+						</table> <!-- END Main Content -->
+
+						<!-- Closing Content -->
+						<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;" width="500">
+
+							<!-- Spacer -->
+							<tr><td height="20">&nbsp;</td></tr>
+							
+							<!-- URL & Number -->
+							<tr><td align="center">
+								<p style="color:#666666; font-family:helvetica, arial, sans-serif; font-size:16px; font-weight:300; line-height:24px; margin-top:0; margin-bottom:0; text-align:center;">
+									<a href="http://www.justsell.com/?utm_source=js-post-etf&utm_medium=email&utm_content=text+-+justsell-dot-com&utm_campaign=justsell+post+etf" style="color:#1A80D3;">www.JustSell.com</a><br />
+									<a href="tel:18669524483" style="color:#666666; text-decoration:none;">1-866-952-4483</a>
+								</p>
+							</td></tr>
+
+						</table> <!-- END Closing Content -->
+
+
+						<!-- Book Footer -->
+						<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;" width="650">
+
+							<!-- Line Spacer -->
+							<tr><td height="40" style="border-bottom:1px solid #D7D7D7;">&nbsp;</td></tr>
+							<tr><td height="40">&nbsp;</td></tr>
+
+							<!-- Book Footer Header -->
+							<tr><td align="center">
+								<p style="color:#262626; font-family:helvetica, arial, sans-serif; font-size:24px; font-weight:300; line-height:35px; margin-bottom:0; margin-top:0; text-align:center;">
+									Ideas to motivate people...
+								</p>
+							</td></tr>
+
+							<!-- Spacer -->
+							<tr><td height="10">&nbsp;</td></tr>
+
+							<!-- Book Images -->
+							<tr><td>
+								<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;" width="650">
+									<tr>
+										<td align="center" width="124">
+											<a href="http://www.givemore.com/212-the-extra-degree/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+212+books+image&utm_campaign=justsell+post+etf"><img src="http://www.givemore.com/images/dedicateds/books/212-book-140x140.jpg" width="118" height="118" alt="212&deg; the extra degree&reg; Books" title="212&deg; the extra degree&reg; Books" border="0" /></a><br />
+
+											<p style="color:#262626; font-family:helvetica, arial, sans-serif; font-size:12px; line-height:18px; margin-top:0; text-align:center;">
+												Inspire a little extra effort and attention.<br />
+												<a href="http://www.givemore.com/212-the-extra-degree/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+212+the+extra+degree&utm_campaign=justsell+post+etf" style="color:#1A80D3;">212&deg; the extra degree</a>
+											</p>
+										</td>
+
+										<td align="center" width="130">
+											<a href="http://www.givemore.com/smile-and-move/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+smile+and+move+books+image&utm_campaign=justsell+post+etf"><img src="http://www.givemore.com/images/dedicateds/books/sm-book-140x140.jpg" width="118" height="118" alt="Smile &amp; Move&reg; Books" title="Smile &amp; Move&reg; Books" border="0" /></a><br />
+
+											<p style="color:#262626; font-family:helvetica, arial, sans-serif; font-size:12px; line-height:18px; margin-top:0; text-align:center;">
+												Encourage better attitudes and service.<br />
+												<a href="http://www.givemore.com/smile-and-move/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+smile+and+move&utm_campaign=justsell+post+etf" style="color:#1A80D3;">Smile &amp; Move</a>
+											</p>
+										</td>
+
+										<td align="center" width="130">
+											<a href="http://www.givemore.com/cross-the-line/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+cross+the+line+booklets+image&utm_campaign=justsell+post+etf"><img src="http://www.givemore.com/images/dedicateds/books/ctl-booklet-140x140.jpg" width="118" height="118" alt="Cross The Line&reg; Booklets" title="Cross The Line&reg; Booklets" border="0" /></a><br />
+
+											<p style="color:#262626; font-family:helvetica, arial, sans-serif; font-size:12px; line-height:18px; margin-top:0; text-align:center;">
+												Inspire commitment, effort, and resilience.<br />
+												<a href="http://www.givemore.com/cross-the-line/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+cross+the+line&utm_campaign=justsell+post+etf" style="color:#1A80D3;">Cross The Line</a>
+											</p>
+										</td>
+
+										<td align="center" width="130">
+											<a href="http://www.givemore.com/love-your-people/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+love+your+people+booklets+image&utm_campaign=justsell+post+etf"><img src="http://www.givemore.com/images/dedicateds/books/lyp-booklet-140x140.jpg" width="118" height="118" alt="Love Your People&reg; Booklets" title="Love Your People&reg; Booklets" border="0" /></a><br />
+
+											<p style="color:#262626; font-family:helvetica, arial, sans-serif; font-size:12px; line-height:18px; margin-top:0; text-align:center;">
+												Encourage more trust and accountability.<br />
+												<a href="http://www.givemore.com/love-your-people/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+love+your+people&utm_campaign=justsell+post+etf" style="color:#1A80D3;">Love Your People</a>
+											</p>
+										</td>
+
+										<td align="center" width="136">
+											<a href="http://www.givemore.com/lead-simply/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+lead+simply+books+image&utm_campaign=justsell+post+etf"><img src="http://www.givemore.com/images/dedicateds/books/ls-book-140x140.jpg" width="118" height="118" alt="Lead Simply&trade; Books" title="Lead Simply&trade; Books" border="0" /></a><br />
+
+											<p style="color:#262626; font-family:helvetica, arial, sans-serif; font-size:12px; line-height:18px; margin-top:0; text-align:center;">
+												No fluff. No parables.<br />No matrixes. Just truth.<br />
+												<a href="http://www.givemore.com/lead-simply/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+lead+simply&utm_campaign=justsell+post+etf" style="color:#1A80D3;">Lead Simply</a>
+											</p>
+										</td>
+									</tr>
+								</table>
+							</td></tr>
+						</table> <!-- END Book Footer -->
+
+						<!-- Speaker Footer -->
+						<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;" width="650">
+
+							<!-- Line Spacer -->
+							<tr><td height="40" style="border-bottom:1px solid #D7D7D7;">&nbsp;</td></tr>
+							<tr><td height="40">&nbsp;</td></tr>
+
+							<!-- Speaker Header -->
+							<tr><td align="center">
+								<p style="color:#262626; font-family:helvetica, arial, sans-serif; font-size:30px; font-weight:300; line-height:35px; margin-bottom:0; margin-top:0; text-align:center;">
+									Need a speaker for your next event?
+								</p>
+							</td></tr>
+
+							<!-- Spacer -->
+							<tr><td height="10"></td></tr>
+
+							<!-- Discuss keynote copy -->
+							<tr><td align="center">
+								<p style="color:#656565; font-family:helvetica, arial, sans-serif; font-size:16px; font-weight:400; line-height:24px; margin-bottom:1em; margin-top:0; text-align:center;">
+									Sam\'s keynotes have inspired thousands of people in all types<br />of organizations and all types of organizational roles.
+								</p>
+
+								<p style="color:#656565; font-family:helvetica, arial, sans-serif; font-size:16px; font-weight:400; line-height:24px; margin-bottom:0; margin-top:0; text-align:center;">
+									If you could use a fresh voice and message to help people care more<br />about their work and the people they work with and for, let\'s talk.
+								</p>
+							</td></tr>
+
+							<!-- Spacer -->
+							<tr><td height="20">&nbsp;</td></tr>
+
+							<!-- Sam Headshot & Phone Number -->
+							<tr><td>
+								<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;" width="490">
+
+									<tr>
+										<td valign="middle" width="150">
+											<a href="http://www.givemore.com/speaking/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+sam+headshot+image&utm_campaign=justsell+post+etf"><img src="http://www.givemore.com/images/email/icons/speaking-sam-headshot-150x150.jpg" alt="Sam Parker Headshot" width="150" height="150" border="0" /></a>
+										</td>
+
+										<!-- Spacer -->
+										<td width="30">&nbsp;</td>
+
+										<td valign="middle" width="310">
+											<p style="color:#1A80D3; font-family:helvetica, arial, sans-serif; font-size:30px; font-weight:300; line-height:35px; margin-bottom:0; margin-top:0; text-align:left;">
+												<a href="http://www.givemore.com/speaking/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+learn+about+sam&utm_campaign=justsell+post+etf" style="color:#1A80D3; text-decoration:none;">+ Learn about Sam</a><br />
+											</p>
+											<p style="color:#656565; font-family:helvetica, arial, sans-serif; font-size:30px; font-weight:300; line-height:35px; margin-bottom:0; margin-top:0; text-align:left;">
+												or call <a href="tel:18669524483" style="color:#666666; text-decoration:none;">(866) 952-4483</a>
+											</p>
+										</td>
+									</tr>
+
+								</table>
+							</td></tr>
+
+						</table> <!-- END Speaker Footer -->
+
+						<!-- Upcoming Meetings Footer -->
+						<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;" width="650">
+
+							<!-- Line Spacer -->
+							<tr><td height="50" style="border-bottom:1px solid #D7D7D7;">&nbsp;</td></tr>
+							<tr><td height="40">&nbsp;</td></tr>
+
+							<!-- Upcoming Meetings Header -->
+							<tr><td align="center">
+								<p style="color:#262626; font-family:helvetica, arial, sans-serif; font-size:30px; font-weight:300; line-height:35px; margin-bottom:0.25em; margin-top:0; text-align:center;">
+									Upcoming meeting, project, or event?
+								</p>
+							</td></tr>
+
+							<!-- Spacer -->
+							<tr><td height="10">&nbsp;</td></tr>
+
+							<!-- Upcoming Meetings Intro -->
+							<tr><td align="center">
+								<p style="color:#656565; font-family:helvetica, arial, sans-serif; font-size:16px; font-weight:400; line-height:24px; margin:0; text-align:center;">
+									Our fresh no-fluff messages, handouts, and themes can help you kick it off<br />or support it by making it more interesting and meaningful.
+								</p>
+							</td></tr>
+
+							<!-- Spacer -->
+							<tr><td height="5"></td></tr>
+
+							<!-- Product Links -->
+							<tr><td>
+								<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;" width="550">
+
+									<tr>
+										<td width="75" valign="top" align="center">
+											<p style="color:#1A80D3; font-family:helvetica, arial, sans-serif; font-size:16px; line-height:30px; text-align:center;">
+												<a href="http://www.givemore.com/books-and-booklets/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+books&utm_campaign=justsell+post+etf" style="color:#1A80D3; text-decoration:none;">Books</a><br />
+												<a href="http://www.givemore.com/videos/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+videos&utm_campaign=justsell+post+etf" style="color:#1A80D3; text-decoration:none;">Videos</a>
+											</p>
+										</td>
+
+										<td width="180" valign="top" align="center">
+											<p style="color:#1A80D3; font-family:helvetica, arial, sans-serif; font-size:16px; line-height:30px; text-align:center;">
+												<a href="http://www.givemore.com/meetings-discussions/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+meeting+packages&utm_campaign=justsell+post+etf" style="color:#1A80D3; text-decoration:none;">Meeting Packages</a><br />
+												<a href="http://www.givemore.com/presentations/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+powerpoint+slides&utm_campaign=justsell+post+etf" style="color:#1A80D3; text-decoration:none;">PowerPoint&reg; Slides</a>
+											</p>
+										</td>
+
+										<td width="130" valign="top" align="center">
+											<p style="color:#1A80D3; font-family:helvetica, arial, sans-serif; font-size:16px; line-height:30px; text-align:center;">
+												<a href="http://www.givemore.com/category/pocket-cards/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+pocket+cards&utm_campaign=justsell+post+etf" style="color:#1A80D3; text-decoration:none;">Pocket Cards</a><br />
+												<a href="http://www.givemore.com/category/wristbands/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+wristbands&utm_campaign=justsell+post+etf" style="color:#1A80D3; text-decoration:none;">Wristbands</a>
+											</p>
+										</td>
+
+										<td width="165" valign="top" align="center">
+											<p style="color:#1A80D3; font-family:helvetica, arial, sans-serif; font-size:16px; line-height:30px; text-align:center;">
+												<a href="http://www.givemore.com/category/posters-and-prints/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+posters+and+banners&utm_campaign=justsell+post+etf" style="color:#1A80D3; text-decoration:none;">Posters &amp; Banners</a><br />
+												<a href="http://www.givemore.com/gear/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+gifts+and+gear&utm_campaign=justsell+post+etf" style="color:#1A80D3; text-decoration:none;">Gifts &amp; Gear</a>
+											</p>
+										</td>
+									</tr>
+
+								</table>
+							</td></tr>
+
+							<!-- Spacer -->
+							<tr><td height="30">&nbsp;</td></tr>
+
+						</table> <!-- END Upcoming Meetings Footer -->
+
+						<!-- Connect With Us Footer -->
+						<table align="center" bgcolor="#E5E5E5" border="0" cellpadding="20" cellspacing="0" style="margin:0 auto;" width="750">
+							<tr><td align="center">
+								<p style="color:#262626; font-family:helvetica, arial, sans-serif; font-size:20px; font-weight:300; line-height:40px; margin-bottom:0.1em; margin-top:0; text-align:center;">
+									Connect with us:
+								</p>
+								<a href="https://www.facebook.com/nogomos" style="margin-right:5px;"><img src="http://www.givemore.com/images/email/social-media/facebook-30x30.png" alt="Facebook" width="30" height="30" border="0" /></a>
+								<a href="https://twitter.com/give_more" style="margin-right:5px;"><img src="http://www.givemore.com/images/email/social-media/twitter-30x30.png" alt="twitter" width="30" height="30" border="0" /></a>
+								<a href="https://plus.google.com/114883118757655241133/" style="margin-right:5px;"><img src="http://www.givemore.com/images/email/social-media/google-plus-30x30.png" alt="Google Plus" width="30" height="30" border="0" /></a>
+								<a href="http://www.linkedin.com/company/givemore-com" style="margin-right:5px;"><img src="http://www.givemore.com/images/email/social-media/linkedin-30x30.png" alt="LinkedIn" width="30" height="30" border="0" /></a>
+								<a href="http://instagram.com/givemoreenjoymore" style="margin-right:5px;"><img src="http://www.givemore.com/images/email/social-media/instagram-30x30.png" alt="Instagram" width="30" height="30" border="0" /></a>
+								<a href="http://www.pinterest.com/givemoremedia/"><img src="http://www.givemore.com/images/email/social-media/pinterest-30x30.png" alt="Pinterest" width="30" height="30" border="0" /></a>
+							</td></tr>
+						</table> <!-- END Connect With Us Footer -->
+
+						<!-- Real People, Copyright Footer -->
+						<table align="center" bgcolor="#262626" border="0" cellpadding="20" cellspacing="0" style="margin:0 auto;" width="750">
+							<tr><td align="center">
+								<p style="font-family:helvetica, arial, sans-serif;margin-top:1em; margin-bottom: 1.5em; color:#FFFFFF; font-size:20px; font-weight:500; line-height:22px; text-align:center;">
+									We\'re real people here and we\'d love to help you. Really.
+								</p>
+
+								<p style="color:#656565; font-family:helvetica, arial, sans-serif; font-size:14px; line-height:22px; margin-bottom:1.5em; margin-top:0; text-align:center;">
+									&copy; by Give More Media Inc. &nbsp;|&nbsp; <a href="http://www.givemore.com/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+givemore&utm_campaign=justsell+post+etf" style="color:#656565;">www.GiveMore.com</a><br />
+									115 South 15th Street, Suite 502, Richmond, VA 23219
+								</p>
+							</td></tr>
+						</table> <!-- END Real People, Copyright Footer -->
+
+					</td></tr></table> <!-- END White BG Wrapper -->
+
+				</td></tr></table></div> <!-- END Gray BG -->
+
+			</body>
+			</html>
+		', 'text/html')
+	
+		/* [ Create TXT Version (purposely not indented) ] */
+		->addPart('
+
+'.$post_etf_from_name.' sent you this (from JustSell.com):
+
+'.$post_etf_text_message.'
+
+-
+
+'.$post_etf_subject_line.'
+-----------
+
+'.$post_etf_post_excerpt.'
+
+--
+See the sales tool
+'.$post_etf_permalink.'
+--
+
+-------------
+We\'re real people here and we\'d love to help you. Really.
+
+(c) by Give More Media Inc. | http://www.JustSell.com | 115 South 15th Street, Suite 502, Richmond, VA 23219 USA
+		', 'text/plain')
+
+	; /* END of message creation */
+	
+
+	/* Send the message */
+	$sent = $mailer->send($message, $failures);
+	
+		
+	/* If the email was sent display thank you message and capture email */
+	if($sent){
+
+		/* process_capture arguments: $captured_email, $captured_name, $capture_type, $capture_id */
+		/* process_capture is in global functions file */
+		process_capture($post_etf_email_from, $post_etf_from_name, 'post-etf-share');
+
+		echo "<h2>Your email has been sent!</h2>";
+		
+	} else {
+	 	die("Sorry but the email could not be sent. Please go back and try again!");
+	}
+
+
+} /* END function send_post_pdf */
 
 
 

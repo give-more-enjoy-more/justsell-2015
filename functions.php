@@ -43,5 +43,4 @@ if ( !function_exists('post_or_page_specific_class') ) {
 	}
 }
 
-
 ?>

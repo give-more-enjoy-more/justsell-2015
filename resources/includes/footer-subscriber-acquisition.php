@@ -5,13 +5,6 @@ Author: Joe Gilbert
 Version: 0.1
 */
 
-
-/*
- * Pull in the generic global functions needed
- */
-include('global-functions.php');
-
-
 /* Launch this mama jama */
 footer_subscriber_acquisition_control();
 
@@ -94,30 +87,18 @@ function process_footer_subscriber_acquisition_form()
 	else
 	{
 
-		date_default_timezone_set('America/New_York'); /* Explicitly set timezone because the server's "local time" isn't set correctly and couldn't figure out how to resolve. */
-		$subscriber_acquisition_date = date("m/d/y g:i a");
-		
-		$subscriber_acquisition_email = $subscriber_acquisition_email;
-		$subscriber_acquisition_ip_address = $_SERVER['REMOTE_ADDR'];
-		$subscriber_acquisition_name = 'Everyone';
-		$subscriber_acquisition_source = 'gm-capture';
-		$subscriber_acquisition_alt_source = 'footer-subscriber-form';
-
-		/* Write name, email, date, ip address, source, and alt aource to the master capture file */
-		$fp = fopen('/var/www/html/justsell.com/wp-content/themes/justsell/resources/docs/capture-docs/Master_Capture_List.txt', 'a');
-		fwrite($fp, $subscriber_acquisition_name."\t".$subscriber_acquisition_email."\t".$subscriber_acquisition_date."\t".$subscriber_acquisition_ip_address."\t".$subscriber_acquisition_source."\t".$subscriber_acquisition_alt_source."\n") or die('fwrite failed');
-		fclose($fp);
-
-		/* Set the email successfully captured cookie if it isn't already set */
-		capture_cookie_check_and_set();  /* is_capture_cookie_set in global functions file */
+		/* process_capture arguments: $captured_email, $captured_name, $capture_type, $capture_id */
+		/* process_capture is in global functions file */
+		process_capture($subscriber_acquisition_email, null, 'footer-subscriber-acquisition', null);
 
 		echo '
-		<section class="footer-subscriber-acquisition">
-			<div class="inner-container">
-				<p>Thanks for signing up! Sam\'s emails will come from GiveMore.com.</p>
-				<h3>We hope they inspire you!</h3>
-			</div>
-		</section>';
+			<section class="footer-subscriber-acquisition">
+				<div class="inner-container">
+					<p>Thanks for signing up! Sam\'s emails will come from GiveMore.com.</p>
+					<h3>We hope they inspire you!</h3>
+				</div>
+			</section>
+		';
 
 	}
 } /* END function process_footer_subscriber_acquisition_form */

@@ -1,14 +1,2 @@
 Name	Email	Date	IP Address	Sub Source	Alt Source
-Everyone	now@howshelookin.org	09/30/15 10:52 am	75.75.75.1	gm-capture	gm-video-capture-tt
-Everyone	test@test.com	09/30/15 11:31 am	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	trial@error.com	09/30/15 11:38 am	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	poo@doodoo.com	09/30/15 11:40 am	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	fasdf@asdf.com	09/30/15 11:52 am	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	never@work.com	09/30/15 11:57 am	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	asdf@asdf.com	09/30/15 12:03 pm	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	afsdf@asdf.com	09/30/15 12:09 pm	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	asdfasfd@asdf.com	09/30/15 12:10 pm	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	asfas@asdf.com	09/30/15 12:11 pm	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	asfd@afsdfc.com	09/30/15 12:14 pm	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	add@fjcj.com	09/30/15 12:15 pm	75.75.75.1	gm-capture	gm-video-capture-ls
-Everyone	sss@ddd.com	09/30/15 12:16 pm	75.75.75.1	gm-capture	gm-video-capture-ls
+Everyone		10/02/15 5:46 pm	75.75.75.1	gm-capture	gm-post-pdf-request-capture

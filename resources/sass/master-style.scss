@@ -143,6 +143,11 @@ strong {font-weight: $semibold-font-weight;}
   *
   *
   */
+form {
+  .error {color: #E54C4C;}
+  .error-title {margin-bottom: 1em;}
+}
+
 input,
 select,
 textarea,
@@ -245,8 +250,7 @@ textarea:focus {outline: 0;}
 input[type="checkbox"],
 input[type="radio"] {padding: 0;}
 
-
-p.error {color: #E54C4C; font-size: 1.8em;}
+p.error {font-size: 1.8em;}
 
 .form-errors-container {
   color: #E54C4C;
@@ -259,7 +263,7 @@ p.error {color: #E54C4C; font-size: 1.8em;}
   select,
   textarea {
     margin-bottom: 1.5em;
-    &.error {border-color: #E54C4C; color: #E54C4C;}
+    &.error {background-color: #FFDCDC; border-color: #E54C4C;}
     &.has-input-note {margin-bottom: 0.3em;}
   }
 

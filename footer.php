@@ -10,9 +10,12 @@
 ?>
 
 	<?php
+		/* Pull in the generic global functions needed sitewide. */
+		require_once('/var/www/html/justsell.com/wp-content/themes/justsell/resources/includes/global-functions.php'); ?>
+
+	<?php
 		/* Pulls in the subscriber form and processing */
 		include('resources/includes/footer-subscriber-acquisition.php'); ?>
-
 
 		<section class="about-the-author">
 			<div class="inner-container clear-fix">
@@ -43,7 +46,7 @@
 		/* Pulls in the footer javascripts */
 		include('resources/includes/footer-javascript-imports.php'); ?>
 
-	<?php  wp_footer(); ?>
+	<?php wp_footer(); ?>
 
 </body>
 </html>
