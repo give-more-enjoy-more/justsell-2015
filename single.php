@@ -24,7 +24,7 @@
 					<p class="article-author">by <strong itemprop="author"><?php the_author() ?></strong> (sales veteran and bestselling author)</p>
 
 				</header>
-				
+
 				<?php the_content(); ?>
 
 				<?php
@@ -34,6 +34,10 @@
 			</article>
 
 		<?php endwhile; ?>
+
+		<?php
+			/* Pulls in any post specific footer ads */
+			include('resources/includes/single-post-specific-product-promotions.php'); ?>
 
 	</main>
 

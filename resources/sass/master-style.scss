@@ -14,8 +14,9 @@
  *    07.2 - Subscriber Aquisition Form
  * 08. - Content
  *    08.1 - Posts
- *    08.2 - Specific Posts Formats
- *    08.3 - Sales Meeting LP
+ *    08.2 - Product Placements
+ *    08.3 - Specific Posts Formats
+ *    08.4 - Sales Meeting LP
  * 09.0 - Archive/Category
 * 10.0 - Secondary Elements
  *    10.1 - Modals
@@ -258,7 +259,7 @@ p.error {font-size: 1.8em;}
   text-align: left;
 }
 
-.multi-input-form { 
+.multi-input-form {
   input[type=text],
   select,
   textarea {
@@ -271,11 +272,11 @@ p.error {font-size: 1.8em;}
     margin: 0;
     text-align: left;
   }
-  
+
   .input-note {font-size: 1.5em;}
 } /* END .multi-input-form */
 
-.single-input-form { 
+.single-input-form {
   input[type=text],
   select,
   textarea {margin-bottom: 0em;}
@@ -301,11 +302,12 @@ p.error {font-size: 1.8em;}
 }
 
 /* 05.02 - Utility Classes */
+.clear-both {clear: both;}
+
 .clear-fix:before,
 .clear-fix:after {content:""; display:table;}
 .clear-fix:after{clear:both;}
 .clear-fix{zoom:1;} /* For IE 6/7 (trigger hasLayout) */
-
 
 .center-copy {text-align: center;}
 
@@ -349,7 +351,7 @@ nav {
       &:last-child {margin-right: 0;}
 
       a {
-        color: #262626;
+        color: $body-copy-black;
         text-decoration: none;
       }
 
@@ -393,13 +395,13 @@ footer:before, .about-the-author:before, .footer-subscriber-acquisition:before,
 footer:after, .about-the-author:after, .footer-subscriber-acquisition:after {
   content: "";
   display: block;
-  min-height: 2em;
+  min-height: 4em;
   padding: 2% 0;
 }
 
 footer {
 
-  background: #262626;
+  background: $body-copy-black;
   color: #FFF;
 
   a {color: #FFF;}
@@ -409,20 +411,25 @@ footer {
     font-size: 1.4rem;
   }
 
+  .title {color: #FFF; margin-bottom: 0.2em;}
+  .subtitle {border-bottom: 1px solid #FFF; margin-bottom: 1em; padding-bottom: 0.8em;}
+
 } /* END footer */
 
 footer p, .about-the-author p {
   font-size: 1.6em;
   font-size: 1.6rem;
+
+  &:last-child {margin-bottom: 0;}
 }
 
 /* 07.01 - About The Author */
 .about-the-author {
   background: #D8D8D8;
 
-  h2 {margin-bottom: 0.3em;}
+  a {color: $body-copy-black;}
 
-  p:last-child {margin-bottom: 0;}
+  h2 {margin-bottom: 0.3em;}
 
   .author-bio {
     float: right;
@@ -430,6 +437,7 @@ footer p, .about-the-author p {
   }
 
   .author-headshot {
+    display: block;
     float: left;
     width: 20%;
   }
@@ -463,7 +471,7 @@ footer p, .about-the-author p {
 /* 08.01 - Content Posts */
 article {
   margin: 0 auto 5em;
-  max-width: $desktop-large-max-width;
+  max-width: $desktop-large-article-max-width;
   width: $desktop-large-width;
 
   figure img{
@@ -499,7 +507,7 @@ article {
   .article-title {margin-bottom: 0.3em;}
 
   .article-author {
-    color:#262626;
+    color: $body-copy-black;
     font-size: 1em;
     font-size: 1.6rem;
   }
@@ -517,9 +525,19 @@ article {
 
   /* Post utility classes */
   .bottom-border {
-    border-bottom: 1px solid #262626;
+    border-bottom: 1px solid $body-copy-black;
     margin-bottom: 1em;
     padding-bottom: 0.8em;
+  }
+
+  .thumbnail-left-20-percent {
+    float: left;
+    margin-right: 5%;
+    width: 20%;
+
+    &.last {margin-right: 0;}
+
+    img {height: auto; width: 100%;}
   }
 
   .double-bottom-margin {margin-bottom: 3em;}
@@ -535,8 +553,36 @@ article {
 
 .single-post main {background: url('/wp-content/themes/justsell/resources/images/in-post/throughout/single-post-header-dusty-background-600x400.png') repeat-x;}
 
+/* 08.02 - Product Placements */
+.product-placement {
+  border-bottom: 1px solid #E5E5E5;
+  border-top: 1px solid #E5E5E5;
+  margin: 0 auto;
+  max-width: $desktop-large-max-width;
+  padding: 4em 0;
+  text-align: center;
+  width: $desktop-large-width;
 
-/* 08.02 - Specific Posts Formats */
+  &.bottom-placement {border-bottom: none; margin-bottom: 0;}
+  &.no-border {border: none;}
+  &.no-padding {padding: 0;}
+
+  p{margin-bottom: 0;}
+
+  .placement-title{color: $body-copy-black; font-size: 3.6em; font-weight: 600; margin-bottom: 0.7em; text-align: center;}
+  .extra-link-breathing-room{display: inline-block; margin-bottom: 2em;}
+
+  .cta-images a{color: $body-copy-black; text-decoration: none; text-align: center;}
+  .cta-images a:hover{text-decoration: underline;}
+  .cta-images img{height: auto; width: 90%;}
+  .cta-images.four-cta-links a{display: block; float: left; width: 25%;}
+
+  .cta-links a{text-decoration: underline; text-align: center;}
+  .cta-links.three-cta-links a{display: block; float: left; width: 33%;}
+} /* END .product-placement */
+
+
+/* 08.03 - Specific Posts Formats */
 .post-id-5 {background: #D9F2FF;} /* THE 8 OBJECTIONS */
 .post-id-10 {background: #DCE9DF;} /* TOP 30 OPEN-ENDED QUESTIONS */
 .post-id-29 {background: #A3CAED;} /* SALES INTERVIEW QUESTIONS */
@@ -546,7 +592,7 @@ article {
 .post-id-39 {background: #D8F6CB;} /* SALES MANAGEMENT CHECKLIST */
 
 
-/* 08.03 - Sales Meetings */
+/* 08.04 - Sales Meetings */
 .sales-meetings-lp {
 
   background:#E5E5E5;
@@ -652,7 +698,7 @@ article {
       width:785px;
     }
 
-    .category {color:#262626;}
+    .category {color: $body-copy-black;}
 
     .contact-prompt {
       color:#FFF;
@@ -772,7 +818,7 @@ article {
       margin-bottom: 0.2em;
 
       a {
-        color: #262626;
+        color: $body-copy-black;
         text-decoration: none;
       }
     } /* END .post-title */
@@ -794,3 +840,18 @@ article {
   *
   *
   */
+  @media (max-width: 960px){
+
+    .about-the-author {
+      .author-bio {
+        float: none;
+        width: 100%;
+      }
+
+      .author-headshot {
+        display: none;
+      }
+    }  /* END about-the-author */
+
+
+  } /* END max-width: 960px */

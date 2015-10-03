@@ -22,7 +22,7 @@ if( isset($_POST["modalType"]) && !isset($_POST["videoEmailSubmit"]) && !isset($
 	/* Set default required modal vars from post */
 	$modal_type = isset($_POST["modalType"]) ? $_POST["modalType"] : '';
 	$modal_id = isset($_POST["modalID"]) ? $_POST["modalID"] : '';
-	
+
 
 	/*
 	 * See if the modal type was set and pass to defined function or the error function if modal type wasn't found
@@ -31,6 +31,10 @@ if( isset($_POST["modalType"]) && !isset($_POST["videoEmailSubmit"]) && !isset($
 
 		case "book":
 			process_book_modal();
+			break;
+
+		case "capture-before-download":
+			process_capture_before_download_modal();
 			break;
 
 		case "info":
@@ -100,7 +104,7 @@ if( isset($_POST["postEtfFormSubmit"]) ){
 
 	if( !empty($post_etf_message) ){
 		$post_etf_text_message = $post_etf_message;
-		
+
 		$post_etf_message = '
 			<p style="color:#666666; font-family:\'HelveticaNeue-Light\', \'Helvetica Neue Light\', \'Helvetica Neue\', helvetica, arial, sans-serif; font-size:22px; font-weight:300; line-height:30px; margin-bottom:1em; margin-top:0; text-align:left;">
 				&ldquo;'.$post_etf_message.'&rdquo;
@@ -187,6 +191,84 @@ function process_book_modal(){
 } /* END process_book_modal function */
 
 
+
+/*
+ * @name: Process Capture Before Download Modal
+ * @function: This function spits out an email capture form that is required before downloading the clicked link.
+ */
+function process_capture_before_download_modal(){
+
+	/* Initilize function specific vars needed */
+ 	$cookie_not_created = !is_capture_cookie_set(); /* is_capture_cookie_set in global functions file */
+	$show_video_capture = is_null( $_POST["showCapture"] );
+	$capture_before_download_modal_result_echo = '';
+
+	/*
+	 * Assemble the modal contents to echo.
+	 */
+	$capture_before_download_modal_result_echo .= "<h2 class='modal-title'>Please enter your email to download</h2>";
+
+	/* Show the video capture form and video depending on boolean, true by default. If false, show video only. */
+	if($cookie_not_created){
+
+		$capture_before_download_modal_result_echo .= "
+			<form action='/wp-content/themes/justsell/resources/includes/modal-ajax-processing.php' method='post' name='emailCaptureForm' class='single-input-form' id='emailCaptureForm'>
+				<p class='title'>Please enter your email address to view the download.</p>
+				<p>
+					<input name='captureEmail' type='text' placeholder='Enter Your Email Here' />
+					<input name='modalType' type='hidden' value='$modal_type' />
+					<input name='modalID' type='hidden' value='$modal_id' />
+					<input name='captureEmailSubmit' type='submit' value='Watch It!' /></p>
+			</form>
+			<div class='video-overlay'></div>
+
+			<script>
+				$('#emailCaptureForm').validate({
+					rules: {
+						captureEmail: {
+							required: true,
+							email: true
+						}
+					},
+
+					messages: {
+						captureEmail: {
+						   required: 'Please enter your email address',
+						   email: 'Please enter a valid email address'
+						 }
+					},
+
+					errorElement: 'p',
+
+					errorPlacement: function(error) {
+						error.appendTo('#emailCaptureForm');
+					},
+
+					submitHandler: function(form) {
+						var action = $(form).attr('action');
+
+						$.post(action, $(form).serialize(), function(data) {
+							$('.video-email-capture-form, .video-overlay').fadeOut(200);
+
+							/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
+							// ga('send', 'event', 'Video Email Signup', 'Click', 'Email Captured From Video');
+
+						});
+					}
+
+				});
+			</script>";
+
+	}else{
+		// do nothing and allow download...
+	}
+
+	echo $capture_before_download_modal_result_echo;
+
+}
+
+
+
 /*
  * @name: Process Modal Not Found
  * @function: This function echos the default modal not found message.
@@ -269,7 +351,7 @@ function process_post_etf_modal(){
 						postEtfValidation: true
 					}
 				},
-			
+
 				messages: {
 					postEtfEmailTo: {
 					   required: 'Please enter the recipients email address',
@@ -338,19 +420,19 @@ function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_e
 
 	/* Imports the necessary scripts to control MIME being sent. Use 'find . -name swift_required.php' to find location via ssh */
 	require_once '/etc/apache2/sites-available/vendor/swiftmailer/swiftmailer/lib/swift_required.php';
-	
+
 	/* [ Sets the transport method to PHP Mail ] */
 	$transport = Swift_MailTransport::newInstance();
-		
+
 	/* [ Create the Mailer using the created Transport ] */
 	$mailer = Swift_Mailer::newInstance($transport);
-	
+
 	/* [ Create the message ] */
 	$message = Swift_Message::newInstance($post_etf_subject_line)
 	  ->setFrom(array($post_etf_email_from => $post_etf_from_name))
 	  ->setTo(array($post_etf_email_to))
 		//->setBcc(array('jim@givemore.com', 'sam@givemore.com'))
-	
+
 		/* [ Create HTML Version ] */
 		->setBody('
 			<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -374,7 +456,7 @@ function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_e
 						<!-- Main Content -->
 						<table align="center" bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" style="margin:0 auto;" width="570">
 
-							<!-- Spacer -->				
+							<!-- Spacer -->
 							<tr><td height="35">&nbsp;</td></tr>
 
 							<!-- Copy -->
@@ -386,7 +468,7 @@ function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_e
 
 								<!-- Emailer message, if supplied -->
 								'.$post_etf_message.'
-								
+
 								<p style="color:#666666; font-family:\'HelveticaNeue-Light\', \'Helvetica Neue Light\', \'Helvetica Neue\', helvetica, arial, sans-serif; font-size:22px; font-weight:300; line-height:30px; margin-bottom:1em; margin-top:0; text-align:left;">
 									<a href="'.$post_etf_permalink.'?utm_source=js-post-etf&utm_medium=email&utm_content=text_post+title&utm_campaign=justsell+post+etf" style="color:#4C4C4C; text-decoration:none;">'.$post_etf_subject_line.'</a>
 								</p>
@@ -394,7 +476,7 @@ function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_e
 								<p style="color:#666666; font-family:\'HelveticaNeue-Light\', \'Helvetica Neue Light\', \'Helvetica Neue\', helvetica, arial, sans-serif; font-size:18px; font-weight:300; line-height:24px; margin-bottom:2em; margin-top:0; text-align:left;">
 									'.$post_etf_post_excerpt.'
 								</p>
-										
+
 								<p style="color:#FFFFFF; font-family:\'Helvetica Neue\', helvetica, arial, sans-serif; font-size:20px; font-weight:300; line-height:30px; margin-bottom:0; margin-top:0; text-align:center;">
 									<a href="'.$post_etf_permalink.'?utm_source=js-post-etf&utm_medium=email&utm_content=button+-+see+the+sales+tool&utm_campaign=justsell+post+etf" style="background-color:#1A80D3; border:2px solid #1A80D3; color:#FFFFFF; display:inline-block; padding:0.5em 1.5em; text-decoration:none;">See the sales tool</a>
 								</p>
@@ -407,7 +489,7 @@ function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_e
 
 							<!-- Spacer -->
 							<tr><td height="20">&nbsp;</td></tr>
-							
+
 							<!-- URL & Number -->
 							<tr><td align="center">
 								<p style="color:#666666; font-family:helvetica, arial, sans-serif; font-size:16px; font-weight:300; line-height:24px; margin-top:0; margin-bottom:0; text-align:center;">
@@ -652,7 +734,7 @@ function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_e
 			</body>
 			</html>
 		', 'text/html')
-	
+
 		/* [ Create TXT Version (purposely not indented) ] */
 		->addPart('
 
@@ -679,12 +761,12 @@ We\'re real people here and we\'d love to help you. Really.
 		', 'text/plain')
 
 	; /* END of message creation */
-	
+
 
 	/* Send the message */
 	$sent = $mailer->send($message, $failures);
-	
-		
+
+
 	/* If the email was sent display thank you message and capture email */
 	if($sent){
 
@@ -693,7 +775,7 @@ We\'re real people here and we\'d love to help you. Really.
 		process_capture($post_etf_email_from, $post_etf_from_name, 'post-etf-share');
 
 		echo "<h2>Your email has been sent!</h2>";
-		
+
 	} else {
 	 	die("Sorry but the email could not be sent. Please go back and try again!");
 	}
@@ -923,7 +1005,7 @@ function process_video_modal(){
 		';
 
 	} /* END if $show_video_share */
-	
+
 
 	/* Echo out the compiled result */
 	echo $video_modal_result_echo;

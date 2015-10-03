@@ -23,7 +23,12 @@
 
 				<div class="author-bio">
 					<h2>About Sam Parker</h2>
-					<p>Sam Parker co-founded Give More Media Inc. in 1998 after selling for more than a decade in several different industries. He has written most of the content on JustSell.com and GiveMore.com, as well as 5 bestselling books and booklets (212 the extra degree, Smile & Move, Lead Simply, Cross The Line, and Love Your People). He also speaks to groups and organizations to help inspire more effort, care, and attention at work.</p>
+
+					<p>Sam Parker is the author of this material and co-founder of <a href="http://www.GiveMore.com">GiveMore.com</a>. Before launching JustSell, Sam carried a bag in 5 different industries (office products, financial services, pharmaceuticals, joint replacements, and software).</p>
+
+					<p>Sam is also the creator of several bestselling inspirational messages. Each is helping thousands of organizations care more about their work and the people they serve (available at <a href="http://www.GiveMore.com">GiveMore.com</a>). They include <a href="http://www.givemore.com/212-the-extra-degree/">212 the extra degree</a>, <a href="http://www.givemore.com/sales-tough/">SaleTough</a>, <a href="http://www.givemore.com/cross-the-line/">Cross The Line</a>, <a href="http://www.givemore.com/smile-and-move/">Smile &amp; Move</a>, <a href="http://www.givemore.com/love-your-people/">Love Your People</a>, and <a href="http://www.givemore.com/lead-simply/">Lead Simply</a>.</p>
+
+					<p>Need a speaker for an upcoming sales meeting or event? Sam can help. Learn more at <a href="http://www.givemore.com/speaking/">GiveMore.com/Speaking</a> or call us at <a href="tel:18669524483">866-952-4483</a>.</p>
 				</div>
 			</div> <?php /* END .inner-container .clear-fix */ ?>
 		</section> <?php /* END .about-the-author */ ?>
@@ -31,11 +36,11 @@
 
 		<footer>
 			<div class="inner-container">
-				<p>JUSTSELL.COM IS PART OF THE GIVEMORE.COM FAMILY OF WEBSITES.</p>
+				<h4 class="title">JustSell.com is published by GiveMore.com</h4>
 
-				<p>Copyright &copy; by Give More Media Inc. If you'd like to tell people about it somewhere (e.g., blog, newsletter, Facebook, social media), please reference Sam Parker of GiveMore.com as the author and link directly to the article. Excerpts are great but please don't publish the article in its entirety without advanced written permission (email Sam at <a href="mailto:Sparker@GiveMore.com">Sparker@GiveMore.com</a> with the subject line 'reprint permission').</p>
-				
-				<p class="copyright-and-links">&copy; 1998 - 2015 by Give More Media Inc. Richmond, VA | <a href="">GiveMore.com</a> | <a href="">Privacy &amp; terms</a></p>
+				<p class="subtitle">Since 1998, we've been providing no-fluff tools, ideas, and inspiration to help sales leaders sell more.</p>
+
+				<p class="copyright-and-links">Copyright &copy; by Give More Media Inc. If you'd like to tell people about this somewhere (e.g. blog, newsletter, Facebook, social media), please reference Sam Parker of GiveMore.com as the author and link directly to the article. Excerpts are great but please don't publish the article in its entirety without advanced written permission (email us at <a href="mailto:GoodThings@GiveMore.com?subject=reprint%20permission">GoodThings@GiveMore.com</a> with the subject line 'reprint permission').</p>
 			</div> <?php /* END .inner-container */ ?>
 		</footer> <?php /* END footer */ ?>
 

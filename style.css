@@ -14,8 +14,9 @@
  *    07.2 - Subscriber Aquisition Form
  * 08. - Content
  *    08.1 - Posts
- *    08.2 - Specific Posts Formats
- *    08.3 - Sales Meeting LP
+ *    08.2 - Product Placements
+ *    08.3 - Specific Posts Formats
+ *    08.4 - Sales Meeting LP
  * 09.0 - Archive/Category
 * 10.0 - Secondary Elements
  *    10.1 - Modals
@@ -350,6 +351,9 @@ p.error {
   width: 80%; }
 
 /* 05.02 - Utility Classes */
+.clear-both {
+  clear: both; }
+
 .clear-fix:before,
 .clear-fix:after {
   content: "";
@@ -449,7 +453,7 @@ footer:before, .about-the-author:before, .footer-subscriber-acquisition:before,
 footer:after, .about-the-author:after, .footer-subscriber-acquisition:after {
   content: "";
   display: block;
-  min-height: 2em;
+  min-height: 4em;
   padding: 2% 0; }
 
 footer {
@@ -460,23 +464,33 @@ footer {
   footer .copyright-and-links {
     font-size: 1.4em;
     font-size: 1.4rem; }
+  footer .title {
+    color: #FFF;
+    margin-bottom: 0.2em; }
+  footer .subtitle {
+    border-bottom: 1px solid #FFF;
+    margin-bottom: 1em;
+    padding-bottom: 0.8em; }
 
 /* END footer */
 footer p, .about-the-author p {
   font-size: 1.6em;
   font-size: 1.6rem; }
+  footer p:last-child, .about-the-author p:last-child {
+    margin-bottom: 0; }
 
 /* 07.01 - About The Author */
 .about-the-author {
   background: #D8D8D8; }
+  .about-the-author a {
+    color: #262626; }
   .about-the-author h2 {
     margin-bottom: 0.3em; }
-  .about-the-author p:last-child {
-    margin-bottom: 0; }
   .about-the-author .author-bio {
     float: right;
     width: 75%; }
   .about-the-author .author-headshot {
+    display: block;
     float: left;
     width: 20%; }
 
@@ -551,6 +565,15 @@ article {
     border-bottom: 1px solid #262626;
     margin-bottom: 1em;
     padding-bottom: 0.8em; }
+  article .thumbnail-left-20-percent {
+    float: left;
+    margin-right: 5%;
+    width: 20%; }
+    article .thumbnail-left-20-percent.last {
+      margin-right: 0; }
+    article .thumbnail-left-20-percent img {
+      height: auto;
+      width: 100%; }
   article .double-bottom-margin {
     margin-bottom: 3em; }
   article .social-media-single-post-share {
@@ -565,7 +588,56 @@ article {
 .single-post main {
   background: url("/wp-content/themes/justsell/resources/images/in-post/throughout/single-post-header-dusty-background-600x400.png") repeat-x; }
 
-/* 08.02 - Specific Posts Formats */
+/* 08.02 - Product Placements */
+.product-placement {
+  border-bottom: 1px solid #E5E5E5;
+  border-top: 1px solid #E5E5E5;
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 4em 0;
+  text-align: center;
+  width: 80%; }
+  .product-placement.bottom-placement {
+    border-bottom: none;
+    margin-bottom: 0; }
+  .product-placement.no-border {
+    border: none; }
+  .product-placement.no-padding {
+    padding: 0; }
+  .product-placement p {
+    margin-bottom: 0; }
+  .product-placement .placement-title {
+    color: #262626;
+    font-size: 3.6em;
+    font-weight: 600;
+    margin-bottom: 0.7em;
+    text-align: center; }
+  .product-placement .extra-link-breathing-room {
+    display: inline-block;
+    margin-bottom: 2em; }
+  .product-placement .cta-images a {
+    color: #262626;
+    text-decoration: none;
+    text-align: center; }
+  .product-placement .cta-images a:hover {
+    text-decoration: underline; }
+  .product-placement .cta-images img {
+    height: auto;
+    width: 90%; }
+  .product-placement .cta-images.four-cta-links a {
+    display: block;
+    float: left;
+    width: 25%; }
+  .product-placement .cta-links a {
+    text-decoration: underline;
+    text-align: center; }
+  .product-placement .cta-links.three-cta-links a {
+    display: block;
+    float: left;
+    width: 33%; }
+
+/* END .product-placement */
+/* 08.03 - Specific Posts Formats */
 .post-id-5 {
   background: #D9F2FF; }
 
@@ -594,7 +666,7 @@ article {
   background: #D8F6CB; }
 
 /* SALES MANAGEMENT CHECKLIST */
-/* 08.03 - Sales Meetings */
+/* 08.04 - Sales Meetings */
 .sales-meetings-lp {
   background: #E5E5E5;
   /* END header */
@@ -1103,3 +1175,12 @@ html.remodal-is-locked {
  *
  *
  */
+@media (max-width: 960px) {
+  .about-the-author .author-bio {
+    float: none;
+    width: 100%; }
+  .about-the-author .author-headshot {
+    display: none; }
+
+  /* END about-the-author */ }
+/* END max-width: 960px */
