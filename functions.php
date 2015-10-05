@@ -26,6 +26,11 @@ if ( !function_exists('post_or_page_specific_class') ) {
 				$class = $lp_permalink . '-lp';
 				break;
 
+			case is_search():
+			case is_404():
+				$class = "search-lp category-lp";
+				break;
+
 			case is_single():
 				$post_identification_number = get_the_ID();
 				$class = "post-id-" . $post_identification_number . " single-post";
@@ -39,7 +44,7 @@ if ( !function_exists('post_or_page_specific_class') ) {
 
 
 		return $class;
-			
+
 	}
 }
 

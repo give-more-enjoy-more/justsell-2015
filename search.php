@@ -3,51 +3,59 @@
  * The template for displaying search results pages.
  *
  * @package WordPress
- * @subpackage Twenty_Fifteen
- * @since Twenty Fifteen 1.0
+ * @subpackage JustSell.com 2015
  */
+?>
+<?php get_header(); ?>
 
-get_header(); ?>
+	<main>
 
-	<section id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+		<header class="archive-header">
+			<h1 class="title">Search Results</h1>
+		</header> <?php /* END .archive-header */ ?>
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header">
-				<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'twentyfifteen' ), get_search_query() ); ?></h1>
-			</header><!-- .page-header -->
+			<section class="inner-container">
+				<p><strong>You searched For:</strong> <?php echo get_search_query(); ?></p>
+			</section>
 
-			<?php
-			// Start the loop.
-			while ( have_posts() ) : the_post(); ?>
+			<ol class="archive-post-list inner-container">
+				<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php
-				/*
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'content', 'search' );
+		 			<li class="post clear-fix">
 
-			// End the loop.
-			endwhile;
+						<?php if ( get_post_meta( get_the_ID(), 'category_post_thumbnail', true ) ) : ?>
+							<a class="post-teaser-image" href="<?php the_permalink() ?>">
+								<img src="<?php echo bloginfo('template_directory') . get_post_meta( get_the_ID(), 'category_post_thumbnail', true ); ?>" alt="<?php the_title(); ?>" />
+							</a>
+						<?php endif; ?>
 
-			// Previous/next page navigation.
-			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'twentyfifteen' ),
-				'next_text'          => __( 'Next page', 'twentyfifteen' ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyfifteen' ) . ' </span>',
-			) );
+		 				<div class="post-info">
+				 			<h2 class="post-title"><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
 
-		// If no content, include the "No posts found" template.
-		else :
-			get_template_part( 'content', 'none' );
+							<p class="post-excerpt"><?php echo get_the_excerpt(); ?></p>
 
-		endif;
-		?>
+							<p class="cta-btn"><a class="flat-btn" href="<?php echo get_permalink(); ?>">Read It!</a></p>
+						</div> <?php /* END .post-info */ ?>
 
-		</main><!-- .site-main -->
-	</section><!-- .content-area -->
+					</li>
+
+				<?php endwhile; ?>
+			</ol> <?php /* END .archive-post-list .inner-conatiner */ ?>
+
+		<?php else : ?>
+
+			<section class="inner-container error-404-lp">
+				<h2>Nothing was found</h2>
+
+				<p>Sorry, but no results were found from your search. Perhaps try searching again?</p>
+
+				<?php get_search_form(); ?>
+			</section>
+
+		<?php endif; ?>
+
+	</main>
 
 <?php get_footer(); ?>

@@ -18,13 +18,13 @@
 <?php get_header(); ?>
 
 	<main>
-			
+
 		<?php if ( have_posts() ) : ?>
-		
+
 			<header class="archive-header">
 				<h1 class="title"><?php single_cat_title(); ?></h1>
 			</header> <?php /* END .archive-header */ ?>
-		
+
 			<ol class="archive-post-list inner-container">
 				<?php while ( have_posts() ) : the_post(); ?>
 
@@ -48,15 +48,15 @@
 
 				<?php endwhile; ?>
 			</ol> <?php /* END .archive-post-list .inner-conatiner */ ?>
-		
+
 		<?php else : ?>
 
-			<h1>No posts were found</h3>
+			<h1>No posts were found</h1>
 
 			<p>Sorry, but no results were found for the requested category. Perhaps searching will help find a related post.</p>
 
 			<?php get_search_form(); ?>
-		
+
 		<?php endif; ?>
 
 	</main>

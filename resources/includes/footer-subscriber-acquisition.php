@@ -21,11 +21,9 @@ function display_footer_subscriber_acquisition_form($pre_form_content = '')
 				'. $pre_form_content .'
 				<p><strong>Want more of Sam\'s thoughts?</strong></p>
 				<p>Enter your email to get more of his motivating ideas.</p>
-				<form action="'. $_SERVER['REQUEST_URI'] .'" method="post" name="footerSubscriberAcquisitionForm" id="footer-subscriber-acquisition-form">
-					<p>
-						<input name="footerSubscriberAcquisitionEmail" type="text" placeholder="Enter your email here">
-						<input name="footerSubscriberAcquisitionSubmit" type="submit" value="Get inspired now">
-					</p>
+				<form action="'. $_SERVER['REQUEST_URI'] .'" method="post" name="footerSubscriberAcquisitionForm" class="single-input-form" id="footer-subscriber-acquisition-form">
+					<input name="footerSubscriberAcquisitionEmail" type="text" placeholder="Enter your email here">
+					<input name="footerSubscriberAcquisitionSubmit" type="submit" value="Get inspired now">
 				</form>
 			</div>
 		</section>';
@@ -71,12 +69,12 @@ function process_footer_subscriber_acquisition_form()
 	{
 		$size = sizeof($error);
 		$error_message = '<div class="form-errors-container">';
-	
+
 		for ($i=0; $i < $size; $i++)
 		{
 			if($i == 0)
 				$error_message .= '<h3 class="form-error-title">Form Errors</h3>';
-			
+
 			$error_message .= '<p class="form-error">- '.$error[$i].'</p>';
 		}
 

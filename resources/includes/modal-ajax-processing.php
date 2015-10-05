@@ -213,14 +213,12 @@ function process_capture_before_download_modal(){
 
 		$capture_before_download_modal_result_echo .= "
 			<form action='/wp-content/themes/justsell/resources/includes/modal-ajax-processing.php' method='post' name='emailCaptureForm' class='single-input-form' id='emailCaptureForm'>
-				<p class='title'>Please enter your email address to view the download.</p>
-				<p>
-					<input name='captureEmail' type='text' placeholder='Enter Your Email Here' />
-					<input name='modalType' type='hidden' value='$modal_type' />
-					<input name='modalID' type='hidden' value='$modal_id' />
-					<input name='captureEmailSubmit' type='submit' value='Watch It!' /></p>
+				<p class='title'>Please enter your email address to get this download.</p>
+				<input name='captureEmail' type='text' placeholder='Enter Your Email Here' />
+				<input name='modalType' type='hidden' value='$modal_type' />
+				<input name='modalID' type='hidden' value='$modal_id' />
+				<input name='captureEmailSubmit' type='submit' value='Download It!' />
 			</form>
-			<div class='video-overlay'></div>
 
 			<script>
 				$('#emailCaptureForm').validate({
@@ -388,9 +386,6 @@ function process_post_etf_modal(){
 							$('<h1>Thanks!</h1>').appendTo('.remodal-content-container').hide().fadeIn(200);
 
 						});
-
-						/* [ Trigger a Google Analytics Event if the visitor successfully signs up. ] */
-						// ga('send', 'event', 'Video Email Signup', 'Click', 'Email Captured From Video');
 
 					});
 				}
@@ -868,60 +863,70 @@ function process_video_modal(){
 		$video_modal_result_echo .= "
 			<form action='/wp-content/themes/justsell/resources/includes/modal-ajax-processing.php' method='post' name='videoEmailCaptureForm' class='video-email-capture-form single-input-form' id='videoEmailCaptureForm'>
 				<p class='title'>Please enter your email address to view the video.</p>
-				<p class='single-input-submit'>
-					<input name='videoEmail' class='video-email' type='text' placeholder='Enter Your Email Here' />
-					<input name='modalType' type='hidden' value='$modal_type' />
-					<input name='modalID' type='hidden' value='$modal_id' />
-					<input name='videoEmailSubmit' type='submit' value='Watch It!' /></p>
+				<input name='videoEmail' class='video-email' type='text' placeholder='Enter Your Email Here' />
+				<input name='modalType' type='hidden' value='$modal_type' />
+				<input name='modalID' type='hidden' value='$modal_id' />
+				<input name='videoEmailSubmit' type='submit' value='Watch It!' />
 			</form>
 			<div class='video-overlay'></div>
+			<div class='embed-video-container'><iframe class='iframe-video' id='vimeoIframeVideo' src='$video_src' frameborder='0'></iframe></div>
+		";
 
+		$video_modal_result_echo .= "
 			<script>
-				$('#videoEmailCaptureForm').validate({
-					rules: {
-						videoEmail: {
-							required: true,
-							email: true
+				$(document).ready(function() {
+
+					$('#videoEmailCaptureForm').validate({
+						rules: {
+							videoEmail: {
+								required: true,
+								email: true
+							}
+						},
+
+						messages: {
+							videoEmail: {
+							   required: 'Please enter your email address',
+							   email: 'Please enter a valid email address'
+							 }
+						},
+
+						errorElement: 'p',
+
+						errorPlacement: function(error) {
+							error.appendTo('#videoEmailCaptureForm');
+						},
+
+						submitHandler: function(form) {
+							var action = $(form).attr('action');
+
+							$.post(action, $(form).serialize(), function(data) {
+								$('.video-email-capture-form, .video-overlay').fadeOut(200);
+
+								var jahVideo = $('#vimeoIframeVideo')[0],
+										player = $f(jahVideo);
+
+	//							player.addEvent('ready', function() {
+
+									player.api('play');
+	//							});
+
+								/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
+								ga('send', 'event', 'Video Watch Email Capture', 'Submit', 'Captured Email From Video - $modal_id');
+
+							});
 						}
-					},
 
-					messages: {
-						videoEmail: {
-						   required: 'Please enter your email address',
-						   email: 'Please enter a valid email address'
-						 }
-					},
-
-					errorElement: 'p',
-
-					errorPlacement: function(error) {
-						error.appendTo('#videoEmailCaptureForm');
-					},
-
-					submitHandler: function(form) {
-						var action = $(form).attr('action');
-
-						$.post(action, $(form).serialize(), function(data) {
-							$('.video-email-capture-form, .video-overlay').fadeOut(200);
-
-							var iframe = $('#vimeoIframeVideo')[0],
-									froogaloop = $f(iframe);
-
-							froogaloop.play();
-
-							/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
-							// ga('send', 'event', 'Video Email Signup', 'Click', 'Email Captured From Video');
-
-						});
-					}
+					});
 
 				});
-			</script>";
-		$video_modal_result_echo .= "<div class='embed-video-container'><iframe class='iframe-video' id='vimeoIframeVideo' src='$video_src' frameborder='0'></iframe></div>";
+			</script>
+		";
+
 		$video_modal_result_echo .= "</div>";
 
 	}else{
-		$video_modal_result_echo .= "<div class='embed-video-container'><iframe class='iframe-video' idvimeoIframeVideo' src='$video_src' frameborder='0'></iframe></div>";
+		$video_modal_result_echo .= "<div class='embed-video-container'><iframe class='iframe-video' id='vimeoIframeVideo' src='$video_src' frameborder='0'></iframe></div>";
 	}
 
 	/* Show the video share depending on boolean, true by default */
@@ -987,11 +992,11 @@ function process_video_modal(){
 				</ul>
 
 				<ul class="cta-options social-share">
-					<li class="cta-btn"><a class="event-trigger" href="https://www.facebook.com/sharer/sharer.php?u='. $share_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Facebook"}\' title="Share this on Facebook" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-facebook-26x27.png" alt="Facebook" width="26" height="27" /> Facebook</a></li>
-					<li class="cta-btn"><a class="event-trigger" href="http://twitter.com/?status=Love+this+for+motivation+from+JustSell.com...+'. $share_url .'+@JustSell" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Twitter"}\' title="Tweet this" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-twitter-26x21.png" alt="Twitter" width="26" height="21" /> Twitter</a></li>
-					<li class="cta-btn"><a class="event-trigger" href="https://plus.google.com/share?url='. $share_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Google Plus"}\' title="Share this on Google+" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-google-plus-26x24.png" alt="Google+" width="26" height="24" /> Google+</a></li>
-					<li class="cta-btn"><a class="event-trigger" href="http://www.linkedin.com/shareArticle?mini=true&url='. $share_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"LinkedIn"}\' title="Share this on LinkedIn" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-linkedin-26x22.png" alt="LinkedIn" width="26" height="22" /> LinkedIn</a></li>
-					<li class="cta-btn last"><a class="event-trigger" href="http://pinterest.com/pin/create/button/?url='. $share_url .'&media='. $image_url .'" data-event-values=\'{"category":"Social Media Share","action":"Share","label":"Pinterest"}\' title="Share this on Pinterest" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-pinterest-26x26.png" alt="Pinterest" width="26" height="26" /> Pinterest</a></li>
+					<li class="cta-btn"><a class="event-trigger" href="https://www.facebook.com/sharer/sharer.php?u='. $share_url .'" data-event-fields=\'{"category":"Social Media Share","action":"Share","label":"Facebook"}\' title="Share this on Facebook" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-facebook-26x27.png" alt="Facebook" width="26" height="27" /> Facebook</a></li>
+					<li class="cta-btn"><a class="event-trigger" href="http://twitter.com/?status=Love+this+for+motivation+from+JustSell.com...+'. $share_url .'+@JustSell" data-event-fields=\'{"category":"Social Media Share","action":"Share","label":"Twitter"}\' title="Tweet this" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-twitter-26x21.png" alt="Twitter" width="26" height="21" /> Twitter</a></li>
+					<li class="cta-btn"><a class="event-trigger" href="https://plus.google.com/share?url='. $share_url .'" data-event-fields=\'{"category":"Social Media Share","action":"Share","label":"Google Plus"}\' title="Share this on Google+" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-google-plus-26x24.png" alt="Google+" width="26" height="24" /> Google+</a></li>
+					<li class="cta-btn"><a class="event-trigger" href="http://www.linkedin.com/shareArticle?mini=true&url='. $share_url .'" data-event-fields=\'{"category":"Social Media Share","action":"Share","label":"LinkedIn"}\' title="Share this on LinkedIn" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-linkedin-26x22.png" alt="LinkedIn" width="26" height="22" /> LinkedIn</a></li>
+					<li class="cta-btn last"><a class="event-trigger" href="http://pinterest.com/pin/create/button/?url='. $share_url .'&media='. $image_url .'" data-event-fields=\'{"category":"Social Media Share","action":"Share","label":"Pinterest"}\' title="Share this on Pinterest" target="_blank"><img class="social-media-icon" src="/wp-content/themes/justsell/resources/images/icons/social-media/modal-share-pinterest-26x26.png" alt="Pinterest" width="26" height="26" /> Pinterest</a></li>
 				</ul>
 			</div>
 

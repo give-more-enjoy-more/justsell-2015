@@ -9,22 +9,19 @@
 
 <?php get_header(); ?>
 
-	<main class="inner-container">
+	<main class="error-404-lp">
 
-		<section class="error-404 not-found">
-			
-			<header class="page-header">
-				<h1 class="page-title"><?php _e( 'Oops! That page can&rsquo;t be found.', 'twentyfifteen' ); ?></h1>
-			</header><!-- .page-header -->
+		<header class="archive-header">
+			<h1 class="title">404</h1>
+		</header> <?php /* END .archive-header */ ?>
 
-			<div class="page-content">
-				<p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'twentyfifteen' ); ?></p>
+		<section class="inner-container">
+			<h2 class="page-title">Oops! That page can't be found.</h2>
+			<p>It looks like nothing was found at this address. Maybe try a search below?</p>
 
-				<?php get_search_form(); ?>
-			</div><!-- .page-content -->
-			
-		</section><!-- .error-404 -->
+			<?php get_search_form(); ?>
+		</section>
 
-	</main><!-- .site-main -->
+	</main>
 
 <?php get_footer(); ?>

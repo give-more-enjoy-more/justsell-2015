@@ -78,13 +78,13 @@ $(document).ready(function() {
 
 
 	/* Google Analytics Event Tracking function. Simply place class 'event-trigger' to tag, and pass data like the example below. */
-	/* Example data attribute: data-event-values='{"category":"JustSell Monthly Calendars","action":"Download","label":"September 2015"}' */
+	/* Example data attribute: data-event-fields='{"category":"JustSell Monthly Calendars","action":"Download","label":"September 2015"}' */
 	$('.event-trigger').click(function(){
 
 		var trackedEvent = $(this),
-				trackedEventAction = trackedEvent.data("event-values").action,
-				trackedEventCategory = trackedEvent.data("event-values").category,
-				trackedEventLabel = trackedEvent.data("event-values").label;
+				trackedEventAction = trackedEvent.data("event-fields").action,
+				trackedEventCategory = trackedEvent.data("event-fields").category,
+				trackedEventLabel = trackedEvent.data("event-fields").label;
 
 		ga('send', 'event', trackedEventCategory, trackedEventAction, trackedEventLabel);
 
