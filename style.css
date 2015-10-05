@@ -18,14 +18,15 @@
  *    08.3 - Specific Posts Formats
  *    08.4 - Sales Meeting LP
  *    08.5 - 404 LP
- * 09.0 - Archive/Category
- * 10.0 - Secondary Elements
- *    10.1 - Modals
- * 11.0 - Media Queries
- *    11.1 - Mobile
- *    11.2 - Tablet
- *    11.3 - Desktop Small
- *    11.4 - Desktop Large
+ * 09.0 - Homepage
+ * 10.0 - Archive/Category
+ * 11.0 - Secondary Elements
+ *    11.1 - Modals
+ * 12.0 - Media Queries
+ *    12.1 - Mobile
+ *    12.2 - Tablet
+ *    12.3 - Desktop Small
+ *    12.4 - Desktop Large
  */
 /**
  * 01. - Necessary Standard Imports
@@ -344,6 +345,8 @@ p.error {
   .single-input-form input[type="reset"],
   .single-input-form input[type="submit"] {
     margin-left: -0.5em; }
+  .single-input-form p.error {
+    margin-bottom: 0; }
 
 /* END .single-input-form */
 /**
@@ -354,7 +357,7 @@ p.error {
 /* 05.01 - General Structure */
 .inner-container {
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1280px;
   width: 80%; }
 
 /* 05.02 - Utility Classes */
@@ -396,6 +399,9 @@ nav {
       display: block;
       height: auto;
       width: 100%; }
+  nav .inner-container {
+    max-width: 960px;
+    width: 80%; }
   nav .navigation-items {
     float: right;
     margin-bottom: 0;
@@ -456,6 +462,10 @@ nav {
  *
  *
  */
+footer .inner-container, .about-the-author .inner-container, .footer-subscriber-acquisition .inner-container {
+  max-width: 960px;
+  width: 80%; }
+
 footer:before, .about-the-author:before, .footer-subscriber-acquisition:before,
 footer:after, .about-the-author:after, .footer-subscriber-acquisition:after {
   content: "";
@@ -599,7 +609,7 @@ article {
   border-bottom: 1px solid #E5E5E5;
   border-top: 1px solid #E5E5E5;
   margin: 0 auto;
-  max-width: 960px;
+  max-width: 1280px;
   padding: 4em 0;
   text-align: center;
   width: 80%; }
@@ -814,7 +824,86 @@ article {
 
 /* END .error-404-lp */
 /**
- * 09. - Archive/Category
+ * 09. - Homepage
+ *
+ */
+.homepage {
+  /* END .more-sales-tools-container, .popular-sales-tools-container */
+  /* END .additonal-landing-pages-and-motivation */
+  /* END .more-sales-tools-container */
+  /* END .popular-sales-tools-container */
+  /* END .post-info */ }
+  .homepage header {
+    margin-bottom: 5em; }
+  .homepage .additional-landing-pages-and-motivation,
+  .homepage .more-sales-tools-container,
+  .homepage .popular-sales-tools-container {
+    float: left; }
+    .homepage .additional-landing-pages-and-motivation .section-title,
+    .homepage .more-sales-tools-container .section-title,
+    .homepage .popular-sales-tools-container .section-title {
+      font-size: 2.6em;
+      margin-bottom: 1em; }
+  .homepage .more-sales-tools-container,
+  .homepage .popular-sales-tools-container {
+    margin-right: 5%; }
+    .homepage .more-sales-tools-container .sales-tool,
+    .homepage .popular-sales-tools-container .sales-tool {
+      margin-bottom: 5em; }
+  .homepage .additional-landing-pages-and-motivation {
+    width: 20%;
+    /* END .post-info */ }
+    .homepage .additional-landing-pages-and-motivation .post-info .post-excerpt {
+      font-size: 1.5em; }
+    .homepage .additional-landing-pages-and-motivation .motivational-landing-page .cta-btn {
+      font-size: 1.4em; }
+      .homepage .additional-landing-pages-and-motivation .motivational-landing-page .cta-btn .flat-btn {
+        color: #FFF;
+        display: block; }
+    .homepage .additional-landing-pages-and-motivation .motivational-landing-page .post-info {
+      margin-bottom: 5em; }
+    .homepage .additional-landing-pages-and-motivation .motivational-landing-page .post-teaser-image {
+      margin-bottom: 0; }
+  .homepage .more-sales-tools-container {
+    width: 30%;
+    /* END .post-info */ }
+    .homepage .more-sales-tools-container .browse-all-cta {
+      font-size: 1.5em; }
+    .homepage .more-sales-tools-container .post-info .post-excerpt {
+      font-size: 1.6em; }
+  .homepage .popular-sales-tools-container {
+    width: 40%;
+    /* END .post-info */ }
+    .homepage .popular-sales-tools-container .post-info .post-excerpt {
+      font-size: 1.8em; }
+  .homepage .post-info {
+    /* END .post-teaser-image */ }
+    .homepage .post-info .cta-btn {
+      font-size: 1.6em; }
+      .homepage .post-info .cta-btn a {
+        color: #DA8D30;
+        text-decoration: none; }
+      .homepage .post-info .cta-btn a:hover {
+        color: #EFAA56; }
+    .homepage .post-info .post-teaser-image {
+      display: block;
+      margin-bottom: 1.8em; }
+      .homepage .post-info .post-teaser-image img {
+        display: block;
+        height: auto;
+        width: 100%; }
+    .homepage .post-info .post-title {
+      font-size: 2em;
+      margin-bottom: 0.5em; }
+      .homepage .post-info .post-title a {
+        color: #262626;
+        text-decoration: none; }
+    .homepage .post-info .post-excerpt {
+      margin-bottom: 1em; }
+
+/* END .homepage */
+/**
+ * 10. - Archive/Category
  *
  *
  */
@@ -870,7 +959,7 @@ article {
 
 /* END .category-lp */
 /**
- * 10. - Secondary Elements
+ * 11. - Secondary Elements
  *
  *
  */
@@ -1179,7 +1268,7 @@ html.remodal-is-locked {
   width: 700px; }
 
 /**
- * 11. - Media Queries
+ * 12. - Media Queries
  *
  *
  */

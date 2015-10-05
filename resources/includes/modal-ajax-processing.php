@@ -903,13 +903,8 @@ function process_video_modal(){
 							$.post(action, $(form).serialize(), function(data) {
 								$('.video-email-capture-form, .video-overlay').fadeOut(200);
 
-								var jahVideo = $('#vimeoIframeVideo')[0],
-										player = $f(jahVideo);
-
-	//							player.addEvent('ready', function() {
-
-									player.api('play');
-	//							});
+								/* Function to start playback of the video. Function is defined in the functions.js file. */
+								play_modal_vimeo_video();
 
 								/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
 								ga('send', 'event', 'Video Watch Email Capture', 'Submit', 'Captured Email From Video - $modal_id');

@@ -1,2 +1,1 @@
 Name	Email	Date	IP Address	Sub Source	Alt Source
-Everyone		10/02/15 5:46 pm	75.75.75.1	gm-capture	gm-post-pdf-request-capture

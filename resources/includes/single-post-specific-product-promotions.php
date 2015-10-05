@@ -4,7 +4,7 @@
 	switch (true):
 
 		/* More Things For Your Desk Ad */
-		case is_single(array(43)):
+		case is_single(array(60)):
 			echo '
 				<figure class="product-placement bottom-placement">
 					<h2 class="placement-title">More stuff for your desk...</h2>

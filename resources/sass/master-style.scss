@@ -18,14 +18,15 @@
  *    08.3 - Specific Posts Formats
  *    08.4 - Sales Meeting LP
  *    08.5 - 404 LP
- * 09.0 - Archive/Category
- * 10.0 - Secondary Elements
- *    10.1 - Modals
- * 11.0 - Media Queries
- *    11.1 - Mobile
- *    11.2 - Tablet
- *    11.3 - Desktop Small
- *    11.4 - Desktop Large
+ * 09.0 - Homepage
+ * 10.0 - Archive/Category
+ * 11.0 - Secondary Elements
+ *    11.1 - Modals
+ * 12.0 - Media Queries
+ *    12.1 - Mobile
+ *    12.2 - Tablet
+ *    12.3 - Desktop Small
+ *    12.4 - Desktop Large
  */
 
 
@@ -45,11 +46,11 @@
 @import 'partials/reset';
 
 
- /**
-  * 03. - Typography
-  *
-  *
-  */
+/**
+ * 03. - Typography
+ *
+ *
+ */
 body,
 button,
 input,
@@ -140,11 +141,11 @@ strong {font-weight: $semibold-font-weight;}
 
 
 
- /**
-  * 04. - Forms
-  *
-  *
-  */
+/**
+ * 04. - Forms
+ *
+ *
+ */
 form {
   .error {color: #E54C4C;}
   .error-title {margin-bottom: 1em;}
@@ -290,20 +291,22 @@ p.error {font-size: 1.8em;}
   input[type="reset"],
   input[type="submit"] {margin-left: -0.5em;}
 
+  p.error {margin-bottom: 0;}
+
 } /* END .single-input-form */
 
 
- /**
-  * 05. - General Structure & Utility Classes
-  *
-  *
-  */
+/**
+ * 05. - General Structure & Utility Classes
+ *
+ *
+ */
 
 /* 05.01 - General Structure */
 .inner-container {
   margin: 0 auto;
-  max-width: 960px;
-  width: 80%;
+  max-width: $desktop-large-max-width;
+  width: $desktop-large-width;
 }
 
 /* 05.02 - Utility Classes */
@@ -316,11 +319,11 @@ p.error {font-size: 1.8em;}
 
 .center-copy {text-align: center;}
 
- /**
-  * 06. - Header
-  *
-  *
-  */
+/**
+ * 06. - Header
+ *
+ *
+ */
 
 
 /* 06.01 - Top Navigation */
@@ -334,14 +337,11 @@ nav {
     float: left;
     width: 20%;
 
-    img {
-      display: block;
-      height: auto;
-      width: 100%;
-    }
+    img {display: block; height: auto; width: 100%;}
 
   } /* END .justsell-logo */
 
+  .inner-container {max-width: $desktop-medium-max-width; width: $desktop-large-width;}
 
   .navigation-items {
     float: right;
@@ -355,11 +355,7 @@ nav {
 
       &:last-child {margin-right: 0;}
 
-      a {
-        color: $body-copy-black;
-        text-decoration: none;
-      }
-
+      a {color: $body-copy-black; text-decoration: none;}
       a:hover {text-decoration: underline;}
 
     } /* END .item */
@@ -391,11 +387,15 @@ nav {
 
 
 
- /**
-  * 07. - Footer
-  *
-  *
-  */
+/**
+ * 07. - Footer
+ *
+ *
+ */
+footer, .about-the-author, .footer-subscriber-acquisition{
+  .inner-container {max-width: $desktop-medium-max-width; width: $desktop-large-width;}
+}
+
 footer:before, .about-the-author:before, .footer-subscriber-acquisition:before,
 footer:after, .about-the-author:after, .footer-subscriber-acquisition:after {
   content: "";
@@ -411,10 +411,7 @@ footer {
 
   a {color: #FFF;}
 
-  .copyright-and-links {
-    font-size: 1.4em;
-    font-size: 1.4rem;
-  }
+  .copyright-and-links {font-size: 1.4em; font-size: 1.4rem;}
 
   .title {color: #FFF; margin-bottom: 0.2em;}
   .subtitle {border-bottom: 1px solid #FFF; margin-bottom: 1em; padding-bottom: 0.8em;}
@@ -437,16 +434,9 @@ footer p, .about-the-author p {
 
   h2 {margin-bottom: 0.3em;}
 
-  .author-bio {
-    float: right;
-    width: 75%;
-  }
+  .author-bio {float: right; width: 75%;}
+  .author-headshot {display: block; float: left; width: 20%;}
 
-  .author-headshot {
-    display: block;
-    float: left;
-    width: 20%;
-  }
 }  /* END about-the-author */
 
 
@@ -463,11 +453,11 @@ footer p, .about-the-author p {
 
 
 
- /**
-  * 08. - Content
-  *
-  *
-  */
+/**
+ * 08. - Content
+ *
+ *
+ */
 
 /* 08.01 - Content Posts */
 article {
@@ -761,11 +751,104 @@ article {
 } /* END .error-404-lp */
 
 
- /**
-  * 09. - Archive/Category
-  *
-  *
-  */
+
+
+/**
+ * 09. - Homepage
+ *
+ */
+.homepage {
+
+  header {margin-bottom: 5em;}
+
+  .additional-landing-pages-and-motivation,
+  .more-sales-tools-container,
+  .popular-sales-tools-container {
+    float: left;
+
+    .section-title {font-size: 2.6em; margin-bottom: 1em;}
+  }
+
+  .more-sales-tools-container,
+  .popular-sales-tools-container {
+    margin-right: 5%;
+
+    .sales-tool {margin-bottom: 5em;}
+
+  } /* END .more-sales-tools-container, .popular-sales-tools-container */
+
+  .additional-landing-pages-and-motivation {
+    width: 20%;
+
+    .post-info {
+      .post-excerpt {font-size: 1.5em;}
+    } /* END .post-info */
+
+    .motivational-landing-page {
+      .cta-btn {
+        font-size: 1.4em;
+        .flat-btn {color: #FFF; display: block;}
+      }
+      .post-info {margin-bottom: 5em;}
+      .post-teaser-image {margin-bottom: 0;}
+    }
+
+  } /* END .additonal-landing-pages-and-motivation */
+
+  .more-sales-tools-container {
+    width: 30%;
+
+    .browse-all-cta {font-size: 1.5em;}
+
+    .post-info {
+      .post-excerpt {font-size: 1.6em;}
+    } /* END .post-info */
+
+  } /* END .more-sales-tools-container */
+
+  .popular-sales-tools-container {
+    width: 40%;
+
+    .post-info {
+      .post-excerpt {font-size: 1.8em;}
+    } /* END .post-info */
+
+  } /* END .popular-sales-tools-container */
+
+  .post-info {
+    .cta-btn {
+      font-size: 1.6em;
+      a {color: $justsell-theme-orange; text-decoration: none;}
+      a:hover {color: $justsell-theme-orange-hover;}
+    }
+
+    .post-teaser-image {
+      display: block;
+      margin-bottom: 1.8em;
+      img {display: block; height: auto; width: 100%;}
+    } /* END .post-teaser-image */
+
+    .post-title {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+
+      a {color: $body-copy-black; text-decoration: none;}
+    }
+
+    .post-excerpt {margin-bottom: 1em;}
+
+  } /* END .post-info */
+
+} /* END .homepage */
+
+
+
+
+/**
+ * 10. - Archive/Category
+ *
+ *
+ */
 .category-lp {
   background: #EAEAEB;
 
@@ -785,7 +868,7 @@ article {
 
   .archive-post-list {margin-bottom: 4em;}
 
-  .inner-container {max-width:960px; width: 80%;}
+  .inner-container {max-width: $desktop-medium-max-width; width: $desktop-large-width;}
 
   .post {
     background: #FFF;
@@ -833,31 +916,35 @@ article {
 } /* END .category-lp */
 
 
- /**
-  * 10. - Secondary Elements
-  *
-  *
-  */
+
+/**
+ * 11. - Secondary Elements
+ *
+ *
+ */
 @import 'partials/modal';
 
- /**
-  * 11. - Media Queries
-  *
-  *
-  */
-  @media (max-width: 960px){
 
-    .about-the-author {
-      .author-bio {
-        float: none;
-        width: 100%;
-      }
 
-      .author-headshot {
-        display: none;
-      }
-    }  /* END about-the-author */
-  } /* END max-width: 960px */
+
+/**
+ * 12. - Media Queries
+ *
+ *
+ */
+@media (max-width: 960px){
+
+  .about-the-author {
+    .author-bio {
+      float: none;
+      width: 100%;
+    }
+
+    .author-headshot {
+      display: none;
+    }
+  }  /* END about-the-author */
+} /* END max-width: 960px */
 
 
 @media (max-width: 800px){

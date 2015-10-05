@@ -69,12 +69,25 @@ $(document).ready(function() {
 
 		}).done(function(){
 
-			var inst = $('[data-remodal-id=modal]').remodal({closeOnOutsideClick:false});
+			var inst = $('[data-remodal-id=modal]').remodal({closeOnOutsideClick:false, hashTracking:false});
 			inst.open();
 
 		}); /* END $.post */
 
 	}); /* END .launch-modal on click callback function */
+
+
+	/*
+	 * This is called when the modal is closing and will remove the entire modal from the DOM.
+	 * This was primarily put in place to keep the video modals from playing in the background.
+	 */
+	$(document).on('closing', '.remodal', function(e){
+		var inst = $('[data-remodal-id=modal]').remodal();
+
+		if (inst.getState() === 'closing'){
+			inst.destroy();
+		}
+	});
 
 
 	/* Google Analytics Event Tracking function. Simply place class 'event-trigger' to tag, and pass data like the example below. */
@@ -143,4 +156,17 @@ $(document).ready(function() {
 		}
 	}); /* END #footer-subscriber-acquisition-form validate function */
 
+
 }); /* END document ready callback function */
+
+
+
+/*
+ * This function is called by the modal-ajax-processing.php file after email capture.
+ */
+function play_modal_vimeo_video(){
+	var vimeoVideo = $('#vimeoIframeVideo')[0],
+			player = $f(vimeoVideo);
+
+	player.api('play');
+}
