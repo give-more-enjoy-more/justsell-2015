@@ -41,7 +41,7 @@ $(document).ready(function() {
 
 
 	/* Bypass the default modal window functionality to make ajax loading possible */
-	$('.launch-modal').on('click', function(e){
+	$('.launch-modal').on('mousedown', function(e){
 
 		e.preventDefault();
 
@@ -74,6 +74,13 @@ $(document).ready(function() {
 
 		}); /* END $.post */
 
+		/* Removes the right click menu option from links with a 'launch-modal' class and modal type of 'capture-before-download' */
+		if (dataModalType === 'capture-before-download'){
+			$(this).on("contextmenu",function(){
+				return false;
+			});
+		}
+
 	}); /* END .launch-modal on click callback function */
 
 
@@ -81,13 +88,13 @@ $(document).ready(function() {
 	 * This is called when the modal is closing and will remove the entire modal from the DOM.
 	 * This was primarily put in place to keep the video modals from playing in the background.
 	 */
-	$(document).on('closing', '.remodal', function(e){
-		var inst = $('[data-remodal-id=modal]').remodal();
-
-		if (inst.getState() === 'closing'){
-			inst.destroy();
-		}
-	});
+//	$(document).on('closing', '.remodal', function(e){
+//		var inst = $('[data-remodal-id=modal]').remodal();
+//
+//		if (inst.getState() === 'closing'){
+//			inst.destroy();
+//		}
+//	});
 
 
 	/* Google Analytics Event Tracking function. Simply place class 'event-trigger' to tag, and pass data like the example below. */
@@ -151,10 +158,48 @@ $(document).ready(function() {
 				});
 
 				/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
-				// ga('send', 'event', 'Video Email Signup', 'Click', 'Email Captured From Video');
+				// ga('send', 'event', 'Footer Email Signup', 'Submit', 'Email Captured From Footer Subscriber Acquisition Form');
 			});
 		}
 	}); /* END #footer-subscriber-acquisition-form validate function */
+
+
+	/* Validation function for the article pdf request form. */
+	$('#pdf-form-request').validate({
+		rules: {
+			postPdfRequestEmail: {
+				required: true,
+				email: true
+			}
+		},
+
+		messages: {
+			postPdfRequestEmail: {
+				required: 'Please enter your email address',
+				email: 'Please enter a valid email address'
+			}
+		},
+
+		errorElement: "p",
+
+		errorPlacement: function(error) {
+			error.appendTo('#pdf-form-request');
+		},
+
+		submitHandler: function(form) {
+			var action = $(form).attr('action');
+
+			$.post(action, $(form).serialize(), function() {
+				$('.post-pdf-request-form-container').fadeOut(300, function(){
+					$('<h3 class="title">Please check your inbox.</h3><p class="subtitle">The printable PDF is on its way.</p>').hide().appendTo('.post-pdf-request').fadeIn(300);
+				});
+
+				/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
+				// ga('send', 'event', 'Sales Tool PDF Request', 'Submit', 'Email Captured From Sales Tool PDF Request');
+			});
+		}
+	}); /* END #footer-subscriber-acquisition-form validate function */
+
 
 
 }); /* END document ready callback function */

@@ -17,7 +17,12 @@
 
 	<main class="inner-container clear-fix">
 
-		<header></header>
+		<header>
+			<div class="about-us inner-container">
+				<h1 class="title"><strong>Better</strong> results. <strong>Better</strong> relationships. <strong>More</strong> opportunities.</h1>
+				<h2 class="subtitle">We make you (and your sales team) more valuable to your prospects and customers.</h2>
+			</div>
+		</header>
 
 		<section class="popular-sales-tools-container">
 
@@ -73,7 +78,6 @@
 			</div> <?php /* END .sales-tool */ ?>
 
 		</section> <?php /* END .popular-sales-tools-container */ ?>
-
 
 		<section class="more-sales-tools-container">
 
@@ -131,7 +135,6 @@
 
 		</section> <?php /* END .more-sales-tools-container */ ?>
 
-
 		<section class="additional-landing-pages-and-motivation">
 
 			<div class="motivational-video">
@@ -149,7 +152,7 @@
 
 			</div> <?php /* END .motivational-video */ ?>
 
-			<div class="motivational-landing-pages">
+			<div class="motivational-landing-pages clear-fix">
 
 				<h3 class="section-title">More Motivation</h3>
 
@@ -177,6 +180,14 @@
 			</div> <?php /* END .motivational-landing-pages */ ?>
 
 		</section> <?php /* END .additional-landing-pages-and-motivation */ ?>
+
+		<section class="footer-motivational-video">
+			<h3 class="title">This 3-minute video will motivate your team to make a commitment to better results.</h3>
+			<a href="/cross-the-line/" class="play-video-cta event-trigger launch-modal" data-modal-type="video" data-modal-id="ctl" data-event-fields='{"category":"Video Popup Launch","action":"Click","label":"Video Preview - CTL"}'>
+				<img src="<?php echo bloginfo('template_directory') ?>/resources/images/icons/throughout/play-button-circle-80x80.png" alt="Play" width="80" height="80">
+			</a>
+			<p class="subtitle">Enjoy!</p>
+		</section>
 
 	</main> <?php /* END .inner-container .clear-fix */ ?>
 

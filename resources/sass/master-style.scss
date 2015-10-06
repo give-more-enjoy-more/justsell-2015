@@ -270,10 +270,7 @@ p.error {font-size: 1.8em;}
     &.has-input-note {margin-bottom: 0.3em;}
   }
 
-  p.error {
-    margin: 0;
-    text-align: left;
-  }
+  p.error {margin: 0; text-align: left;}
 
   .input-note {font-size: 1.5em;}
 } /* END .multi-input-form */
@@ -307,8 +304,9 @@ p.error {font-size: 1.8em;}
 .inner-container {
   margin: 0 auto;
   max-width: $desktop-large-max-width;
-  width: $desktop-large-width;
+  width: $desktop-large-width-percentage;
 }
+
 
 /* 05.02 - Utility Classes */
 .clear-both {clear: both;}
@@ -319,6 +317,8 @@ p.error {font-size: 1.8em;}
 .clear-fix{zoom:1;} /* For IE 6/7 (trigger hasLayout) */
 
 .center-copy {text-align: center;}
+
+
 
 /**
  * 06. - Header
@@ -338,11 +338,11 @@ nav {
     float: left;
     width: 20%;
 
-    img {display: block; height: auto; width: 100%;}
+    img {display: block; height: auto; max-width: 180px; width: 100%;}
 
   } /* END .justsell-logo */
 
-  .inner-container {max-width: $desktop-medium-max-width; width: $desktop-large-width;}
+  .inner-container {max-width: $desktop-medium-max-width; width: $desktop-large-width-percentage;}
 
   .navigation-items {
     float: right;
@@ -352,6 +352,7 @@ nav {
       display: inline-block;
       font-size: 0.7em;
       font-size: 1.5rem;
+      font-weight: $semibold-font-weight;
       margin-right: 2.5em;
 
       &:last-child {margin-right: 0;}
@@ -394,7 +395,7 @@ nav {
  *
  */
 footer, .about-the-author, .footer-subscriber-acquisition{
-  .inner-container {max-width: $desktop-medium-max-width; width: $desktop-large-width;}
+  .inner-container {max-width: $desktop-medium-max-width; width: $desktop-large-width-percentage;}
 }
 
 footer:before, .about-the-author:before, .footer-subscriber-acquisition:before,
@@ -464,7 +465,7 @@ footer p, .about-the-author p {
 article {
   margin: 0 auto 5em;
   max-width: $desktop-large-article-max-width;
-  width: $desktop-large-width;
+  width: $desktop-large-width-percentage;
 
   figure img{
     height: auto;
@@ -503,6 +504,13 @@ article {
     height: auto;
     margin-bottom: 3em;
     width: 100%;
+  }
+
+  .post-pdf-request {
+    background: #FFF;
+    margin-bottom: 4em;
+    padding: 3em;
+    text-align: center;
   }
 
   .post-promotion {
@@ -548,10 +556,10 @@ article {
   border-bottom: 1px solid #E5E5E5;
   border-top: 1px solid #E5E5E5;
   margin: 0 auto;
-  max-width: $desktop-large-max-width;
+  max-width: $desktop-medium-max-width;
   padding: 4em 0;
   text-align: center;
-  width: $desktop-large-width;
+  width: $desktop-large-width-percentage;
 
   &.bottom-placement {border-bottom: none; margin-bottom: 0;}
   &.no-border {border: none;}
@@ -760,14 +768,23 @@ article {
  */
 .homepage {
 
-  header {margin-bottom: 5em;}
+  header {
+    background: url('/wp-content/themes/justsell/resources/images/landing-pages/homepage/engaging-backgrounds/conference-room-group-meeting-blue-overlay-1366x500.jpg') no-repeat #3498DB;
+    background-size: cover;
+    margin-bottom: 5em;
+    padding: 8em 0;
+    text-align: center;
+
+    .about-us {background: #FFF; padding: 2em;}
+  }
 
   .additional-landing-pages-and-motivation,
   .more-sales-tools-container,
   .popular-sales-tools-container {
     float: left;
+    margin-bottom: 5em;
 
-    .section-title {font-size: 2.6em; margin-bottom: 1em;}
+    .section-title {font-size: 2.5em; margin-bottom: 1em;}
   }
 
   .more-sales-tools-container,
@@ -796,6 +813,21 @@ article {
 
   } /* END .additonal-landing-pages-and-motivation */
 
+
+  .footer-motivational-video {
+    background: url('/wp-content/themes/justsell/resources/images/landing-pages/homepage/engaging-backgrounds/sales-header-woman-man-orange-overlay-1366x550.jpg') no-repeat $justsell-theme-orange;
+    background-size: cover;
+    clear: both;
+    color: #FFF;
+    min-height: 500px;
+    padding: 5em;
+    text-align: center;
+
+    .title {color: #FFF;}
+    .subtitle {margin-bottom: 0;}
+  } /* END .footer-motivational-video */
+        
+
   .more-sales-tools-container {
     width: 30%;
 
@@ -806,6 +838,10 @@ article {
     } /* END .post-info */
 
   } /* END .more-sales-tools-container */
+
+  .motivational-video {
+    .post-teaser-image {max-width: 400px;}    
+  } /* END .motivational-video */
 
   .popular-sales-tools-container {
     width: 40%;
@@ -869,11 +905,12 @@ article {
 
   .archive-post-list {margin-bottom: 4em;}
 
-  .inner-container {max-width: $desktop-medium-max-width; width: $desktop-large-width;}
+  .inner-container {max-width: $desktop-medium-max-width; width: $desktop-large-width-percentage;}
 
   .post {
     background: #FFF;
     margin-bottom: 2em;
+    @include box-shadow( 0, 1px, 2px, rgba(0, 0, 0, 0.4) );
 
     &:last-child {margin-bottom: 0;}
 
@@ -975,3 +1012,20 @@ article {
 
   } /* END .category-lp */
 } /* END max-width: 800px */
+
+
+@media (max-width: 600px){
+
+  .homepage {
+
+    .more-sales-tools-container, .motivational-landing-pages,
+    .motivational-video,  .popular-sales-tools-container {float: none; width: 100%;}
+
+    .section-title, .additional-landing-pages-and-motivation .section-title {font-size: 3em;}
+
+    .motivational-video {margin-bottom: 5em;}
+
+  } /* END .homepage */
+
+} /* END max-width: 650px */
+    

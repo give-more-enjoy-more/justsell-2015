@@ -14,7 +14,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
 /*
  * Run the default modal ajax processing if the required modal variable 'modalType' is set in $_POST
  */
-if( isset($_POST["modalType"]) && !isset($_POST["videoEmailSubmit"]) && !isset($_POST["postEtfFormSubmit"]) ){
+if( isset($_POST["modalType"]) && !isset($_POST["captureEmailSubmit"]) && !isset($_POST["postEtfFormSubmit"]) && !isset($_POST["videoEmailSubmit"]) ){
 
 	/* Set any passed default global modal vars from post */
 	$post_id =  isset($_POST["modalPostID"]) ? $_POST["modalPostID"] : '';
@@ -61,13 +61,18 @@ if( isset($_POST["modalType"]) && !isset($_POST["videoEmailSubmit"]) && !isset($
 /*
  * This will run after the modal video capture form is submitted.
  */
-if( isset($_POST["videoEmailSubmit"]) ){
+if( isset($_POST["captureEmailSubmit"]) || isset($_POST["videoEmailSubmit"]) ){
 
 	/* Set default form submission vars from post */
-	$captured_email = isset($_POST["videoEmail"]) ? $_POST["videoEmail"] : '';
 	$errors = array();
-	$modal_type = isset($_POST["modalType"]) ? $_POST["modalType"] : '';
 	$modal_id = isset($_POST["modalID"]) ? $_POST["modalID"] : '';
+	$modal_type = isset($_POST["modalType"]) ? $_POST["modalType"] : '';
+
+	if ($modal_type == 'capture-before-download'){
+		$captured_email = isset($_POST["captureEmail"]) ? $_POST["captureEmail"] : '';
+	} else {
+		$captured_email = isset($_POST["videoEmail"]) ? $_POST["videoEmail"] : '';
+	}
 
 	/* Validate the entered email and set the error variable if not valid. */
 	if(strlen($captured_email) <= 0){
@@ -198,6 +203,9 @@ function process_book_modal(){
  */
 function process_capture_before_download_modal(){
 
+	/* Initilize global variables needed by this function. By default, variables in functions have local scope, and need to be set to global to access vars set outside the function. */
+	global $modal_type, $modal_id;
+
 	/* Initilize function specific vars needed */
  	$cookie_not_created = !is_capture_cookie_set(); /* is_capture_cookie_set in global functions file */
 	$show_video_capture = is_null( $_POST["showCapture"] );
@@ -246,7 +254,7 @@ function process_capture_before_download_modal(){
 						var action = $(form).attr('action');
 
 						$.post(action, $(form).serialize(), function(data) {
-							$('.video-email-capture-form, .video-overlay').fadeOut(200);
+							$('.thumbnail-left-20-percent').children().removeClass('launch-modal');
 
 							/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
 							// ga('send', 'event', 'Video Email Signup', 'Click', 'Email Captured From Video');
@@ -383,7 +391,7 @@ function process_post_etf_modal(){
 					$.post(action, $(form).serialize(), function(data) {
 						$('#postEtfForm').fadeOut(200, function(){
 
-							$('<h1>Thanks!</h1>').appendTo('.remodal-content-container').hide().fadeIn(200);
+							$('<h3 class=\"title\">The email is on its way.</h3><p class=\"subtitle\">Thanks for sharing the sales tool.</p>').appendTo('.remodal-content-container').hide().fadeIn(200);
 
 						});
 
@@ -434,7 +442,6 @@ function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_e
 			<html xmlns="http://www.w3.org/1999/xhtml">
 			<head>
 				<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-				<title>inspiring posters & mini-posters</title>
 			</head>
 
 			<body style="background:#F2F2F2; padding:0; margin:0;">
@@ -716,7 +723,7 @@ function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_e
 								</p>
 
 								<p style="color:#656565; font-family:helvetica, arial, sans-serif; font-size:14px; line-height:22px; margin-bottom:1.5em; margin-top:0; text-align:center;">
-									&copy; by Give More Media Inc. &nbsp;|&nbsp; <a href="http://www.givemore.com/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+givemore&utm_campaign=justsell+post+etf" style="color:#656565;">www.GiveMore.com</a><br />
+									&copy; by Give More Media Inc. &nbsp;|&nbsp; <a href="http://www.justsell.com/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+justsell&utm_campaign=justsell+post+etf" style="color:#656565;">www.JustSell.com</a><br />
 									115 South 15th Street, Suite 502, Richmond, VA 23219
 								</p>
 							</td></tr>
@@ -748,6 +755,93 @@ function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_e
 See the sales tool
 '.$post_etf_permalink.'
 --
+
+-------------
+
+Ideas to motivate people...
+
+Inspire a little extra effort and attention. 212 the extra degree
+http://www.givemore.com/212-the-extra-degree/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+212+the+extra+degree&utm_campaign=justsell+post+etf
+
+Encourage better attitudes and service. Smile & Move
+http://www.givemore.com/smile-and-move/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+smile+and+move&utm_campaign=justsell+post+etf
+
+Inspire commitment, effort, and resilience. Cross The Line
+http://www.givemore.com/cross-the-line/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+cross+the+line&utm_campaign=justsell+post+etf
+
+Encourage more trust and accountability. Love Your People
+http://www.givemore.com/love-your-people/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+love+your+people&utm_campaign=justsell+post+etf
+
+No fluff. No parables. No matrixes. Just truth. Lead [simply]
+http://www.givemore.com/lead-simply/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+lead+simply&utm_campaign=justsell+post+etf
+
+-------------
+
+
+Need a speaker for your next event?
+Sam\'s thoughts and ideas have inspired thousands of people. He\'s the guy behind this stuff. Maybe he can help your organization.
+
+
+Click below to learn about Sam or call (866) 952-4483
+http://www.givemore.com/speaking/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+learn+about+sam&utm_campaign=justsell+post+etf
+
+
+-------------
+
+
+Upcoming meeting, project, or event?
+
+Our fresh no-fluff messages, handouts, and themes can help you kick it off or support it by making it more interesting and meaningful.
+
+------
+Books
+http://www.givemore.com/books-and-booklets/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+books&utm_campaign=justsell+post+etf
+
+------
+Videos
+http://www.givemore.com/videos/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+videos&utm_campaign=justsell+post+etf
+
+------
+Meeting Packages
+http://www.givemore.com/meetings-discussions/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+meeting+packages&utm_campaign=justsell+post+etf
+
+------
+PowerPoint(R) Slides
+http://www.givemore.com/presentations/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+powerpoint+slides&utm_campaign=justsell+post+etf
+
+------
+Pocket Cards
+http://www.givemore.com/category/pocket-cards/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+pocket+cards&utm_campaign=justsell+post+etf
+
+------
+Wristbands
+http://www.givemore.com/category/wristbands/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+wristbands&utm_campaign=justsell+post+etf
+
+------
+Posters & Banners
+http://www.givemore.com/category/posters-and-prints/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+posters+and+banners&utm_campaign=justsell+post+etf
+
+------
+Gifts & Gear
+http://www.givemore.com/gear/?utm_source=js-post-etf&utm_medium=email&utm_content=footer+-+gifts+and+gear&utm_campaign=justsell+post+etf
+
+
+-------------
+
+Connect with us:
+------
+
+Facebook: https://www.facebook.com/nogomos
+
+Twitter: https://twitter.com/give_more
+
+Google+: https://plus.google.com/114883118757655241133/
+
+LinkedIn: http://www.linkedin.com/company/givemore-com
+
+Instagram: http://instagram.com/givemoreenjoymore
+
+Pinterest: http://www.pinterest.com/givemoremedia/
 
 -------------
 We\'re real people here and we\'d love to help you. Really.

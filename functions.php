@@ -5,8 +5,16 @@ remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
 
+/* [ Add an excerpt field to Pages. By default only post have the excerpt field ]
+----------------------------------------------------------------------------------*/
+add_action( 'init', 'add_excerpts_to_pages' );
+function add_excerpts_to_pages() {
+	add_post_type_support( 'page', 'excerpt' );
+}
+
+
 /* [ Returns the string 'post-id-#' where '#' is specific to page or post ]
--------------------------------------------------------------------------------------------------------------------------------------- */
+---------------------------------------------------------------------------*/
 if ( !function_exists('post_or_page_specific_class') ) {
 	function post_or_page_specific_class() {
 
@@ -45,7 +53,8 @@ if ( !function_exists('post_or_page_specific_class') ) {
 
 		return $class;
 
-	}
-}
+	} /* END post_or_page_specific_class */
+			
+} /* END if function exists post_or_page_specific_class */
 
 ?>

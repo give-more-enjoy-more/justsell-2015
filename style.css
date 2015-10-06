@@ -400,6 +400,7 @@ nav {
     nav .justsell-logo img {
       display: block;
       height: auto;
+      max-width: 180px;
       width: 100%; }
   nav .inner-container {
     max-width: 960px;
@@ -412,6 +413,7 @@ nav {
       display: inline-block;
       font-size: 0.7em;
       font-size: 1.5rem;
+      font-weight: 600;
       margin-right: 2.5em; }
       nav .navigation-items .item:last-child {
         margin-right: 0; }
@@ -572,6 +574,11 @@ article {
     height: auto;
     margin-bottom: 3em;
     width: 100%; }
+  article .post-pdf-request {
+    background: #FFF;
+    margin-bottom: 4em;
+    padding: 3em;
+    text-align: center; }
   article .post-promotion {
     margin-bottom: 4em;
     text-align: center; }
@@ -611,7 +618,7 @@ article {
   border-bottom: 1px solid #E5E5E5;
   border-top: 1px solid #E5E5E5;
   margin: 0 auto;
-  max-width: 1280px;
+  max-width: 960px;
   padding: 4em 0;
   text-align: center;
   width: 80%; }
@@ -832,19 +839,29 @@ article {
 .homepage {
   /* END .more-sales-tools-container, .popular-sales-tools-container */
   /* END .additonal-landing-pages-and-motivation */
+  /* END .footer-motivational-video */
   /* END .more-sales-tools-container */
+  /* END .motivational-video */
   /* END .popular-sales-tools-container */
   /* END .post-info */ }
   .homepage header {
-    margin-bottom: 5em; }
+    background: url("/wp-content/themes/justsell/resources/images/landing-pages/homepage/engaging-backgrounds/conference-room-group-meeting-blue-overlay-1366x500.jpg") no-repeat #3498DB;
+    background-size: cover;
+    margin-bottom: 5em;
+    padding: 8em 0;
+    text-align: center; }
+    .homepage header .about-us {
+      background: #FFF;
+      padding: 2em; }
   .homepage .additional-landing-pages-and-motivation,
   .homepage .more-sales-tools-container,
   .homepage .popular-sales-tools-container {
-    float: left; }
+    float: left;
+    margin-bottom: 5em; }
     .homepage .additional-landing-pages-and-motivation .section-title,
     .homepage .more-sales-tools-container .section-title,
     .homepage .popular-sales-tools-container .section-title {
-      font-size: 2.6em;
+      font-size: 2.5em;
       margin-bottom: 1em; }
   .homepage .more-sales-tools-container,
   .homepage .popular-sales-tools-container {
@@ -866,6 +883,18 @@ article {
       margin-bottom: 5em; }
     .homepage .additional-landing-pages-and-motivation .motivational-landing-pages .post-teaser-image {
       margin-bottom: 0; }
+  .homepage .footer-motivational-video {
+    background: url("/wp-content/themes/justsell/resources/images/landing-pages/homepage/engaging-backgrounds/sales-header-woman-man-orange-overlay-1366x550.jpg") no-repeat #DA8D30;
+    background-size: cover;
+    clear: both;
+    color: #FFF;
+    min-height: 500px;
+    padding: 5em;
+    text-align: center; }
+    .homepage .footer-motivational-video .title {
+      color: #FFF; }
+    .homepage .footer-motivational-video .subtitle {
+      margin-bottom: 0; }
   .homepage .more-sales-tools-container {
     width: 30%;
     /* END .post-info */ }
@@ -873,6 +902,8 @@ article {
       font-size: 1.5em; }
     .homepage .more-sales-tools-container .post-info .post-excerpt {
       font-size: 1.6em; }
+  .homepage .motivational-video .post-teaser-image {
+    max-width: 400px; }
   .homepage .popular-sales-tools-container {
     width: 40%;
     /* END .post-info */ }
@@ -931,6 +962,9 @@ article {
   .category-lp .post {
     background: #FFF;
     margin-bottom: 2em;
+    -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     /* END .post-teaser-image */
     /* END .post-title */ }
     .category-lp .post:last-child {
@@ -1324,3 +1358,15 @@ html.remodal-is-locked {
 
   /* END .category-lp */ }
 /* END max-width: 800px */
+@media (max-width: 600px) {
+  .homepage .more-sales-tools-container, .homepage .motivational-landing-pages,
+  .homepage .motivational-video, .homepage .popular-sales-tools-container {
+    float: none;
+    width: 100%; }
+  .homepage .section-title, .homepage .additional-landing-pages-and-motivation .section-title {
+    font-size: 3em; }
+  .homepage .motivational-video {
+    margin-bottom: 5em; }
+
+  /* END .homepage */ }
+/* END max-width: 650px */
