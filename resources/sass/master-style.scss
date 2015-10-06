@@ -292,6 +292,7 @@ p.error {font-size: 1.8em;}
   input[type="submit"] {margin-left: -0.5em;}
 
   p.error {margin-bottom: 0;}
+  p.title {font-size: 1.8em;}
 
 } /* END .single-input-form */
 
@@ -784,7 +785,7 @@ article {
       .post-excerpt {font-size: 1.5em;}
     } /* END .post-info */
 
-    .motivational-landing-page {
+    .motivational-landing-pages {
       .cta-btn {
         font-size: 1.4em;
         .flat-btn {color: #FFF; display: block;}
@@ -935,15 +936,30 @@ article {
 @media (max-width: 960px){
 
   .about-the-author {
-    .author-bio {
+    .author-bio {float: none; width: 100%;}
+    .author-headshot {display: none;}
+  }  /* END .about-the-author */
+
+  .homepage {
+    .additional-landing-pages-and-motivation {
+      clear: both;
       float: none;
       width: 100%;
+      .section-title {font-size: 2em;}
     }
+    .more-sales-tools-container {margin-right: 0; width: 35%;}
+    .popular-sales-tools-container {width: 55%; margin-right: 10%;}
+    .motivational-landing-pages, .motivational-video {float: left;}
+    .motivational-landing-pages {
+      width: 65%;
+      .post-info {float: left; width: 30%; margin-right: 5%;}
+      .post-info.last {margin-right: 0;}
+    }
+    .motivational-video {margin-right: 10%; width: 25%;}
+  } /* END .homepage */
 
-    .author-headshot {
-      display: none;
-    }
-  }  /* END about-the-author */
+  .inner-container {width: 90%;}
+
 } /* END max-width: 960px */
 
 

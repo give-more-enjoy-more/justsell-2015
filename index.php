@@ -20,8 +20,8 @@
 		<header></header>
 
 		<section class="popular-sales-tools-container">
-			
-			<h3 class="section-title">Popular Sales Tools</h2>
+
+			<h3 class="section-title">Popular Sales Tools</h3>
 
 			<?php
 				/* Variables for Popular Sales Tools Articles */
@@ -77,7 +77,7 @@
 
 		<section class="more-sales-tools-container">
 
-			<h3 class="section-title">More Sales Tools</h2>
+			<h3 class="section-title">More Sales Tools</h3>
 
 			<?php
 				/* Variables for Popular Sales Tools Articles */
@@ -134,24 +134,25 @@
 
 		<section class="additional-landing-pages-and-motivation">
 
-			<h3 class="section-title">Inspire Your Team</h2>
-
 			<div class="motivational-video">
+
+				<h3 class="section-title">Inspire Your Team</h3>
 
 				<div class="post-info">
 					<a href="http://www.givemore.com/212-the-extra-degree/" class="post-teaser-image event-trigger launch-modal" data-modal-type="video" data-modal-id="tt" data-event-fields='{"category":"Video Popup Launch","action":"Click","label":"Video Preview - TT"}'>
 						<img src="<?php echo bloginfo('template_directory') ?>/resources/images/landing-pages/homepage/motivational-video/212-video-195x110.jpg" alt="212 the extra degree video" />
 					</a>
 
-					<p class="post-excerpt">This 3-minute will get your team fired up to do better work. watch now...</p>
+					<p class="post-excerpt">This 3-minute will get your team fired up to do better work.</p>
 					<p class="cta-btn"><a href="http://www.givemore.com/212-the-extra-degree/" class="event-trigger launch-modal" data-modal-type="video" data-modal-id="tt" data-event-fields='{"category":"Video Popup Launch","action":"Click","label":"Video Preview - TT"}'>watch now...</a></p>
 				</div>
 
 			</div> <?php /* END .motivational-video */ ?>
 
-			<h3 class="section-title">More Motivation</h2>
+			<div class="motivational-landing-pages">
 
-			<div class="motivational-landing-page">
+				<h3 class="section-title">More Motivation</h3>
+
 				<div class="post-info">
 					<a href="/sales-meetings/" class="post-teaser-image">
 						<img src="<?php echo bloginfo('template_directory') ?>/resources/images/landing-pages/homepage/landing-page-thumbnails/sales-meetings-195x125.jpg" alt="" />
@@ -166,13 +167,14 @@
 					<p class="cta-btn"><a href="/reminders-and-gear/" class="flat-btn">Reminders &amp; Gear</a></p>
 				</div>
 
-				<div class="post-info">
-					<a href="/sales-month-calendars/" class="post-teaser-image">
+				<div class="post-info last">
+					<a href="/justsell-monthly-calendars/" class="post-teaser-image">
 						<img src="<?php echo bloginfo('template_directory') ?>/resources/images/landing-pages/homepage/landing-page-thumbnails/monthly-printable-calendars-195x125.jpg" alt="" />
 					</a>
-					<p class="cta-btn"><a href="/sales-month-calendars/" class="flat-btn">Printable Calendars</a></p>
+					<p class="cta-btn"><a href="/justsell-monthly-calendars/" class="flat-btn">Printable Calendars</a></p>
 				</div>
-			</div>
+
+			</div> <?php /* END .motivational-landing-pages */ ?>
 
 		</section> <?php /* END .additional-landing-pages-and-motivation */ ?>
 
