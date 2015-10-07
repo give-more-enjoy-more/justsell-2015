@@ -41,7 +41,7 @@ $(document).ready(function() {
 
 
 	/* Bypass the default modal window functionality to make ajax loading possible */
-	$('.launch-modal').on('mousedown', function(e){
+	$('.launch-modal').on('click', function(e){
 
 		e.preventDefault();
 
@@ -75,11 +75,11 @@ $(document).ready(function() {
 		}); /* END $.post */
 
 		/* Removes the right click menu option from links with a 'launch-modal' class and modal type of 'capture-before-download' */
-		if (dataModalType === 'capture-before-download'){
-			$(this).on("contextmenu",function(){
-				return false;
-			});
-		}
+//		if (dataModalType === 'capture-before-download'){
+//			$(this).on("contextmenu",function(){
+//				return false;
+//			});
+//		}
 
 	}); /* END .launch-modal on click callback function */
 
@@ -88,13 +88,13 @@ $(document).ready(function() {
 	 * This is called when the modal is closing and will remove the entire modal from the DOM.
 	 * This was primarily put in place to keep the video modals from playing in the background.
 	 */
-//	$(document).on('closing', '.remodal', function(e){
-//		var inst = $('[data-remodal-id=modal]').remodal();
-//
-//		if (inst.getState() === 'closing'){
-//			inst.destroy();
-//		}
-//	});
+	$(document).on('closing', '.remodal', function(e){
+		var inst = $('[data-remodal-id=modal]').remodal();
+
+		if (inst.getState() === 'closing'){
+			inst.destroy();
+		}
+	});
 
 
 	/* Google Analytics Event Tracking function. Simply place class 'event-trigger' to tag, and pass data like the example below. */
@@ -154,7 +154,7 @@ $(document).ready(function() {
 
 			$.post(action, $(form).serialize(), function() {
 				$('.footer-subscriber-acquisition .inner-container').fadeOut(300, function(){
-					$('<div class="inner-container"><p>Thanks for signing up! Sam\'s emails will come from GiveMore.com.</p><h3>We hope they inspire you!</h3></div>').hide().appendTo('.footer-subscriber-acquisition').fadeIn(300);
+					$('<div class="inner-container"><h3 class=\"title\">Thanks for signing up!</h3><p class=\"subtitle\">Sam\'s emails will come from <a href="mailto:GoodThings@GiveMore.com">GoodThings@GiveMore.com</a>.</p></div>').hide().appendTo('.footer-subscriber-acquisition').fadeIn(300);
 				});
 
 				/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */

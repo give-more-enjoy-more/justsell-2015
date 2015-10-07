@@ -14,16 +14,22 @@ footer_subscriber_acquisition_control();
  */
 function display_footer_subscriber_acquisition_form($pre_form_content = '')
 {
+
+	if (is_single()){
+		$acquisition_copy = '<p><strong>Want more of Sam\'s thoughts?</strong></p><p>Enter your email to get more of his motivating ideas.</p>';
+	} else {
+		$acquisition_copy = '<p><strong>Become more valuable.</strong></p><p>Enter your email to get motivating thoughts and ideas.</p>';
+	}
+
 	/* Build the form and set it to the form_string variable. */
 	$form_output_string = '
 		<section class="footer-subscriber-acquisition">
 			<div class="inner-container">
 				'. $pre_form_content .'
-				<p><strong>Want more of Sam\'s thoughts?</strong></p>
-				<p>Enter your email to get more of his motivating ideas.</p>
+				'. $acquisition_copy .'
 				<form action="'. $_SERVER['REQUEST_URI'] .'" method="post" name="footerSubscriberAcquisitionForm" class="single-input-form" id="footer-subscriber-acquisition-form">
 					<input name="footerSubscriberAcquisitionEmail" type="text" placeholder="Enter your email here">
-					<input name="footerSubscriberAcquisitionSubmit" type="submit" value="Get inspired now">
+					<input name="footerSubscriberAcquisitionSubmit" type="submit" value="Get inspired">
 				</form>
 			</div>
 		</section>';
@@ -92,8 +98,8 @@ function process_footer_subscriber_acquisition_form()
 		echo '
 			<section class="footer-subscriber-acquisition">
 				<div class="inner-container">
-					<p>Thanks for signing up! Sam\'s emails will come from GiveMore.com.</p>
-					<h3>We hope they inspire you!</h3>
+					<h3 class=\"title\">Thanks for signing up!</h3>
+					<p class=\"subtitle\">Sam\'s emails will come from <a href="mailto:GoodThings@GiveMore.com">GoodThings@GiveMore.com</a>.</p>
 				</div>
 			</section>
 		';

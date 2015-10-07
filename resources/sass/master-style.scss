@@ -17,7 +17,8 @@
  *    08.2 - Product Placements
  *    08.3 - Specific Posts Formats
  *    08.4 - Sales Meeting LP
- *    08.5 - 404 LP
+ *    08.5 - Reminders & Gear LP
+ *    08.6 - 404 LP
  * 09.0 - Homepage
  * 10.0 - Archive/Category
  * 11.0 - Secondary Elements
@@ -63,6 +64,9 @@ textarea {
   font-weight: $primary-font-weight;
   line-height: 1.5;
 }
+
+a, a:visited {color: $justsell-theme-orange;}
+a:hover, a:focus{color: $justsell-theme-orange-hover;}
 
 h1, h2, h3, h4 {
   color: $body-copy-black;
@@ -307,6 +311,20 @@ p.error {font-size: 1.8em;}
   width: $desktop-large-width-percentage;
 }
 
+.engaging-background {
+  min-height: 400px;
+  position: relative;
+
+  .inner-container {
+    left: 10%;
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    @include transform-translateY(-50%);
+  }
+} /* END .engaging-background */
+
+
 
 /* 05.02 - Utility Classes */
 .clear-both {clear: both;}
@@ -411,9 +429,21 @@ footer {
   background: $body-copy-black;
   color: #FFF;
 
-  a {color: #FFF;}
+  a {color: #FFF; text-decoration: none;}
+  
+  address {font-size: 1.2em;}
 
   .copyright-and-links {font-size: 1.4em; font-size: 1.4rem;}
+  .contact-attribute {
+    color: #CCC;
+    text-transform: uppercase;
+    &.email {margin-left: 2em;}
+  }
+
+  .general-info-copyright {float: left; width: 75%;}
+  .office-location {float: right; width: 20%;}
+  .office-map, .office-map img {display: block; height: auto; max-width: 200px; width: 100%;}
+  .office-map {margin-bottom: 1em;}
 
   .title {color: #FFF; margin-bottom: 0.2em;}
   .subtitle {border-bottom: 1px solid #FFF; margin-bottom: 1em; padding-bottom: 0.8em;}
@@ -561,7 +591,7 @@ article {
   text-align: center;
   width: $desktop-large-width-percentage;
 
-  &.bottom-placement {border-bottom: none; margin-bottom: 0;}
+  &.bottom-placement {margin-bottom: 0;}
   &.no-border {border: none;}
   &.no-padding {padding: 0;}
 
@@ -753,7 +783,50 @@ article {
 } /* END .sales-meetings-lp */
 
 
-/* 08.05 - 404 */
+/* 08.05 - Reminders & Gear LP */
+.reminders-and-gear-lp {
+  background:#E5E5E5;
+
+  header{
+    .inner-container {background: #FFF; padding: 3em; text-align: center; width: 65%;}
+    .subtitle {font-weight: 300; text-transform: none;}
+  } /* END header */
+
+
+  main {margin: 0 auto; max-width: $desktop-large-max-width;}
+  
+  .cta-container {
+    background: #FFF;
+    background: rgba(256, 256, 256, 0.9);
+    padding: 2.5em;
+    width: 40%;
+    
+    .title {margin-bottom: 0.2em;}
+    .gear-info {margin-bottom: 1em;}
+    .gear-cta {font-size: 2em; margin-bottom: 0;}
+  } /* END .cta-container */
+
+  .engaging-background {
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border-bottom: 20px solid #FFF;
+
+    &.gear {min-height: 530px;}
+  } /* END .engaging-background */
+
+  .last {border: none;}
+  .right-cta .cta-container{float: right;}
+
+  #banners-and-posters,
+  #framed-prints,
+  #mugs,
+  #note-cards {background-image: url('/wp-content/themes/justsell/resources/images/landing-pages/reminders-and-gear/engaging-backgrounds/gear-section-images-1366x550.jpg');}
+
+} /* END .reminders-and-gear-lp */
+
+
+/* 08.06 - 404 */
 .error-404-lp {
   margin-bottom: 6em;
   text-align: center;
@@ -782,9 +855,9 @@ article {
   .more-sales-tools-container,
   .popular-sales-tools-container {
     float: left;
-    margin-bottom: 5em;
+    margin-bottom: 3em;
 
-    .section-title {font-size: 2.5em; margin-bottom: 1em;}
+    .section-title {font-family: $secondary-font-family; font-size: 2.3em; font-weight: $secondary-font-weight; margin-bottom: 1em;}
   }
 
   .more-sales-tools-container,
@@ -822,11 +895,12 @@ article {
     min-height: 500px;
     padding: 5em;
     text-align: center;
-
-    .title {color: #FFF;}
+    
+    .play-video-cta {display: block; margin-bottom: 0.5em;}
+    .title {color: #FFF; font-size: 3.5em; font-weight: $primary-font-weight; margin: 0 auto 0.5em; line-height: 1.2; text-transform: none; width: 60%;}
     .subtitle {margin-bottom: 0;}
   } /* END .footer-motivational-video */
-        
+
 
   .more-sales-tools-container {
     width: 30%;
@@ -840,6 +914,7 @@ article {
   } /* END .more-sales-tools-container */
 
   .motivational-video {
+    margin-bottom: 4em;
     .post-teaser-image {max-width: 400px;}    
   } /* END .motivational-video */
 
@@ -855,8 +930,8 @@ article {
   .post-info {
     .cta-btn {
       font-size: 1.6em;
-      a {color: $justsell-theme-orange; text-decoration: none;}
-      a:hover {color: $justsell-theme-orange-hover;}
+      margin-bottom: 0;
+      a {text-decoration: none;}
     }
 
     .post-teaser-image {
@@ -868,6 +943,7 @@ article {
     .post-title {
       font-size: 2em;
       margin-bottom: 0.5em;
+      text-transform: none;
 
       a {color: $body-copy-black; text-decoration: none;}
     }
@@ -972,10 +1048,20 @@ article {
  */
 @media (max-width: 960px){
 
+  footer {
+    .general-info-copyright, .office-location {float: none; width: 100%;}
+    .general-info-copyright {margin-bottom: 3em;}
+
+  } /* END footer */
+
   .about-the-author {
     .author-bio {float: none; width: 100%;}
     .author-headshot {display: none;}
   }  /* END .about-the-author */
+
+  .engaging-background {
+    .inner-container {left: 5%; right: 5%;}
+  }
 
   .homepage {
     .additional-landing-pages-and-motivation {
@@ -1002,29 +1088,31 @@ article {
 
 @media (max-width: 800px){
   .category-lp {
-
     .post {
-
       .post-info, .post-teaser-image {float: none; width: 100%;}
       .post-teaser-image {max-height: 250px; overflow: hidden;}
-
     } /* END .post */
-
   } /* END .category-lp */
+
+  .reminders-and-gear-lp {
+    .gear.engaging-background {
+      border-bottom: none;
+      .inner-container {bottom: 0; left: 0; right: 0; top: auto; transform: none; width: 100%;}
+      .cta-container {width: 100%;}
+    }
+    .gear.last {border-bottom: 20px solid #D8D8D8;}
+  } /* END .reminders-and-gear-lp */
+
 } /* END max-width: 800px */
 
 
 @media (max-width: 600px){
 
   .homepage {
-
     .more-sales-tools-container, .motivational-landing-pages,
     .motivational-video,  .popular-sales-tools-container {float: none; width: 100%;}
-
     .section-title, .additional-landing-pages-and-motivation .section-title {font-size: 3em;}
-
     .motivational-video {margin-bottom: 5em;}
-
   } /* END .homepage */
 
 } /* END max-width: 650px */

@@ -391,7 +391,7 @@ function process_post_etf_modal(){
 					$.post(action, $(form).serialize(), function(data) {
 						$('#postEtfForm').fadeOut(200, function(){
 
-							$('<h3 class=\"title\">The email is on its way.</h3><p class=\"subtitle\">Thanks for sharing the sales tool.</p>').appendTo('.remodal-content-container').hide().fadeIn(200);
+							$('<h3 class=\"title\">Thanks for sharing!</h3><p class=\"subtitle\">The email is on its way.</p>').appendTo('.remodal-content-container').hide().fadeIn(200);
 
 						});
 

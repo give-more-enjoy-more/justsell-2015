@@ -35,13 +35,29 @@
 
 
 		<footer>
-			<div class="inner-container">
-				<h4 class="title">JustSell.com is published by GiveMore.com</h4>
+			<div class="inner-container clear-fix">
 
-				<p class="subtitle">Since 1998, we've been providing no-fluff tools, ideas, and inspiration to help sales leaders sell more.</p>
+				<div class="general-info-copyright">
+					<h4 class="title">JustSell.com is published by GiveMore.com</h4>
 
-				<p class="copyright-and-links">Copyright &copy; by Give More Media Inc. If you'd like to tell people about this somewhere (e.g. blog, newsletter, Facebook, social media), please reference Sam Parker of GiveMore.com as the author and link directly to the article. Excerpts are great but please don't publish the article in its entirety without advanced written permission (email us at <a href="mailto:GoodThings@GiveMore.com?subject=reprint%20permission">GoodThings@GiveMore.com</a> with the subject line 'reprint permission').</p>
-			</div> <?php /* END .inner-container */ ?>
+					<p class="subtitle">Since 1998, we've been providing no-fluff tools, ideas, and inspiration to help sales leaders sell more.</p>
+
+					<p class="copyright-and-links">Copyright &copy; by Give More Media Inc. If you'd like to tell people about this somewhere (e.g. blog, newsletter, Facebook, social media), please reference Sam Parker of GiveMore.com as the author and link directly to the article. Excerpts are great but please don't publish the article in its entirety without advanced written permission (email us at <a href="mailto:GoodThings@GiveMore.com?subject=reprint%20permission">GoodThings@GiveMore.com</a> with the subject line 'reprint permission').</p>
+
+					<p class="copyright-and-links"><span class="contact-attribute">Phone</span> - <a href="tel:18669524483">1-866-952-4483</a> <span class="contact-attribute email">Email</span> - <a href="mailto:GoodThings@GiveMore.com">GoodThings@GiveMore.com</a></p>
+				</div> <?php /* END .general-info-copyright */ ?>
+
+				<div class="office-location">
+					<a class="office-map" href="https://www.google.com/maps/preview?q=115+South+15th+Street+Suite+502+Richmond,+VA+23219&ie=UTF-8&hq=&hnear=0x89b1111968e958ab:0x711b8eb839153665,115+S+15th+St+%23502,+Richmond,+VA+23219&gl=us&ei=f3t6U6jYNdapyASbrYKYAQ&ved=0CCcQ8gEwAA" target="_blank"><img src="<?php echo bloginfo('template_directory') ?>/resources/images/icons/throughout/footer-office-map-location-215x155.jpg" height="155" width="215" alt="Office Location" title="Office Location" /></a>
+					
+					<address>
+						115 South 15th Street<br />
+						Suite 502<br />
+						Richmond, VA 23219 USA
+					</address>
+				</div> <?php /* END .office-location */ ?>
+
+			</div> <?php /* END .inner-container .clear-fix */ ?>
 		</footer> <?php /* END footer */ ?>
 
 	</div> <?php /* END .content-container */ ?>
