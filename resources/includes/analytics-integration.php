@@ -1,5 +1,4 @@
 <?php /* GOOGLE ANALYTICS UNIVERSAL TRACKING CODE */ ?>
-<?php /*
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -9,12 +8,10 @@
   ga('create', 'UA-132731-1', 'auto');
   ga('send', 'pageview');
 </script>
-*/ ?>
 <?php /* END GOOGLE ANALYTICS UNIVERSAL TRACKING CODE */ ?>
 
 
 <?php /* INSPECTLET TRACKING CODE */ ?>
-<?php /*
 <script type="text/javascript" id="inspectletjs">
 	window.__insp = window.__insp || [];
 	__insp.push(['wid', 1576423672]);
@@ -23,5 +20,4 @@
 		document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
 	})();
 </script>
-*/ ?>
 <?php /* END INSPECTLET TRACKING CODE */ ?>

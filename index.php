@@ -20,7 +20,7 @@
 		<header class="engaging-background">
 			<div class="about-us inner-container">
 				<h1 class="title">No-fluff tips &amp; ideas to better selling.</h1>
-				<h2 class="subtitle">(95% of all you need to know)</h2>
+				<h2 class="subtitle">(95% of all you need to know ... and do)</h2>
 			</div>
 		</header>
 
@@ -31,8 +31,8 @@
 			<?php
 				/* Variables for Popular Sales Tools Articles */
 				$popular_sales_tool_1_url = '/top-30-open-ended-questions/';
-				$popular_sales_tool_2_url = '/how-to-focus/';
-				$popular_sales_tool_3_url = '/opening-statements/';
+				$popular_sales_tool_2_url = '/sales-management-checklist/';
+				$popular_sales_tool_3_url = '/how-to-focus/';
 			?>
 
 			<div class="sales-tool">
@@ -52,12 +52,12 @@
 			<div class="sales-tool">
  				<div class="post-info">
 					<a class="post-teaser-image" href="<?php echo $popular_sales_tool_2_url ?>">
-						<img src="<?php echo bloginfo('template_directory') ?>/resources/images/landing-pages/homepage/post-thumbnails/how-to-focus-485x180.jpg" alt="How to Focus" />
+						<img src="<?php echo bloginfo('template_directory') ?>/resources/images/landing-pages/homepage/post-thumbnails/opening-statements-485x180.jpg" alt="How to Focus" />
 					</a>
 
-		 			<h2 class="post-title"><a href="<?php echo $popular_sales_tool_2_url ?>">How to Focus</a></h2>
+		 			<h2 class="post-title"><a href="<?php echo $popular_sales_tool_2_url ?>">Sales Management Checklist</a></h2>
 
-					<p class="post-excerpt">5 simple ways to knock out distractions and stay committed to your prospects and customers.</p>
+					<p class="post-excerpt">The sales management fundamentals that will put you and your team in front of the pack ... and keep you there.</p>
 
 					<p class="cta-btn"><a href="<?php echo $popular_sales_tool_2_url ?>">read more...</a></p>
 				</div> <?php /* END .post-info */ ?>
@@ -66,12 +66,12 @@
 			<div class="sales-tool">
  				<div class="post-info">
 					<a class="post-teaser-image" href="<?php echo $popular_sales_tool_3_url ?>">
-						<img src="<?php echo bloginfo('template_directory') ?>/resources/images/landing-pages/homepage/post-thumbnails/opening-statements-485x180.jpg" alt="How to Focus" />
+						<img src="<?php echo bloginfo('template_directory') ?>/resources/images/landing-pages/homepage/post-thumbnails/how-to-focus-485x180.jpg" alt="How to Focus" />
 					</a>
 
-		 			<h2 class="post-title"><a href="<?php echo $popular_sales_tool_3_url ?>">Opening Statements</a></h2>
+		 			<h2 class="post-title"><a href="<?php echo $popular_sales_tool_3_url ?>">How to Focus</a></h2>
 
-					<p class="post-excerpt">Nobody really cares ... until you make them care. Learn how to craft leadoff statements that create immediate interest for further discussion.</p>
+					<p class="post-excerpt">5 simple ways to knock out distractions and stay committed to your prospects and customers.</p>
 
 					<p class="cta-btn"><a href="<?php echo $popular_sales_tool_3_url ?>">read more...</a></p>
 				</div> <?php /* END .post-info */ ?>
@@ -85,17 +85,17 @@
 
 			<?php
 				/* Variables for Popular Sales Tools Articles */
-				$more_sales_tool_1_url = '/the-8-objections/';
-				$more_sales_tool_2_url = '/sales-management-checklist/';
-				$more_sales_tool_3_url = '/sales-interview-questions/';
-				$more_sales_tool_4_url = '/the-8-objections/';
+				$more_sales_tool_1_url = '/sales-interview-questions/';
+				$more_sales_tool_2_url = '/opening-statements/';
+				$more_sales_tool_3_url = '/the-8-objections/';
+				$more_sales_tool_4_url = '/the-sales-process/';
 			?>
 
 			<div class="sales-tool">
  				<div class="post-info">
-		 			<h2 class="post-title"><a href="<?php echo $more_sales_tool_1_url ?>">The 8 Objections</a></h2>
+		 			<h2 class="post-title"><a href="<?php echo $more_sales_tool_1_url ?>">Sales Interview Questions</a></h2>
 
-					<p class="post-excerpt">Learn the 8 points behind every sales objection ... and how to turn them in your favor.</p>
+					<p class="post-excerpt">Looking for your next sales star or your dream sales job? Get past surface-level chat and start talking about the things that matter.</p>
 
 					<p class="cta-btn"><a href="<?php echo $more_sales_tool_1_url ?>">read more...</a></p>
 				</div> <?php /* END .post-info */ ?>
@@ -103,19 +103,20 @@
 
 			<div class="sales-tool">
  				<div class="post-info">
-		 			<h2 class="post-title"><a href="<?php echo $more_sales_tool_2_url ?>">Sales Management Checklist</a></h2>
+		 			<h2 class="post-title"><a href="<?php echo $more_sales_tool_2_url ?>">Opening Statements</a></h2>
 
-					<p class="post-excerpt">The sales management fundamentals that will put you and your team in front of the pack ... and keep you there.</p>
+					<p class="post-excerpt">Nobody really cares ... until you make them care. Learn how to craft leadoff statements that create immediate interest for further discussion.</p>
 
 					<p class="cta-btn"><a href="<?php echo $more_sales_tool_2_url ?>">read more...</a></p>
 				</div> <?php /* END .post-info */ ?>
 			</div> <?php /* END .sales-tool */ ?>
 
+
 			<div class="sales-tool">
  				<div class="post-info">
-		 			<h2 class="post-title"><a href="<?php echo $more_sales_tool_3_url ?>">Sales Interview Questions</a></h2>
+		 			<h2 class="post-title"><a href="<?php echo $more_sales_tool_3_url ?>">The 8 Objections</a></h2>
 
-					<p class="post-excerpt">Looking for your next sales star or your dream sales job? Get past surface-level chat and start talking about the things that matter.</p>
+					<p class="post-excerpt">Learn the 8 points behind every sales objection ... and how to turn them in your favor.</p>
 
 					<p class="cta-btn"><a href="<?php echo $more_sales_tool_3_url ?>">read more...</a></p>
 				</div> <?php /* END .post-info */ ?>
@@ -123,9 +124,9 @@
 
 			<div class="sales-tool">
  				<div class="post-info">
-		 			<h2 class="post-title"><a href="<?php echo $more_sales_tool_4_url ?>">The 8 Objections</a></h2>
+		 			<h2 class="post-title"><a href="<?php echo $more_sales_tool_4_url ?>">The Sales Process</a></h2>
 
-					<p class="post-excerpt">Learn the 8 points behind every sales objection ... and how to turn them in your favor.</p>
+					<p class="post-excerpt">The laws and principles behind sales haven't changed. Here's the bottom line for your records - fluff removed.</p>
 
 					<p class="cta-btn"><a href="<?php echo $more_sales_tool_4_url ?>">read more...</a></p>
 				</div> <?php /* END .post-info */ ?>

@@ -41,7 +41,7 @@
 
 							<p class="post-excerpt"><?php echo get_the_excerpt(); ?></p>
 
-							<p class="cta-btn"><a class="flat-btn" href="<?php echo get_permalink(); ?>">Read It!</a></p>
+							<p class="cta-btn"><a class="flat-btn" href="<?php echo get_permalink(); ?>">Read more</a></p>
 						</div> <?php /* END .post-info */ ?>
 
 					</li>

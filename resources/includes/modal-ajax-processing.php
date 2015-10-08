@@ -257,7 +257,7 @@ function process_capture_before_download_modal(){
 							$('.thumbnail-left-20-percent').children().removeClass('launch-modal');
 
 							/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
-							// ga('send', 'event', 'Video Email Signup', 'Click', 'Email Captured From Video');
+							ga('send', 'event', 'Content Download Email Capture', 'Click', 'Email Captured From Post Resource Download Acquisition Form');
 
 						});
 					}

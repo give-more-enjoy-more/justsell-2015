@@ -629,7 +629,7 @@ article {
 .post-id-36 {background: #FFF;} /* THE SALES PROCESS */
 .post-id-39 {background: #D8F6CB;} /* SALES MANAGEMENT CHECKLIST */
 
-.post-id-43 {
+.post-id-60 {
   article{max-width:960px;}
 } /* JUSTSELL MONTHLY CALENDARS */
 
@@ -639,12 +639,12 @@ article {
 
   background:#E5E5E5;
 
-  main {margin: 0 auto; width:1260px;}
+  main {margin: 0 auto; max-width: $desktop-large-max-width;}
 
   header {
-    background: url('/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/sales-header-woman-man-1260x775.jpg') no-repeat center #F2BB40;
+    background: url('/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/engaging-backgrounds/sales-header-woman-man-1260x775.jpg') no-repeat center #F2BB40;
     color:#FFF;
-    padding:210px 0 240px;
+    min-height:700px;
     text-align:center;
 
     .title {
@@ -652,14 +652,15 @@ article {
       font-size:4.2em;
       font-weight:300;
       line-height:1;
-      margin-bottom:0.6em;
+      margin: 0 auto 0.6em;
+      max-width: 800px;
       text-transform: none;
     }
   } /* END header */
 
   .who-we-are {
     background:#46505A;
-    padding:6.5em 0 9em;
+    padding:5em 3em 9em;
     text-align:center;
 
     .title {
@@ -667,6 +668,8 @@ article {
       font-size:3.4em;
       font-weight:300;
       line-height:1.2;
+      margin: 0 auto;
+      max-width: 800px;
       position:relative;
       text-transform: none;
 
@@ -684,112 +687,52 @@ article {
 
   .how-we-can-help{
     background:#FFF;
-    padding:50px 70px;
+    padding:5%;
 
     .branded-solution {
       border:1px solid #E5E5E5;
       float:left;
-      height:260px;
-      margin:0 70px 40px 0;
-      padding:25px 40px;
-      width:325px;
-      @include transition(.5s);
+      margin:0 5% 5% 0;
+      min-width: 250px;
+      padding:2em 4em;
+      width:30%;
+      // @include transition(.5s);
       @include box-sizing(border-box);
 
       &.active-hover-state {background:url('/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/gray-blue-white-angled-pinstripe-background-seamless-200x200.jpg') repeat center;}
       &.active-hover-state .brand-solution-tagline {color:#FFF;}
-      &.active-hover-state .white-btn {
-        color:#FFF;
-        border-color:#FFF;
-      }
-
+      &.active-hover-state .white-btn {color:#FFF; border-color:#FFF;}
       &.last{margin-right:0;}
-    }
+    } /* END .branded-solution */
 
-    .brand-logo {
-      border-bottom:2px solid #F2BB40;
-      display:block;
-      margin-bottom:1em;
-    }
-
-    .brand-solution-tagline {
-      color:#4C4C4C;
-      font-size:2.6em;
-      line-height:1.2;
-    }
-
+    .brand-logo, .brand-logo img{display:block; height:auto; max-width:350px; width:100%;}
+    .brand-logo {border-bottom:2px solid #F2BB40; margin-bottom:1em; padding-bottom:0.5em;}
+    .brand-solution-tagline {color:#4C4C4C; font-size:2.6em; line-height:1.2;}
     .brand-cta {font-size:1.4em;}
-
     .flat-btn {margin-right:1em;}
-
     .section-title {color:#333333;}
   } /* END .how-we-can-help */
 
   .our-products {
     background:#F2BB40;
 
-    .engaging-image {
-      float:left;
-      height:480px;
-      width:475px;
-    }
-
-    .our-product-offer {
-      float:left;
-      padding:65px 100px 0;
-      width:785px;
-    }
+    .engaging-image {float:left; height:auto; width:35%;}
+    .our-product-offer {float:left; padding:4% 0 0 7%; width:65%;}
 
     .category {color: $body-copy-black;}
 
-    .contact-prompt {
-      color:#FFF;
-      font-size:2em;
-      font-weight:300;
-    }
+    .contact-prompt {color:#FFF; margin-bottom:0;}
+    .contact-prompt a {color:#FFF; text-decoration:underline;}
+    .contact-prompt .chat-bubble-icons {float:left; margin-right:1em; padding-top:0.6em;}
 
-    .contact-prompt a {
-      color:#FFF;
-      text-decoration:underline;
-    }
-
-    .contact-prompt .chat-bubble-icons {
-      float:left;
-      margin-right:1em;
-      padding-top:0.6em;
-    }
-
-    .product-category-list {
-      float: left;
-      font-size: 1em;
-      list-style: none;
-      margin-bottom: 3em;
-      width: 50%;
-    }
-
-    .product-category {
-      font-size:1.8em;
-      font-weight:300;
-      text-transform:uppercase;
-      line-height:2.5;
-    }
+    .product-category-list {float:left; font-size:1em; list-style: none; margin-bottom:2em; width:50%;}
+    .product-category {font-size:1.8em; text-transform:uppercase; line-height:2.5;}
 
     .section-subtitle,
-    .section-title {
-      color:#FFF;
-      text-align:left;
-    }
-
-    .section-subtitle {
-      font-size:1.8em;
-      margin-bottom:0.5em;
-    }
-
+    .section-title {color:#FFF; text-align:left;}
+    .section-subtitle {font-size:1.8em; margin-bottom:0.5em;}
     .section-title {margin-bottom:0.4em;}
-    .section-title.with-subtitle {
-      line-height:1;
-      margin-bottom:0;
-    }
+    .section-title.with-subtitle {line-height:1; margin-bottom:0;}
   } /* END .our-products */
 
   .section-title{font-size:3.6em; font-weight:300; text-align:center;}
@@ -1060,6 +1003,29 @@ article {
  *
  *
  */
+@media (max-width: 1200px){
+
+  .sales-meetings-lp {
+    .how-we-can-help{
+      padding: 5% 10%;
+
+      .branded-solution {
+        width: 45%;
+        margin: 0 10% 8% 0;
+        &.last {margin-right: 10%;}
+        &.second {margin-right: 0;}
+      }
+    } /* END .how-we-can-help */
+
+    .our-products {
+      .product-category {font-size: 1.5em;}
+    } /* END .our-products */
+
+  } /* END .sales-meetings-lp */
+
+} /* END max-width: 1200px */
+
+
 @media (max-width: 960px){
 
   footer {
@@ -1068,14 +1034,17 @@ article {
 
   } /* END footer */
 
+
   .about-the-author {
     .author-bio {float: none; width: 100%;}
     .author-headshot {display: none;}
   }  /* END .about-the-author */
 
+
   .engaging-background {
     .inner-container {left: 5%; right: 5%;}
   }
+
 
   .homepage {
     .additional-landing-pages-and-motivation {
@@ -1095,9 +1064,39 @@ article {
     .motivational-video {margin-right: 10%; width: 25%;}
   } /* END .homepage */
 
+
   .inner-container {width: 90%;}
 
 } /* END max-width: 960px */
+
+
+
+@media (max-width: 900px){
+
+  .sales-meetings-lp {
+    .how-we-can-help{
+      padding: 10% 20%;
+
+      .branded-solution {
+        clear: left;
+        width: 100%;
+        margin: 0 0 10% 0;
+        &.last {margin-right: 0;}
+        &.second {margin-right: 0;}
+      }
+    } /* END .how-we-can-help */
+
+    .our-products {
+      float: none;
+      padding: 10%;
+
+      .our-product-offer {padding:0; width:100%;}
+      .engaging-image {display: none;}
+    } /* END .our-products */
+  } /* END .sales-meetings-lp */
+
+} /* END max-width: 1200px */
+
 
 
 @media (max-width: 800px){
@@ -1127,11 +1126,23 @@ article {
 
 @media (max-width: 600px){
 
+  footer {
+    .copyright-and-links {font-size:1.2em;}
+  }
+
   .homepage {
     .more-sales-tools-container, .motivational-landing-pages,
     .motivational-video,  .popular-sales-tools-container {float: none; width: 100%;}
     .section-title, .additional-landing-pages-and-motivation .section-title {font-size: 3em;}
     .motivational-video {margin-bottom: 5em;}
   } /* END .homepage */
+
+  .sales-meetings-lp {
+    .how-we-can-help{padding: 10% 5%;}
+    .our-products {
+      .product-category-list {float: none;}
+    }
+  } /* END .sales-meetings-lp */
+
 
 } /* END max-width: 650px */

@@ -13,7 +13,7 @@
 		<a class="event-trigger" href="http://twitter.com/?status=Enjoyed+this+from+JustSell.com...+<?php the_permalink(); ?>+@JustSell" data-event-fields='{"category":"Social Media Share", "action":"Share", "label":"Twitter"}' title="Tweet this" target="_blank">
 			<img src="/wp-content/themes/justsell/resources/images/icons/social-media/twitter-circle-30x30.png" alt="Twitter" width="30" height="30" /></a>
 
-		<a class="event-trigger launch-modal" href="#" data-modal-type="post-etf" data-modal-post-id="<?php echo $post->ID ?>" data-event-fields='{"category":"Social Media Share", "action":"Share", "label":"Email Post to a Friend"}' title="Email this sales tool">
+		<a class="event-trigger launch-modal" href="#" data-modal-type="post-etf" data-modal-post-id="<?php echo $post->ID ?>" data-event-fields='{"category":"Social Media Share", "action":"Share", "label":"Email Sales Tool to a Friend"}' title="Email this sales tool">
 			<img src="/wp-content/themes/justsell/resources/images/icons/social-media/etf-circle-30x30.png" width="30" height="30" alt="Email this sales tool" /></a>
 	</p>
 </section>

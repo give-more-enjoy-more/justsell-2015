@@ -72,6 +72,22 @@ $(document).ready(function() {
 			var inst = $('[data-remodal-id=modal]').remodal({closeOnOutsideClick:false, hashTracking:false});
 			inst.open();
 
+			/* Triggers a GA event when a modal is launched. */
+			switch (dataModalType){
+				case 'video':
+					ga('send', 'event', 'Modal Launched and Viewed', 'Click', 'Modal Launched and Viewed - Video Modal');
+					console.log("video modal launched!");
+					break;
+
+				case 'post-etf':
+					ga('send', 'event', 'Modal Launched and Viewed', 'Click', 'Modal Launched and Viewed - Sales Tool ETF Modal');
+					break;
+
+				default:
+					/* do nothing */
+					break;
+			} /* END switch (dataModalType) */
+
 		}); /* END $.post */
 
 		/* Removes the right click menu option from links with a 'launch-modal' class and modal type of 'capture-before-download' */
@@ -158,7 +174,7 @@ $(document).ready(function() {
 				});
 
 				/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
-				// ga('send', 'event', 'Footer Email Signup', 'Submit', 'Email Captured From Footer Subscriber Acquisition Form');
+				ga('send', 'event', 'Footer Email Subscribe Signup', 'Submit', 'Email Captured From Footer Subscriber Acquisition Form');
 			});
 		}
 	}); /* END #footer-subscriber-acquisition-form validate function */
@@ -195,11 +211,10 @@ $(document).ready(function() {
 				});
 
 				/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
-				// ga('send', 'event', 'Sales Tool PDF Request', 'Submit', 'Email Captured From Sales Tool PDF Request');
+				ga('send', 'event', 'Sales Tool PDF Request', 'Submit', 'Email Captured From Sales Tool PDF Request');
 			});
 		}
 	}); /* END #footer-subscriber-acquisition-form validate function */
-
 
 
 }); /* END document ready callback function */
