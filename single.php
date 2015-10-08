@@ -21,7 +21,10 @@
 					<?php endif; ?>
 
 					<h1 class="article-title" itemprop="name"><?php the_title(); ?></h1>
-					<p class="article-author">by <strong itemprop="author"><?php the_author() ?></strong> (sales veteran and bestselling author)</p>
+
+					<?php if ( !is_single(array(43)) ): ?>
+						<p class="article-author">by <strong itemprop="author"><?php the_author() ?></strong> (sales veteran and bestselling author)</p>
+					<?php endif; ?>
 
 				</header>
 

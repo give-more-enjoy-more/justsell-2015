@@ -187,7 +187,7 @@ strong {
   display: inline-block;
   padding: 0.5em 1em;
   text-decoration: none; }
-  .flat-btn:focus, .flat-btn:active, .flat-btn:hover {
+  .flat-btn:focus, .flat-btn:active, .flat-btn:hover, .flat-btn:visited {
     color: #FFF; }
   .flat-btn:hover {
     background: #EFAA56;
@@ -636,6 +636,11 @@ article {
     border-bottom: 1px solid #262626;
     margin-bottom: 1em;
     padding-bottom: 0.8em; }
+  article .contains-subtitle {
+    margin-bottom: 0.8em; }
+    article .contains-subtitle .subtitle {
+      font-size: 1.3em;
+      margin: 0 0 0 -1.5em; }
   article .double-bottom-margin {
     margin-bottom: 3em; }
   article .half-bottom-margin {
@@ -644,7 +649,7 @@ article {
     margin-bottom: 0; }
   article .thumbnail-left-20-percent {
     float: left;
-    margin-right: 5%;
+    margin: 0 6% 2em 0;
     width: 20%; }
     article .thumbnail-left-20-percent.last {
       margin-right: 0; }
@@ -715,6 +720,9 @@ article {
 /* TOP 30 OPEN-ENDED QUESTIONS */
 .post-id-29 {
   background: #A3CAED; }
+  .post-id-29 .subtitle.first {
+    font-size: 2.8em;
+    margin-bottom: 0.5em; }
 
 /* SALES INTERVIEW QUESTIONS */
 .post-id-31 {
@@ -733,6 +741,10 @@ article {
   background: #D8F6CB; }
 
 /* SALES MANAGEMENT CHECKLIST */
+.post-id-43 article {
+  max-width: 960px; }
+
+/* JUSTSELL MONTHLY CALENDARS */
 /* 08.04 - Sales Meetings */
 .sales-meetings-lp {
   background: #E5E5E5;
@@ -940,6 +952,7 @@ article {
     text-align: center; }
     .homepage header .about-us {
       background: #FFF;
+      background: rgba(255, 255, 255, 0.9);
       padding: 2em; }
   .homepage .additional-landing-pages-and-motivation,
   .homepage .more-sales-tools-container,
@@ -1482,7 +1495,12 @@ html.remodal-is-locked {
   .reminders-and-gear-lp .gear.last {
     border-bottom: 20px solid #D8D8D8; }
 
-  /* END .reminders-and-gear-lp */ }
+  /* END .reminders-and-gear-lp */
+  article .thumbnail-left-20-percent {
+    margin-right: 10%;
+    width: 35%; }
+
+  /* END article */ }
 /* END max-width: 800px */
 @media (max-width: 600px) {
   .homepage .more-sales-tools-container, .homepage .motivational-landing-pages,
