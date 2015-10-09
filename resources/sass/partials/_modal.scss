@@ -44,7 +44,7 @@ html.remodal-is-locked {overflow: hidden;}
     background: #262626;
     color: #FFF;
     margin: 0 -35px 35px;
-    padding: 0.7em;
+    padding: 0.7em 60px;
     text-align: center;
   }
 
@@ -102,15 +102,15 @@ html.remodal-is-locked {overflow: hidden;}
   color:#FFF;
   cursor:pointer;
   display:block;
-  height:50px;
+  height:70px;
   margin:0;
   outline:0;
   overflow:visible;
   padding:0;
   position:absolute;
-  right:10px;
+  right:5px;
   text-decoration:none;
-  top:10px;
+  top:0;
   width:50px;
   -webkit-transition:color 0.2s; transition:color 0.2s;}
 
@@ -122,7 +122,7 @@ html.remodal-is-locked {overflow: hidden;}
   font-family:Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important;
   font-size:50px;
   left:0;
-  line-height:50px;
+  line-height:70px;
   position:absolute;
   text-align:center;
   top:0;
@@ -148,11 +148,6 @@ html.remodal-is-locked {overflow: hidden;}
 
     .title {margin-bottom:1em; text-align: center;}
 
-    .single-input-submit {
-      margin-bottom: 0.5em;
-      text-align: center;
-    }
-
   } /* END .video-email-capture-form */
 
   .video-overlay {
@@ -176,13 +171,10 @@ html.remodal-is-locked {overflow: hidden;}
   from {
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
-
     opacity: 0;
-  }
-  to {
+  } to {
     -webkit-transform: none;
     transform: none;
-
     opacity: 1;
   }
 }
@@ -191,13 +183,10 @@ html.remodal-is-locked {overflow: hidden;}
   from {
     -webkit-transform: scale(1.05);
     transform: scale(1.05);
-
     opacity: 0;
-  }
-  to {
+  } to {
     -webkit-transform: none;
     transform: none;
-
     opacity: 1;
   }
 }
@@ -206,13 +195,10 @@ html.remodal-is-locked {overflow: hidden;}
   from {
     -webkit-transform: scale(1);
     transform: scale(1);
-
     opacity: 1;
-  }
-  to {
+  } to {
     -webkit-transform: scale(0.95);
     transform: scale(0.95);
-
     opacity: 0;
   }
 }
@@ -221,13 +207,10 @@ html.remodal-is-locked {overflow: hidden;}
   from {
     -webkit-transform: scale(1);
     transform: scale(1);
-
     opacity: 1;
-  }
-  to {
+  } to {
     -webkit-transform: scale(0.95);
     transform: scale(0.95);
-
     opacity: 0;
   }
 }
@@ -235,8 +218,7 @@ html.remodal-is-locked {overflow: hidden;}
 @-webkit-keyframes remodal-overlay-opening-keyframes {
   from {
     opacity: 0;
-  }
-  to {
+  } to {
     opacity: 1;
   }
 }
@@ -244,8 +226,7 @@ html.remodal-is-locked {overflow: hidden;}
 @keyframes remodal-overlay-opening-keyframes {
   from {
     opacity: 0;
-  }
-  to {
+  } to {
     opacity: 1;
   }
 }
@@ -253,8 +234,7 @@ html.remodal-is-locked {overflow: hidden;}
 @-webkit-keyframes remodal-overlay-closing-keyframes {
   from {
     opacity: 1;
-  }
-  to {
+  } to {
     opacity: 0;
   }
 }
@@ -262,8 +242,7 @@ html.remodal-is-locked {overflow: hidden;}
 @keyframes remodal-overlay-closing-keyframes {
   from {
     opacity: 1;
-  }
-  to {
+  } to {
     opacity: 0;
   }
 }
@@ -272,6 +251,42 @@ html.remodal-is-locked {overflow: hidden;}
 @media only screen and (min-width:641px) {
   .remodal{max-width:800px;}
 }
+
+
+@media (max-width: 800px){
+  .embed-video-capture-container {
+    .video-email-capture-form {
+      left: 10%;
+      width: 80%;
+    }
+  }
+} /* END max-width: 800px */
+
+@media (max-width: 700px){
+  .embed-video-capture-container {
+    .video-email-capture-form {
+      left: 5%;
+      width: 90%;
+    }
+  }
+} /* END max-width: 700px */
+
+
+@media (max-width: 600px){
+  .remodal {
+    padding: 0 10px 35px 10px;
+    .modal-title {margin: 0 -10px 35px;}
+  }
+
+  .embed-video-capture-container {
+    .video-email-capture-form {
+      left: 1%;
+      padding: 1em;
+      top: 10%;
+      width: 98%;
+    }
+  }
+} /* END max-width: 600px */
 
 /* IE8 */
 .lt-ie9 .remodal-overlay{background: #2b2e38;}

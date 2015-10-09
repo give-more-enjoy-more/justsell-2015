@@ -52,7 +52,7 @@
 			<div class="sales-tool">
  				<div class="post-info">
 					<a class="post-teaser-image" href="<?php echo $popular_sales_tool_2_url ?>">
-						<img src="<?php echo bloginfo('template_directory') ?>/resources/images/landing-pages/homepage/post-thumbnails/opening-statements-485x180.jpg" alt="How to Focus" />
+						<img src="<?php echo bloginfo('template_directory') ?>/resources/images/landing-pages/homepage/post-thumbnails/sales-management-checklist-485x180.jpg" alt="How to Focus" />
 					</a>
 
 		 			<h2 class="post-title"><a href="<?php echo $popular_sales_tool_2_url ?>">Sales Management Checklist</a></h2>

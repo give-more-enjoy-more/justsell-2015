@@ -431,6 +431,7 @@ footer {
   color: #FFF;
 
   a {color: #FFF; text-decoration: none;}
+  a:hover {color:#FFF; text-decoration: underline;}
 
   address {font-size: 1.2em;}
 
@@ -642,7 +643,7 @@ article {
   main {margin: 0 auto; max-width: $desktop-large-max-width;}
 
   header {
-    background: url('/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/engaging-backgrounds/sales-header-woman-man-1260x775.jpg') no-repeat center #F2BB40;
+    background: url('/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/engaging-backgrounds/sales-header-woman-man-1280x770.jpg') no-repeat center #F2BB40;
     color:#FFF;
     min-height:700px;
     text-align:center;
@@ -745,6 +746,8 @@ article {
   background:#E5E5E5;
 
   header{
+    background-image: url('/wp-content/themes/justsell/resources/images/landing-pages/reminders-and-gear/engaging-backgrounds/ctl-booklet-meeting-1366x310.jpg');
+    min-height: 310px;
     .inner-container {background: #FFF; padding: 3em; text-align: center; width: 65%;}
     .subtitle {font-weight: 300; text-transform: none;}
   } /* END header */
@@ -756,7 +759,7 @@ article {
     background: #FFF;
     background: rgba(256, 256, 256, 0.9);
     padding: 2.5em;
-    width: 40%;
+    width: 45%;
 
     .title {margin-bottom: 0.2em;}
     .gear-info {margin-bottom: 1em;}
@@ -775,10 +778,10 @@ article {
   .last {border: none;}
   .right-cta .cta-container{float: right;}
 
-  #banners-and-posters,
-  #framed-prints,
-  #mugs,
-  #note-cards {background-image: url('/wp-content/themes/justsell/resources/images/landing-pages/reminders-and-gear/engaging-backgrounds/gear-section-images-1366x550.jpg');}
+  #banners-and-posters {background-image: url('/wp-content/themes/justsell/resources/images/landing-pages/reminders-and-gear/engaging-backgrounds/212-block-point-black-poster-1366x550.jpg'); background-position-x: 60%;}
+  #framed-prints {background-image: url('/wp-content/themes/justsell/resources/images/landing-pages/reminders-and-gear/engaging-backgrounds/mgth-blue-framed-print-1366x550.jpg'); background-position-x: 30%;}
+  #mugs {background-image: url('/wp-content/themes/justsell/resources/images/landing-pages/reminders-and-gear/engaging-backgrounds/mgth-purple-mug-1366x550.jpg'); background-position-x: 90%;}
+  #note-cards {background-image: url('/wp-content/themes/justsell/resources/images/landing-pages/reminders-and-gear/engaging-backgrounds/mgth-red-note-card-1366x550.jpg'); background-position-x: 65%;}
 
 } /* END .reminders-and-gear-lp */
 
@@ -837,7 +840,7 @@ article {
         font-size: 1.4em;
         .flat-btn {color: #FFF; display: block;}
       }
-      .post-info {margin-bottom: 5em;}
+      .post-info {margin-bottom:5em; max-width:400px;}
       .post-teaser-image {margin-bottom: 0;}
     }
 
@@ -1100,6 +1103,12 @@ article {
 
 
 @media (max-width: 800px){
+
+  nav {
+    .justsell-logo {width:25%;}
+    .navigation-items {clear:left; float:left;}
+  }
+
   .category-lp {
     .post {
       .post-info, .post-teaser-image {float: none; width: 100%;}
@@ -1108,12 +1117,24 @@ article {
   } /* END .category-lp */
 
   .reminders-and-gear-lp {
+    header {
+      .inner-container {width:90%;}
+      .title {font-size:3.2em;}
+      .subtitle {font-size:2.2em;}
+    }
+
     .gear.engaging-background {
       border-bottom: none;
       .inner-container {bottom: 0; left: 0; right: 0; top: auto; transform: none; width: 100%;}
       .cta-container {width: 100%;}
     }
     .gear.last {border-bottom: 20px solid #D8D8D8;}
+
+    #banners-and-posters {background-position-x: 85%;}
+    #framed-prints {background-position-x: 12%;}
+    #mugs {background-position-x: 95%;}
+    #note-cards {background-position-x: 20%;}
+
   } /* END .reminders-and-gear-lp */
 
 
@@ -1131,8 +1152,9 @@ article {
   }
 
   .homepage {
+    .footer-motivational-video .title {width:90%;}
     .more-sales-tools-container, .motivational-landing-pages,
-    .motivational-video,  .popular-sales-tools-container {float: none; width: 100%;}
+    .motivational-video,  .motivational-landing-pages .post-info, .popular-sales-tools-container {float: none; width: 100%;}
     .section-title, .additional-landing-pages-and-motivation .section-title {font-size: 3em;}
     .motivational-video {margin-bottom: 5em;}
   } /* END .homepage */
