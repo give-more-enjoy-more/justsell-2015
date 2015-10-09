@@ -36,7 +36,6 @@
 		?>
 	</title>
 
-
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
 
@@ -45,7 +44,8 @@
 		/* Pulls in the social media meta tags */
 		include('resources/includes/social-media-meta.php'); ?>
 
-	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>?=v092115">
+	<link rel="shortcut icon" href="<?php echo bloginfo('template_directory') ?>/resources/images/icons/throughout/favicon.ico" />
+	<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>?=v100915">
 
 	<!--[if lt IE 9]>
 		<script src="<?php echo bloginfo('template_directory') ?>/resources/js/html5shiv.min.js"></script>

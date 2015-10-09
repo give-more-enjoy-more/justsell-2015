@@ -403,6 +403,9 @@ p.error {
 .center-copy {
   text-align: center; }
 
+.no-wrap {
+  white-space: nowrap; }
+
 /**
  * 06. - Header
  *
@@ -503,8 +506,7 @@ footer {
   background: #262626;
   color: #FFF; }
   footer a {
-    color: #FFF;
-    text-decoration: none; }
+    color: #FFF; }
   footer a:hover {
     color: #FFF;
     text-decoration: underline; }
@@ -550,8 +552,7 @@ footer p, .about-the-author p {
 .about-the-author {
   background: #D8D8D8; }
   .about-the-author a {
-    color: #262626;
-    text-decoration: none; }
+    color: #262626; }
   .about-the-author a:hover {
     text-decoration: underline; }
   .about-the-author h2 {
@@ -609,7 +610,7 @@ article {
   article ol {
     list-style-type: decimal; }
   article ul {
-    list-style-type: disc; }
+    list-style-type: circle; }
   article .article-title {
     margin-bottom: 0.3em; }
   article .article-author {
@@ -713,41 +714,43 @@ article {
 
 /* END .product-placement */
 /* 08.03 - Specific Posts Formats */
-.post-id-5 {
-  background: #D9F2FF; }
+.post-id-10 article {
+  max-width: 960px; }
+
+/* JUSTSELL MONTHLY CALENDARS */
+.post-id-12 {
+  background: #9CA5A1; }
+  .post-id-12 a {
+    color: #FFF; }
+
+/* SALES PROCESS DEFINED */
+.post-id-14 {
+  background: #EDE9DD; }
 
 /* THE 8 OBJECTIONS */
-.post-id-10 {
-  background: #DCE9DF; }
-
-/* TOP 30 OPEN-ENDED QUESTIONS */
-.post-id-29 {
-  background: #A3CAED; }
-  .post-id-29 .subtitle.first {
+.post-id-18 {
+  background: #A0C7EA; }
+  .post-id-18 .subtitle.first {
     font-size: 2.8em;
     margin-bottom: 0.5em; }
 
 /* SALES INTERVIEW QUESTIONS */
-.post-id-31 {
-  background: #FFE2B3; }
+.post-id-16 {
+  background: #FFDFB0; }
 
 /* OPENING STATEMENTS */
-.post-id-34 {
-  background: #DEFFF6; }
+.post-id-20 {
+  background: #F3F7E5; }
 
 /* HOW TO FOCUS */
-.post-id-36 {
-  background: #FFF; }
-
-/* THE SALES PROCESS */
-.post-id-39 {
-  background: #D8F6CB; }
+.post-id-22 {
+  background: #D5F3C8; }
 
 /* SALES MANAGEMENT CHECKLIST */
-.post-id-60 article {
-  max-width: 960px; }
+.post-id-24 {
+  background: #D9E6DC; }
 
-/* JUSTSELL MONTHLY CALENDARS */
+/* TOP 30 OPEN-ENDED QUESTIONS */
 /* 08.04 - Sales Meetings */
 .sales-meetings-lp {
   background: #E5E5E5;
@@ -759,7 +762,7 @@ article {
     margin: 0 auto;
     max-width: 1280px; }
   .sales-meetings-lp header {
-    background: url("/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/engaging-backgrounds/sales-header-woman-man-1280x770.jpg") no-repeat center #F2BB40;
+    background: url("/wp-content/themes/justsell/resources/images/landing-pages/sales-meetings/engaging-backgrounds/sales-header-woman-man-1280x770.jpg") no-repeat center #DA8D30;
     color: #FFF;
     min-height: 700px;
     text-align: center; }
@@ -836,7 +839,7 @@ article {
     .sales-meetings-lp .how-we-can-help .section-title {
       color: #333333; }
   .sales-meetings-lp .our-products {
-    background: #F2BB40; }
+    background: #DA8D30; }
     .sales-meetings-lp .our-products .engaging-image {
       float: left;
       height: auto;
@@ -929,6 +932,9 @@ article {
     float: right; }
   .reminders-and-gear-lp #banners-and-posters {
     background-image: url("/wp-content/themes/justsell/resources/images/landing-pages/reminders-and-gear/engaging-backgrounds/212-block-point-black-poster-1366x550.jpg");
+    background-position-x: 60%; }
+  .reminders-and-gear-lp #books-and-booklets {
+    background-image: url("/wp-content/themes/justsell/resources/images/landing-pages/reminders-and-gear/engaging-backgrounds/all-books-fanned-wood-table-1366x550.jpg");
     background-position-x: 60%; }
   .reminders-and-gear-lp #framed-prints {
     background-image: url("/wp-content/themes/justsell/resources/images/landing-pages/reminders-and-gear/engaging-backgrounds/mgth-blue-framed-print-1366x550.jpg");
@@ -1439,10 +1445,11 @@ html.remodal-is-locked {
       margin: 0 -10px 35px; }
 
   .embed-video-capture-container .video-email-capture-form {
-    left: 1%;
+    background: rgba 256, 256, 256, 0.9;
+    left: 0;
     padding: 1em;
-    top: 10%;
-    width: 98%; } }
+    top: 0%;
+    width: 100%; } }
 /* END max-width: 600px */
 /* IE8 */
 .lt-ie9 .remodal-overlay {
@@ -1586,6 +1593,8 @@ html.remodal-is-locked {
     border-bottom: 20px solid #D8D8D8; }
   .reminders-and-gear-lp #banners-and-posters {
     background-position-x: 85%; }
+  .reminders-and-gear-lp #books-and-booklets {
+    background-position-x: 20%; }
   .reminders-and-gear-lp #framed-prints {
     background-position-x: 12%; }
   .reminders-and-gear-lp #mugs {
@@ -1620,6 +1629,12 @@ html.remodal-is-locked {
     padding: 10% 5%; }
   .sales-meetings-lp .our-products .product-category-list {
     float: none; }
+  .sales-meetings-lp .who-we-are .title {
+    font-size: 2.4em; }
 
   /* END .sales-meetings-lp */ }
-/* END max-width: 650px */
+/* END max-width: 600px */
+@media (max-width: 450px) {
+  footer .contact-attribute.email {
+    margin-left: 0; } }
+/* END max-width: 600px */

@@ -79,7 +79,7 @@ function process_capture($captured_email, $captured_name = '', $capture_type = '
 	$capture_source = 'gm-capture';
 
 	/* Write name, email, date, ip address, source, and alt aource to the master capture file */
-	$fp = fopen('/var/www/html/justsell.com/wp-content/themes/justsell/resources/docs/capture-docs/Master_Capture_List.txt', 'a');
+	$fp = fopen('/var/www/html/justsell/wp-content/themes/justsell/resources/docs/capture-docs/Master_Capture_List.txt', 'a');
 	fwrite($fp, $capture_name."\t".$capture_email."\t".$capture_date."\t".$capture_ip_address."\t".$capture_source."\t".$capture_alt_source."\n") or die('fwrite failed');
 	fclose($fp);
 

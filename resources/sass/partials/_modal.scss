@@ -280,10 +280,11 @@ html.remodal-is-locked {overflow: hidden;}
 
   .embed-video-capture-container {
     .video-email-capture-form {
-      left: 1%;
+      background: rgba (256,256,256,0.9);
+      left: 0;
       padding: 1em;
-      top: 10%;
-      width: 98%;
+      top: 0%;
+      width: 100%;
     }
   }
 } /* END max-width: 600px */

@@ -1,7 +1,7 @@
 <?php
 
 /* Pull in the generic global functions needed for this script. */
-require_once('/var/www/html/justsell.com/wp-content/themes/justsell/resources/includes/global-functions.php');
+require_once('/var/www/html/justsell/wp-content/themes/justsell/resources/includes/global-functions.php');
 
 /* Loads all wordpress functions so they can be used locally in the file. */
 require_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php');
@@ -422,7 +422,8 @@ function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_e
 	$post_etf_subject_line = $post_etf_title . ' by JustSell.com';
 
 	/* Imports the necessary scripts to control MIME being sent. Use 'find . -name swift_required.php' to find location via ssh */
-	require_once '/etc/apache2/sites-available/vendor/swiftmailer/swiftmailer/lib/swift_required.php';
+// Test Server require_once '/etc/apache2/sites-available/vendor/swiftmailer/swiftmailer/lib/swift_required.php';
+		require_once '/usr/share/pear/swift_required.php';
 
 	/* [ Sets the transport method to PHP Mail ] */
 	$transport = Swift_MailTransport::newInstance();

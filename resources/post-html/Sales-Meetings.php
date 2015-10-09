@@ -1,6 +1,6 @@
 <header class="engaging-background">
 	<div class="inner-container">
-		<h1 class="title">This video will make your next sales meeting more inspiring and valuable.</h1>
+		<h1 class="title">This 3-minute video will make your next sales meeting more inspiring and valuable.</h1>
 		<a href="http://www.givemore.com/212-the-extra-degree/" class="play-video-cta event-trigger launch-modal" data-modal-type="video" data-modal-id="tt" data-event-fields='{"category":"Video Popup Launch","action":"Click","label":"Video Preview - TT"}'><img src="/wp-content/themes/justsell/resources/images/icons/throughout/play-button-circle-80x80.png" alt="Play" width="80" height="80"></a>
 	</div>
 </header>
@@ -105,7 +105,7 @@
 		</ul>
 
 		<p class="contact-prompt clear-both">
-			<strong>Want to talk?</strong> Call us at 1-866-952-4483.
+			<strong>Want to talk?</strong> Call us at <span class="no-wrap">1-866-952-4483</span>.
 		</p>
 
 	</div> <!-- END .our-product-offer -->

@@ -41,9 +41,9 @@
 						<img src="<?php echo bloginfo('template_directory') ?>/resources/images/landing-pages/homepage/post-thumbnails/open-ended-questions-485x180.jpg" alt="Open-Ended Questions" />
 					</a>
 
-		 			<h2 class="post-title"><a href="<?php echo $popular_sales_tool_1_url ?>">Open-Ended Questions</a></h2>
+		 			<h2 class="post-title"><a href="<?php echo $popular_sales_tool_1_url ?>">Top 30 Open-Ended Questions</a></h2>
 
-					<p class="post-excerpt">Gather information, qualify sales opportunity, and establish rapport ... all with these powerful questions.</p>
+					<p class="post-excerpt">Gather information, qualify sales opportunities, and establish rapport ... just by asking the right questions.</p>
 
 					<p class="cta-btn"><a href="<?php echo $popular_sales_tool_1_url ?>">read more...</a></p>
 				</div> <?php /* END .post-info */ ?>
@@ -88,7 +88,7 @@
 				$more_sales_tool_1_url = '/sales-interview-questions/';
 				$more_sales_tool_2_url = '/opening-statements/';
 				$more_sales_tool_3_url = '/the-8-objections/';
-				$more_sales_tool_4_url = '/the-sales-process/';
+				$more_sales_tool_4_url = '/sales-process-defined/';
 			?>
 
 			<div class="sales-tool">
@@ -105,7 +105,7 @@
  				<div class="post-info">
 		 			<h2 class="post-title"><a href="<?php echo $more_sales_tool_2_url ?>">Opening Statements</a></h2>
 
-					<p class="post-excerpt">Nobody really cares ... until you make them care. Learn how to craft leadoff statements that create immediate interest for further discussion.</p>
+					<p class="post-excerpt">No one really cares ... until you make them care. Here's how to craft lead-off statements that create immediate interest for further discussion.</p>
 
 					<p class="cta-btn"><a href="<?php echo $more_sales_tool_2_url ?>">read more...</a></p>
 				</div> <?php /* END .post-info */ ?>
@@ -124,7 +124,7 @@
 
 			<div class="sales-tool">
  				<div class="post-info">
-		 			<h2 class="post-title"><a href="<?php echo $more_sales_tool_4_url ?>">The Sales Process</a></h2>
+		 			<h2 class="post-title"><a href="<?php echo $more_sales_tool_4_url ?>">Sales Process Defined</a></h2>
 
 					<p class="post-excerpt">The laws and principles behind sales haven't changed. Here's the bottom line for your records - fluff removed.</p>
 
@@ -147,7 +147,7 @@
 						<img src="<?php echo bloginfo('template_directory') ?>/resources/images/landing-pages/homepage/motivational-video/212-video-195x110.jpg" alt="212 the extra degree video" />
 					</a>
 
-					<p class="post-excerpt">This 3-minute will get your team fired up to do better work.</p>
+					<p class="post-excerpt">This 3-minute video will get your team excited to make good things happen.</p>
 					<p class="cta-btn"><a href="http://www.givemore.com/212-the-extra-degree/" class="event-trigger launch-modal" data-modal-type="video" data-modal-id="tt" data-event-fields='{"category":"Video Popup Launch","action":"Click","label":"Video Preview - TT"}'>watch now...</a></p>
 				</div>
 
@@ -185,7 +185,7 @@
 		<section class="footer-motivational-video engaging-background">
 			<div class="inner-container">
 				<h3 class="title">This 3-minute video will get your team fired up to do better work.</h3>
-				<a href="/cross-the-line/" class="play-video-cta event-trigger launch-modal" data-modal-type="video" data-modal-id="ctl" data-event-fields='{"category":"Video Popup Launch","action":"Click","label":"Video Preview - CTL"}'>
+				<a href="http://www.givemore.com/cross-the-line/" class="play-video-cta event-trigger launch-modal" data-modal-type="video" data-modal-id="ctl" data-event-fields='{"category":"Video Popup Launch","action":"Click","label":"Video Preview - CTL"}'>
 					<img src="<?php echo bloginfo('template_directory') ?>/resources/images/icons/throughout/play-button-circle-80x80.png" alt="Play" width="80" height="80">
 				</a>
 				<p class="subtitle">Enjoy!</p>

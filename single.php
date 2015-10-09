@@ -22,7 +22,7 @@
 
 					<h1 class="article-title" itemprop="name"><?php the_title(); ?></h1>
 
-					<?php if ( !is_single(array(43)) ): ?>
+					<?php if ( !is_single(array(10)) ): ?>
 						<p class="article-author">by <strong itemprop="author"><?php the_author() ?></strong> (sales veteran and bestselling author)</p>
 					<?php endif; ?>
 
