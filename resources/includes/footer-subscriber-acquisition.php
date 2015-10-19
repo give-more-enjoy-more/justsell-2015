@@ -18,7 +18,7 @@ function display_footer_subscriber_acquisition_form($pre_form_content = '')
 	if (is_single()){
 		$acquisition_copy = '<p><strong>Want more of Sam\'s thoughts?</strong></p><p>Enter your email to get more of his motivating ideas.</p>';
 	} else {
-		$acquisition_copy = '<p><strong>Become more valuable.</strong></p><p>Enter your email to get motivating thoughts and ideas.</p>';
+		$acquisition_copy = '<p><strong>Be more valuable.</strong></p><p>Our motivating thoughts and ideas will make you better right now.</p>';
 	}
 
 	/* Build the form and set it to the form_string variable. */
@@ -29,7 +29,7 @@ function display_footer_subscriber_acquisition_form($pre_form_content = '')
 				'. $acquisition_copy .'
 				<form action="'. $_SERVER['REQUEST_URI'] .'" method="post" name="footerSubscriberAcquisitionForm" class="single-input-form" id="footer-subscriber-acquisition-form">
 					<input name="footerSubscriberAcquisitionEmail" type="text" placeholder="Enter your email here">
-					<input name="footerSubscriberAcquisitionSubmit" type="submit" value="Get inspired">
+					<input name="footerSubscriberAcquisitionSubmit" type="submit" value="Sign me up!">
 				</form>
 			</div>
 		</section>';

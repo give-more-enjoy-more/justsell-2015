@@ -315,7 +315,7 @@ function process_post_etf_modal(){
 
 		<form name='postEtfForm' class='multi-input-form' id='postEtfForm' method='post' action=". $_SERVER['REQUEST_URI'] .">
 			<label for='postEtfEmailTo'>Email to:</label><input class='has-input-note' id='postEtfEmailTo' name='postEtfEmailTo' type='text' value='' />
-			<p class='input-note'>Please separate multiple addresses with commas. These will not be collected or used by us for any promotional purposes.</p>
+			<p class='input-note'>Addresses of the people you send this to will not be collected or used by us for any promotional purposes.</p>
 
 			<label for='postEtfMessage'>Your Message: (optional)</label><textarea id='postEtfMessage' name='postEtfMessage' rows='3'></textarea>
 
@@ -391,7 +391,7 @@ function process_post_etf_modal(){
 					$.post(action, $(form).serialize(), function(data) {
 						$('#postEtfForm').fadeOut(200, function(){
 
-							$('<h3 class=\"title\">Thanks for sharing!</h3><p class=\"subtitle\">The email is on its way.</p>').appendTo('.remodal-content-container').hide().fadeIn(200);
+							$('<h3 class=\"title center-copy\">Thanks for sharing!</h3><p class=\"subtitle center-copy\">The email is on its way.</p>').appendTo('.remodal-content-container').hide().fadeIn(200);
 
 						});
 
@@ -435,7 +435,7 @@ function process_post_etf_send($post_etf_email_to, $post_etf_email_from, $post_e
 	$message = Swift_Message::newInstance($post_etf_subject_line)
 	  ->setFrom(array($post_etf_email_from => $post_etf_from_name))
 	  ->setTo(array($post_etf_email_to))
-		//->setBcc(array('jim@givemore.com', 'sam@givemore.com'))
+		->setBcc(array('jim@givemore.com', 'sam@givemore.com'))
 
 		/* [ Create HTML Version ] */
 		->setBody('

@@ -41,7 +41,12 @@
 
 							<p class="post-excerpt"><?php echo get_the_excerpt(); ?></p>
 
-							<p class="cta-btn"><a class="flat-btn" href="<?php echo get_permalink(); ?>">Read more</a></p>
+							<?php if (get_the_ID() === 10): ?>
+								<p class="cta-btn"><a class="flat-btn" href="<?php echo get_permalink(); ?>">Get the calendars</a></p>
+							<?php else: ?>
+								<p class="cta-btn"><a class="flat-btn" href="<?php echo get_permalink(); ?>">Read more</a></p>
+							<?php endif; ?>
+							
 						</div> <?php /* END .post-info */ ?>
 
 					</li>

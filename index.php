@@ -132,7 +132,7 @@
 				</div> <?php /* END .post-info */ ?>
 			</div> <?php /* END .sales-tool */ ?>
 
-			<p class="browse-all-cta"><a class="flat-btn" href="/sales-tools/">Browse all</a></p>
+			<p class="browse-all-cta"><a class="flat-btn" href="/sales-tools/">Browse all sales tools</a></p>
 
 		</section> <?php /* END .more-sales-tools-container */ ?>
 

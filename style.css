@@ -384,6 +384,16 @@ p.error {
     transform: translateY(-50%); }
 
 /* END .engaging-background */
+.no-csstransforms .engaging-background {
+  padding: 5em 0; }
+  .no-csstransforms .engaging-background .inner-container {
+    margin: 0 auto;
+    position: relative;
+    left: auto;
+    right: auto;
+    top: auto; }
+
+/* END .no-css-transforms .engaging-background */
 /* 05.02 - Utility Classes */
 .clear-both {
   clear: both; }
@@ -615,7 +625,7 @@ article {
     margin-bottom: 0.3em; }
   article .article-author {
     color: #262626;
-    font-size: 1em;
+    font-size: 1.6em;
     font-size: 1.6rem; }
   article .engaging-header-image {
     height: auto;
@@ -672,14 +682,16 @@ article {
   margin: 0 auto;
   max-width: 960px;
   padding: 4em 0;
-  text-align: center;
-  width: 80%; }
+  text-align: center; }
   .product-placement.bottom-placement {
     margin-bottom: 0; }
   .product-placement.no-border {
     border: none; }
   .product-placement.no-padding {
     padding: 0; }
+  .product-placement img {
+    height: auto;
+    width: 100%; }
   .product-placement p {
     margin-bottom: 0; }
   .product-placement .placement-title {
@@ -720,8 +732,8 @@ article {
 /* JUSTSELL MONTHLY CALENDARS */
 .post-id-12 {
   background: #9CA5A1; }
-  .post-id-12 a {
-    color: #FFF; }
+  .post-id-12 article a {
+    color: #E4E4E4; }
 
 /* SALES PROCESS DEFINED */
 .post-id-14 {
@@ -975,6 +987,8 @@ article {
       background: #FFF;
       background: rgba(255, 255, 255, 0.9);
       padding: 2em; }
+    .homepage header .subtitle {
+      font-weight: 300; }
   .homepage .additional-landing-pages-and-motivation,
   .homepage .more-sales-tools-container,
   .homepage .popular-sales-tools-container {
@@ -1011,6 +1025,7 @@ article {
   .homepage .footer-motivational-video {
     background: url("/wp-content/themes/justsell/resources/images/landing-pages/homepage/engaging-backgrounds/sales-header-woman-man-orange-overlay-1366x550.jpg") no-repeat #DA8D30;
     background-size: cover;
+    background-position-x: 100%;
     clear: both;
     color: #FFF;
     min-height: 500px;
@@ -1108,6 +1123,7 @@ article {
       font-size: 0.8em;
       margin-bottom: 0; }
     .category-lp .post .post-excerpt {
+      font-size: 1em;
       margin-bottom: 1em; }
     .category-lp .post .post-info {
       float: right;
@@ -1610,6 +1626,9 @@ html.remodal-is-locked {
   /* END article */ }
 /* END max-width: 800px */
 @media (max-width: 600px) {
+  article .social-media-single-post-share strong {
+    display: block; }
+
   footer .copyright-and-links {
     font-size: 1.2em; }
 
@@ -1621,7 +1640,7 @@ html.remodal-is-locked {
     width: 100%; }
   .homepage .section-title, .homepage .additional-landing-pages-and-motivation .section-title {
     font-size: 3em; }
-  .homepage .motivational-video {
+  .homepage .motivational-video, .homepage .browse-all-cta {
     margin-bottom: 5em; }
 
   /* END .homepage */

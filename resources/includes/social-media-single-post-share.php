@@ -1,6 +1,10 @@
 <section class="social-media-single-post-share">
 	<p class="social-icons">
-		<strong>Share this sales tool:</strong>
+		<?php if ( is_single(array(10)) ): ?>
+			<strong>Share our calendars:</strong>
+		<?php else: ?>
+			<strong>Share this sales tool:</strong>
+		<?php endif; ?>
 		<a class="event-trigger" href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" data-event-fields='{"category":"Social Media Share", "action":"Share", "label":"Facebook"}' title="Share this on Facebook" target="_blank">
 			<img src="/wp-content/themes/justsell/resources/images/icons/social-media/facebook-circle-30x30.png" alt="Facebook" width="30" height="30" /></a>
 

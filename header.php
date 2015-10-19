@@ -39,6 +39,25 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width">
 
+	<?php if ( is_home() || is_category() ): ?>
+
+		<meta name="description" content="No-fluff tips &amp; ideas to better selling. (95% of all you need to know ... and do)">
+		<meta name="keywords" content="sales, sales process, sales questions, open-ended questions, opening statements, closing, negotiating, prospecting, qualifying, management">
+
+	<?php elseif ( is_single() ): ?>
+
+		<meta name="description" content="<?php echo esc_html(get_the_excerpt()); ?>">
+
+		<?php 
+			$post_tags = get_the_tags();
+			foreach($post_tags as $tag)
+				$csv_tags .= $tag->name . ',';
+				
+			echo '<meta name="keywords" content="'.$csv_tags.'" />';
+		?>
+
+	<?php endif; ?>
+
 
 	<?php
 		/* Pulls in the social media meta tags */
@@ -49,6 +68,7 @@
 
 	<!--[if lt IE 9]>
 		<script src="<?php echo bloginfo('template_directory') ?>/resources/js/html5shiv.min.js"></script>
+		<script src="<?php echo bloginfo('template_directory') ?>/resources/js/respond.min.js"></script>
 	<![endif]-->
 
 	<?php /* TypeKit Font Import */ ?>

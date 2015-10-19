@@ -49,19 +49,19 @@ function process_capture($captured_email, $captured_name = '', $capture_type = '
 			break;
 
 		case "info":
-			$capture_alt_source = 'gm-info-capture';
+			$capture_alt_source = 'js-info-capture';
 			break;
 
-		case "post-etf":
-			$capture_alt_source = 'gm-post-etf-capture';
+		case "post-etf-share":
+			$capture_alt_source = 'js-post-etf-capture';
 			break;
 
 		case "post-pdf-request":
-			$capture_alt_source = 'gm-post-pdf-request-capture';
+			$capture_alt_source = 'js-post-pdf-request-capture';
 			break;
 
 		case "video":
-			$capture_alt_source = 'gm-video-capture-' . $capture_id;
+			$capture_alt_source = 'js-video-capture-' . $capture_id;
 			break;
 
 		default:
@@ -76,7 +76,7 @@ function process_capture($captured_email, $captured_name = '', $capture_type = '
 	$capture_email = $captured_email;
 	$capture_ip_address = $_SERVER['REMOTE_ADDR'];
 	$capture_name = !empty($captured_name) ? $captured_name : 'Everyone';
-	$capture_source = 'gm-capture';
+	$capture_source = 'js-capture';
 
 	/* Write name, email, date, ip address, source, and alt aource to the master capture file */
 	$fp = fopen('/var/www/html/justsell/wp-content/themes/justsell/resources/docs/capture-docs/Master_Capture_List.txt', 'a');

@@ -133,9 +133,12 @@ $(document).ready(function() {
 
 			var target = $(this.hash);
 			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+			
 			if (target.length) {
+				var scrollLocation = target.offset().top - $('nav').outerHeight();
+
 				$('html,body').animate({
-					scrollTop: target.offset().top
+					scrollTop: scrollLocation
 				}, 2000);
 				return false;
 			}

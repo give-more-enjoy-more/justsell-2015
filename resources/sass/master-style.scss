@@ -325,6 +325,17 @@ p.error {font-size: 1.8em;}
   }
 } /* END .engaging-background */
 
+.no-csstransforms .engaging-background {
+	padding:5em 0;
+	
+	.inner-container {
+		margin:0 auto;
+		position:relative;
+		left: auto;
+		right: auto;
+		top: auto;
+	}
+} /* END .no-css-transforms .engaging-background */
 
 
 /* 05.02 - Utility Classes */
@@ -528,7 +539,7 @@ article {
 
   .article-author {
     color: $body-copy-black;
-    font-size: 1em;
+    font-size: 1.6em;
     font-size: 1.6rem;
   }
 
@@ -596,12 +607,12 @@ article {
   max-width: $desktop-medium-max-width;
   padding: 4em 0;
   text-align: center;
-  width: $desktop-large-width-percentage;
 
   &.bottom-placement {margin-bottom: 0;}
   &.no-border {border: none;}
   &.no-padding {padding: 0;}
 
+	img{height: auto; width: 100%;}
   p{margin-bottom: 0;}
 
   .placement-title{color: $body-copy-black; font-size: 3.6em; font-weight: 600; margin-bottom: 0.7em; text-align: center;}
@@ -623,7 +634,7 @@ article {
 } /* JUSTSELL MONTHLY CALENDARS */
 .post-id-12 {
   background:#9CA5A1;
-  a {color:#FFF;}
+  article a {color:#E4E4E4;}
 } /* SALES PROCESS DEFINED */
 .post-id-14 {background: #EDE9DD;} /* THE 8 OBJECTIONS */
 .post-id-18 {
@@ -812,6 +823,7 @@ article {
     text-align: center;
 
     .about-us {background: #FFF; background: rgba(256,256,256, 0.9); padding: 2em;}
+    .subtitle {font-weight:300;}
   }
 
   .additional-landing-pages-and-motivation,
@@ -853,6 +865,7 @@ article {
   .footer-motivational-video {
     background: url('/wp-content/themes/justsell/resources/images/landing-pages/homepage/engaging-backgrounds/sales-header-woman-man-orange-overlay-1366x550.jpg') no-repeat $justsell-theme-orange;
     background-size: cover;
+    background-position-x: 100%;
     clear: both;
     color: #FFF;
     min-height: 500px;
@@ -958,7 +971,7 @@ article {
       margin-bottom: 0;
     }
 
-    .post-excerpt {margin-bottom: 1em;}
+    .post-excerpt {font-size: 1em; margin-bottom: 1em;}
 
     .post-info {
       float: right;
@@ -1151,6 +1164,10 @@ article {
 
 @media (max-width: 600px){
 
+	article {
+		.social-media-single-post-share strong {display:block;}
+	}
+
   footer {
     .copyright-and-links {font-size:1.2em;}
   }
@@ -1160,7 +1177,7 @@ article {
     .more-sales-tools-container, .motivational-landing-pages,
     .motivational-video,  .motivational-landing-pages .post-info, .popular-sales-tools-container {float: none; width: 100%;}
     .section-title, .additional-landing-pages-and-motivation .section-title {font-size: 3em;}
-    .motivational-video {margin-bottom: 5em;}
+    .motivational-video, .browse-all-cta {margin-bottom: 5em;}
   } /* END .homepage */
 
   .sales-meetings-lp {
