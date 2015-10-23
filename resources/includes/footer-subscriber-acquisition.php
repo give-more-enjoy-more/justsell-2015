@@ -15,11 +15,7 @@ footer_subscriber_acquisition_control();
 function display_footer_subscriber_acquisition_form($pre_form_content = '')
 {
 
-	if (is_single()){
-		$acquisition_copy = '<p><strong>Want more of Sam\'s thoughts?</strong></p><p>Enter your email to get more of his motivating ideas.</p>';
-	} else {
-		$acquisition_copy = '<p><strong>Be more valuable.</strong></p><p>Our motivating thoughts and ideas will make you better right now.</p>';
-	}
+	$acquisition_copy = '<p><strong>Be more valuable.</strong></p><p>Our motivating thoughts and ideas will make you better right away.</p>';
 
 	/* Build the form and set it to the form_string variable. */
 	$form_output_string = '

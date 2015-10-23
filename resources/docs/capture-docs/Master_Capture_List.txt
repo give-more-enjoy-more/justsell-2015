@@ -1,3 +1,2 @@
 Name	Email	Date	IP Address	Sub Source	Alt Source
-Everyone	holeezaivey@gmail.com	10/16/15 12:49 pm	67.242.220.176	js-capture	js-video-capture-ls
-Everyone	colinrankin32@yahoo.com	10/16/15 1:53 pm	67.23.147.94	js-capture	js-video-capture-ls
+Everyone	joe@givemore.com	10/23/15 3:35 pm	75.75.75.1	js-capture	

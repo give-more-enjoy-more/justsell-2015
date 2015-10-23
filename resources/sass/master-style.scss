@@ -543,15 +543,17 @@ article {
     font-size: 1.6rem;
   }
 
+  .copyright-and-links {font-size: 1.4em;}
+
   .engaging-header-image {
     height: auto;
     margin-bottom: 3em;
     width: 100%;
   }
 
-  .post-pdf-request {
+  .request-form {
     background: #FFF;
-    margin-bottom: 4em;
+    margin-bottom: 5em;
     padding: 3em;
     text-align: center;
   }
@@ -562,7 +564,7 @@ article {
   }
 
   .social-media-single-post-share {
-    padding: 2em 0;
+    margin-bottom: 4em;
     text-align: center;
 
     a {display: inline-block; margin-left: 0.4em; vertical-align: middle;}
@@ -962,6 +964,8 @@ article {
   .post {
     background: #FFF;
     margin-bottom: 2em;
+    overflow: hidden;
+    position: relative;
     @include box-shadow( 0, 1px, 2px, rgba(0, 0, 0, 0.4) );
 
     &:last-child {margin-bottom: 0;}
@@ -982,6 +986,9 @@ article {
     .post-teaser-image {
       display: block;
       float: left;
+      left: 0;
+      max-height: 100%;
+      position: absolute;
       width: 25%;
 
       img {
@@ -1050,7 +1057,6 @@ article {
   footer {
     .general-info-copyright, .office-location {float: none; width: 100%;}
     .general-info-copyright {margin-bottom: 3em;}
-
   } /* END footer */
 
 
@@ -1059,11 +1065,9 @@ article {
     .author-headshot {display: none;}
   }  /* END .about-the-author */
 
-
   .engaging-background {
     .inner-container {left: 5%; right: 5%;}
   }
-
 
   .homepage {
     .additional-landing-pages-and-motivation {
@@ -1091,6 +1095,13 @@ article {
 
 
 @media (max-width: 900px){
+
+  .category-lp {
+    .post {
+      .post-info, .post-teaser-image {float:none; width:100%;}
+      .post-teaser-image {max-height:250px; position:relative; overflow:hidden;}
+    } /* END .post */
+  } /* END .category-lp */
 
   .sales-meetings-lp {
     .how-we-can-help{
@@ -1125,13 +1136,6 @@ article {
     .navigation-items {clear:left; float:left;}
   }
 
-  .category-lp {
-    .post {
-      .post-info, .post-teaser-image {float: none; width: 100%;}
-      .post-teaser-image {max-height: 250px; overflow: hidden;}
-    } /* END .post */
-  } /* END .category-lp */
-
   .reminders-and-gear-lp {
     header {
       .inner-container {width:90%;}
@@ -1162,6 +1166,18 @@ article {
 } /* END max-width: 800px */
 
 
+@media (max-width: 610px){
+
+  footer {
+    .no-wrap{display:block;}
+
+    .contact-attribute{
+      &.email {margin-left: 0;}
+    }
+  }
+} /* END max-width: 610px */
+
+
 @media (max-width: 600px){
 
 	article {
@@ -1170,7 +1186,7 @@ article {
 
   footer {
     .copyright-and-links {font-size:1.2em;}
-  }
+  } /* END footer */
 
   .homepage {
     .footer-motivational-video .title {width:90%;}
@@ -1191,14 +1207,4 @@ article {
   } /* END .sales-meetings-lp */
 
 
-} /* END max-width: 600px */
-
-
-@media (max-width: 450px){
-
-  footer {
-    .contact-attribute{
-      &.email {margin-left: 0;}
-    }
-  }
 } /* END max-width: 600px */

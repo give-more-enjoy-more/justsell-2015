@@ -42,9 +42,10 @@
 
 					<p class="subtitle">Since 1998, we've been providing no-fluff tools, ideas, and inspiration to help sales leaders sell more.</p>
 
-					<p class="copyright-and-links">Copyright &copy; by Give More Media Inc. If you'd like to tell people about this somewhere (e.g. blog, newsletter, Facebook, social media), please reference Sam Parker of GiveMore.com as the author and link directly to the article. Excerpts are great but please don't publish the article in its entirety without advanced written permission (email us at <a href="mailto:GoodThings@GiveMore.com?subject=reprint%20permission">GoodThings@GiveMore.com</a> with the subject line 'reprint permission').</p>
+					<p class="contact-information"><span class="no-wrap"><span class="contact-attribute">Phone</span> - <a href="tel:18669524483">1-866-952-4483</a></span> <span class="no-wrap"><span class="contact-attribute email">Email</span> - <a href="mailto:GoodThings@GiveMore.com">GoodThings@GiveMore.com</a></span></p>
 
-					<p class="copyright-and-links"><span class="contact-attribute">Phone</span> - <a href="tel:18669524483">1-866-952-4483</a> <span class="no-wrap"><span class="contact-attribute email">Email</span> - <a href="mailto:GoodThings@GiveMore.com">GoodThings@GiveMore.com</a></span></p>
+					<p class="copyright-and-links">Copyright &copy; 1998 - <?php echo date('Y'); ?> Give More Media Inc.</p>
+
 				</div> <?php /* END .general-info-copyright */ ?>
 
 				<div class="office-location">

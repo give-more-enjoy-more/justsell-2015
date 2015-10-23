@@ -627,20 +627,22 @@ article {
     color: #262626;
     font-size: 1.6em;
     font-size: 1.6rem; }
+  article .copyright-and-links {
+    font-size: 1.4em; }
   article .engaging-header-image {
     height: auto;
     margin-bottom: 3em;
     width: 100%; }
-  article .post-pdf-request {
+  article .request-form {
     background: #FFF;
-    margin-bottom: 4em;
+    margin-bottom: 5em;
     padding: 3em;
     text-align: center; }
   article .post-promotion {
     margin-bottom: 4em;
     text-align: center; }
   article .social-media-single-post-share {
-    padding: 2em 0;
+    margin-bottom: 4em;
     text-align: center; }
     article .social-media-single-post-share a {
       display: inline-block;
@@ -1112,6 +1114,8 @@ article {
   .category-lp .post {
     background: #FFF;
     margin-bottom: 2em;
+    overflow: hidden;
+    position: relative;
     -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
@@ -1132,6 +1136,9 @@ article {
     .category-lp .post .post-teaser-image {
       display: block;
       float: left;
+      left: 0;
+      max-height: 100%;
+      position: absolute;
       width: 25%; }
       .category-lp .post .post-teaser-image img {
         display: block;
@@ -1547,6 +1554,17 @@ html.remodal-is-locked {
     width: 90%; } }
 /* END max-width: 960px */
 @media (max-width: 900px) {
+  .category-lp {
+    /* END .post */ }
+    .category-lp .post .post-info, .category-lp .post .post-teaser-image {
+      float: none;
+      width: 100%; }
+    .category-lp .post .post-teaser-image {
+      max-height: 250px;
+      position: relative;
+      overflow: hidden; }
+
+  /* END .category-lp */
   .sales-meetings-lp {
     /* END .how-we-can-help */
     /* END .our-products */ }
@@ -1578,16 +1596,6 @@ html.remodal-is-locked {
     clear: left;
     float: left; }
 
-  .category-lp {
-    /* END .post */ }
-    .category-lp .post .post-info, .category-lp .post .post-teaser-image {
-      float: none;
-      width: 100%; }
-    .category-lp .post .post-teaser-image {
-      max-height: 250px;
-      overflow: hidden; }
-
-  /* END .category-lp */
   .reminders-and-gear-lp header .inner-container {
     width: 90%; }
   .reminders-and-gear-lp header .title {
@@ -1625,6 +1633,12 @@ html.remodal-is-locked {
 
   /* END article */ }
 /* END max-width: 800px */
+@media (max-width: 610px) {
+  footer .no-wrap {
+    display: block; }
+  footer .contact-attribute.email {
+    margin-left: 0; } }
+/* END max-width: 610px */
 @media (max-width: 600px) {
   article .social-media-single-post-share strong {
     display: block; }
@@ -1632,6 +1646,7 @@ html.remodal-is-locked {
   footer .copyright-and-links {
     font-size: 1.2em; }
 
+  /* END footer */
   .homepage .footer-motivational-video .title {
     width: 90%; }
   .homepage .more-sales-tools-container, .homepage .motivational-landing-pages,
@@ -1652,8 +1667,4 @@ html.remodal-is-locked {
     font-size: 2.4em; }
 
   /* END .sales-meetings-lp */ }
-/* END max-width: 600px */
-@media (max-width: 450px) {
-  footer .contact-attribute.email {
-    margin-left: 0; } }
 /* END max-width: 600px */

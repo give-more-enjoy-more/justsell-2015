@@ -34,6 +34,8 @@
 					/* Pulls in the social media share links */
 					include('resources/includes/social-media-single-post-share.php'); ?>
 
+				<p class="copyright-and-links">Copyright &copy; by Give More Media Inc. If you'd like to tell people about this somewhere (e.g. blog, newsletter, Facebook, social media), please reference Sam Parker of GiveMore.com as the author and link directly to the article. Excerpts are great but please don't publish the article in its entirety without advanced written permission (email us at <a href="mailto:GoodThings@GiveMore.com?subject=reprint%20permission">GoodThings@GiveMore.com</a> with the subject line 'reprint permission').</p>
+
 			</article>
 
 		<?php endwhile; ?>

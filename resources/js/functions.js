@@ -210,14 +210,51 @@ $(document).ready(function() {
 
 			$.post(action, $(form).serialize(), function() {
 				$('.post-pdf-request-form-container').fadeOut(300, function(){
-					$('<h3 class="title">Please check your inbox.</h3><p class="subtitle">The printable PDF is on its way.</p>').hide().appendTo('.post-pdf-request').fadeIn(300);
+					$('<h3 class="title">Thanks!</h3><p class="subtitle">We\'re sending it your way now.</p>').hide().appendTo('.post-pdf-request').fadeIn(300);
 				});
 
 				/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
 				ga('send', 'event', 'Sales Tool PDF Request', 'Submit', 'Email Captured From Sales Tool PDF Request');
 			});
 		}
-	}); /* END #footer-subscriber-acquisition-form validate function */
+	}); /* END #pdf-form-request validate function */
+
+
+	/* Validation function for the book excerpt request form. */
+	$('#book-excerpt-form-request').validate({
+		rules: {
+			postBookExcerptRequestEmail: {
+				required: true,
+				email: true
+			}
+		},
+
+		messages: {
+			postBookExcerptRequestEmail: {
+				required: 'Please enter your email address',
+				email: 'Please enter a valid email address'
+			}
+		},
+
+		errorElement: "p",
+
+		errorPlacement: function(error) {
+			error.appendTo('#book-excerpt-form-request');
+		},
+
+		submitHandler: function(form) {
+			var action = $(form).attr('action');
+
+			$.post(action, $(form).serialize(), function() {
+				$('.post-book-excerpt-request-form-container').fadeOut(300, function(){
+					$('<h3 class="title">Thanks!</h3><p class="subtitle">We\'re sending your book sample over now.</p>').hide().appendTo('.post-book-excerpt-request').fadeIn(300);
+				});
+
+				/* [ Trigger a Google Analytics Event if the visitor successfully signs up.  ] */
+				ga('send', 'event', 'Book Excerpt Email Request', 'Submit', 'Email Captured From Book Excerpt Email Request');
+			});
+		}
+	}); /* END #pdf-form-request validate function */
 
 
 }); /* END document ready callback function */
